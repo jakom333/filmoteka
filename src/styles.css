@@ -5,5 +5,5 @@
 }
 
 @import "./components/footer/footer.css";
-@import "./templates/header/header.css";
+@import "./components/header/header.css";
 @import "./components/main-section/main-section.css";
