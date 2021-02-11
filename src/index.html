@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>Filmoteka</title>
   </head>
 
@@ -13,25 +16,43 @@
       <div class="header-wrapper">
         <nav class="header-nav">
           <div class="header-nav-logo">
-            <a href=""><img class="header-nav-logo-icon" src="./images/header/film.svg" alt=""></a>
+            <a href=""
+              ><img
+                class="header-nav-logo-icon"
+                src="./images/header/film.svg"
+                alt=""
+            /></a>
             <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
           </div>
           <ul class="header-nav-list">
             <li class="header-nav-list-item">home</li>
-            <li class="header-nav-list-item"><a href="./library.html">my library</a></li>
+            <li class="header-nav-list-item">
+              <a href="./library.html">my library</a>
+            </li>
           </ul>
         </nav>
         <div class="search">
-          <input class="search-input" type="text" placeholder="Поиск фильмов">
+          <input class="search-input" type="text" placeholder="Поиск фильмов" />
         </div>
       </div>
     </header>
     <div class="container">
       <section class="section-main">
-        <ul class="photo-gallery-list">
-          
-        </ul>
+        <ul class="photo-gallery-list"></ul>
       </section>
+      <div class="pagination container">
+        <div class="paginator">
+          <button class="btn-page previous" data-index="1">&larr;</button>
+          <!-- <button class="btn-dots dots1">...</button> -->
+          <button class="btn-page1 active btn" data-index="1">1</button>
+          <button class="btn-page2 btn" data-index="2">2</button>
+          <button class="btn-page3 btn" data-index="3">3</button>
+          <button class="btn-page4 btn" data-index="4">4</button>
+          <button class="btn-page5 btn" data-index="5">5</button>
+          <button class="btn-dots dots2">...</button>
+          <button class="btn-page next" data-index="1">&rarr;</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
