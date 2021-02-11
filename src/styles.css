@@ -1,5 +1,1 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@import "./components/main-section/main-section.css";
