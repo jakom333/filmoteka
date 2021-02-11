@@ -1,0 +1,93 @@
+.pagination {
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 640px) {
+  .pagination {
+    margin-bottom: 40px;
+  }
+}
+
+.paginator {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-page1,
+.btn-page2,
+.btn-page3,
+.btn-page4,
+.btn-page5,
+.btn-page {
+  width: 40px;
+  height: 40px;
+  background: #f7f7f7;
+  color: #000;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-dots {
+  background-color: #f7f7f700;
+  border: 0px;
+  cursor: pointer;
+  color: #000;
+  outline: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+@media screen and (max-width: 640px) {
+  .btn-page1,
+  .btn-page2,
+  .btn-page3,
+  .btn-page4,
+  .btn-page5,
+  .btn-page {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.btn-page1,
+.btn-page2,
+.btn-page3,
+.btn-page4,
+.btn-page5,
+.btn-page:not(:last-child) {
+  margin-right: 15px;
+}
+
+.btn-page1:hover,
+.btn-page2:hover,
+.btn-page3:hover,
+.btn-page4:hover,
+.btn-page5:hover,
+.btn-page:hover {
+  transition: 1s;
+  background: #ff6b08;
+  transform: scale(1.07);
+}
+
+.btn-dots {
+  width: 30px;
+  height: 27px;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 640px) {
+  .btn-dots {
+    display: none;
+  }
+}
+
+.active {
+  background: #ff6b08;
+  color: #ffff;
+}
