@@ -1,1 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import "./components/footer/footer.css";
+@import "./components/header/header.css";
 @import "./components/main-section/main-section.css";
