@@ -3,3 +3,5 @@
 *::after {
   box-sizing: border-box;
 }
+
+@import "../src/./components/footer/footer.css";
