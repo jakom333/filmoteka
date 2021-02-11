@@ -4,4 +4,6 @@
   box-sizing: border-box;
 }
 
-@import "../src/./components/footer/footer.css";
+@import "./components/footer/footer.css";
+@import "./templates/header/header.css";
+@import "./components/main-section/main-section.css";

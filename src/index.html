@@ -4,9 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>Filmoteka</title>
   </head>
+
   <body>
+    <header class="header">
+      <div class="header-wrapper">
+        <nav class="header-nav">
+          <div class="header-nav-logo">
+            <a href=""
+              ><img
+                class="header-nav-logo-icon"
+                src="./images/header/film.svg"
+                alt=""
+            /></a>
+            <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
+          </div>
+          <ul class="header-nav-list">
+            <li class="header-nav-list-item">home</li>
+            <li class="header-nav-list-item">
+              <a href="./library.html">my library</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="search">
+          <input class="search-input" type="text" placeholder="Поиск фильмов" />
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <section class="section-main">
+        <ul class="photo-gallery-list"></ul>
+      </section>
+    </div>
     <footer class="footer">
       <div class="conteiner footer-box">
         <p class="footer-copyright">&copy; 2020 | All Rights Reserved |</p>
