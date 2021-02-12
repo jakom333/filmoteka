@@ -37,9 +37,16 @@
   cursor: pointer;
   color: #000;
   outline: none;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 16px;
+}
+
+.btn-dots:hover {
+  transition: 0.1s;
+  color: #ff6b08;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 @media screen and (max-width: 640px) {
