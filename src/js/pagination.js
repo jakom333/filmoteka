@@ -1,3 +1,5 @@
+import fetchMovies from "./fetchMovies";
+
 const refs = {
   pagination: document.querySelector(".pagination"),
   btnPage1: document.querySelector(".btn-page1"),
@@ -82,13 +84,20 @@ function onBtnClick(event) {
     if (event.target.classList.contains("btn")) {
       setBtnActiveStyle(event);
     }
+    fetchMovies();
   }
 
   if (btn1.textContent > "1" || btn5.textContent < "5") {
     refs.previous.hidden = false;
+    // refs.dots1.hidden = false;
+    // refs.btnFirst.hidden = false;
+  }
+
+  if (btn1.textContent > "3") {
     refs.dots1.hidden = false;
     refs.btnFirst.hidden = false;
   }
+
   if (Number(currentPage) > 995) {
     refs.next.hidden = true;
     refs.dots2.hidden = true;

@@ -20,6 +20,18 @@
 .btn-page3,
 .btn-page4,
 .btn-page5,
+.btn-first,
+.btn-last {
+  width: 40px;
+  height: 40px;
+  background: #f7f7f700;
+  color: #000;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 .btn-page {
   width: 40px;
   height: 40px;
@@ -55,7 +67,9 @@
   .btn-page3,
   .btn-page4,
   .btn-page5,
-  .btn-page {
+  .btn-page,
+  .btn-first,
+  .btn-last {
     width: 30px;
     height: 30px;
   }
@@ -66,8 +80,10 @@
 .btn-page3,
 .btn-page4,
 .btn-page5,
+.btn-first,
+.btn-last,
 .btn-page:not(:last-child) {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .btn-page1:hover,
@@ -75,6 +91,8 @@
 .btn-page3:hover,
 .btn-page4:hover,
 .btn-page5:hover,
+.btn-first:hover,
+.btn-last:hover,
 .btn-page:hover {
   transition: 1s;
   background: #ff6b08;
