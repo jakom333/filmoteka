@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="header header-home-background">
       <div class="header-wrapper">
         <nav class="header-nav">
           <div class="header-nav-logo">
@@ -25,14 +25,18 @@
             <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
           </div>
           <ul class="header-nav-list">
-            <li class="header-nav-list-item">home</li>
-            <li class="header-nav-list-item">
-              <a href="./library.html">my library</a>
+            <li class="header-nav-list-item home-button underline">home</li>
+            <li class="header-nav-list-item library-button">
+              my library
             </li>
           </ul>
         </nav>
-        <div class="search">
+        <div class="search search-show">
           <input class="search-input" type="text" placeholder="Поиск фильмов" />
+        </div>
+        <div class="header-buttons hidden">
+          <button class="button watched-button button-anactive">watched</button>
+          <button class="button queue-button button-anactive">queue</button>
         </div>
       </div>
     </header>
@@ -54,18 +58,20 @@
         <button class="btn-page next" data-index="1">&rarr;</button>
       </div>
     </div>
+    <div id="spinner"></div>
     <footer class="footer">
-      <div class="footer-box">
-        <p class="footer-copyright">&copy; 2020 | All Rights Reserved |</p>
-        <div class="footer-developed">
-          <p class="footer-developed-text">Developed with</p>
-          <svg class="footer-developed-icon">
-            <use href="./images/symbol-defs.svg#icon-heart-footer"></use>
-          </svg>
-          <span
-            >by
-            <a class="footer-developed-link" href="#">GoIT Students</a></span
-          >
+      <div class="container">
+        <div class="footer-box">
+          <p class="footer-copyright">&copy; 2020 | All Rights Reserved |</p>
+          <div class="footer-developed">
+            <p class="footer-developed-text">Developed with</p>
+            <svg class="footer-developed-icon">
+              <use href="./images/symbol-defs.svg#icon-heart-footer"></use>
+            </svg>
+            <p>
+              by <span class="footer-developed-students">GoIT Students</span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

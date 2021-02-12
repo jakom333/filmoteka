@@ -12,32 +12,35 @@ body {
   width: 100%;
   height: 230px;
   position: relative;
-  background-image: 
-   linear-gradient(
-    to right,
-    rgba(0,0,0,.5),
-    rgba(0,0,0,.5)
-  ), 
-  url('../../images/header/header-bg-mobile.png');
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0 auto;
 }
-/* .header:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 230px;
-  background: rgba(0,0,0,.5);
-  z-index: 1;
-} */
+.header-home-background {
+  background-image: 
+  linear-gradient(
+   to right,
+   rgba(0,0,0,.5),
+   rgba(0,0,0,.5)
+ ), 
+ url('../../images/header/header-bg-mobile.png');
+}
+.header-library-background {
+  background-image: 
+  linear-gradient(
+   to right,
+   rgba(0,0,0,.5),
+   rgba(0,0,0,.5)
+ ), 
+ url('../../images/header/header-library-bg-mobile.png');
+}
 .header-wrapper {
   width: 320px;
   margin: 0 auto;
   padding: 48px 23px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 .header-nav {
   display: flex;
@@ -46,9 +49,9 @@ body {
   margin-bottom: 40px;
 }
 .header-nav-logo {
-  /* z-index: 2; */
   display: flex;
   align-items: baseline;
+  user-select: none;
 }
 .header-nav-logo a {
   text-decoration: none;
@@ -71,7 +74,6 @@ body {
   color: white;
   display: flex;
   text-transform: uppercase;
-  /* z-index: 2; */
 }
 .header-nav-list-item {
   font-family: 'Roboto', sans-serif;
@@ -79,11 +81,12 @@ body {
   font-size: 12px;
   line-height: 14px;
   cursor: pointer;
+  user-select: none;
 }
 .header-nav-list-item:first-child {
   margin-right: 39px;
 }
-.header-nav-list-item::after {
+.underline::after {
   content: "";
   display: block;
   width: 100%;
@@ -94,7 +97,7 @@ body {
 .search {
   width: 280px;
   position: relative;
-  /* z-index: 2; */
+  user-select: none;
 }
 .search-input {
   width: 280px;
@@ -144,7 +147,37 @@ body {
   font-size: 14px;
   line-height: 16px;
 }
-/* ------------------TABLET------------------ */
+/* ------------------buttons------------------ */
+.header-buttons {
+  margin: 0 auto;
+  display: flex;
+}
+.button {
+  width: 130px;
+  height: 45px;
+  color: white;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  outline: none;
+  border-radius: 5px;
+  user-select: none;
+}
+.button:first-child {
+  margin-right: 15px;
+}
+.button-anactive {
+  background: transparent;
+  border: 1px solid white;
+}
+.button-active {
+  background: #FF6B01;
+  border: 1px solid #FF6B01;
+}
+/* ------------------MEDIA------------------ */
 @media screen  and (min-width: 320px) and (max-width: 768px) {
   .header-nav-logo-title {
     display: none;
@@ -152,9 +185,23 @@ body {
 }
 
 @media screen  and (min-width: 768px) and (max-width: 1024px) {
-  .header {
-  background-image: url('../../images/header/header-bg-tablet.png');
-
+  .header-home-background {
+    background-image: 
+    linear-gradient(
+     to right,
+     rgba(0,0,0,.5),
+     rgba(0,0,0,.5)
+   ), 
+   url('../../images/header/header-bg-tablet.png');
+  }
+  .header-library-background {
+    background-image: 
+    linear-gradient(
+     to right,
+     rgba(0,0,0,.5),
+     rgba(0,0,0,.5)
+   ), 
+   url('../../images/header/header-library-bg-tablet.png');
   }
   .header-nav-logo-title {
     display: block;
@@ -171,9 +218,23 @@ body {
   }
 }
 @media screen  and (min-width: 1024px) {
-  .header {
-  background-image: url('../../images/header/header-bg-desktop.png');
-    
+  .header-home-background {
+    background-image: 
+    linear-gradient(
+     to right,
+     rgba(0,0,0,.5),
+     rgba(0,0,0,.5)
+   ), 
+   url('../../images/header/header-bg-desktop.png');
+  }
+  .header-library-background {
+    background-image: 
+    linear-gradient(
+     to right,
+     rgba(0,0,0,.5),
+     rgba(0,0,0,.5)
+   ), 
+   url('../../images/header/header-library-bg-desktop.png');
   }
   .header-wrapper{
     width: 100%;
@@ -186,3 +247,8 @@ body {
     margin: 0 auto;
   }
 }
+/* ------------------hidden content---------------- */
+.hidden {
+  display: none;
+}
+/* ------------------hidden content---------------- */
