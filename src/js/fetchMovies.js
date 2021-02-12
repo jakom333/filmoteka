@@ -1,4 +1,6 @@
+
 import markup from "./markup.js";
+
 const KEY = "6f1c32f58bd439b838f8f392fdf2c4dc";
 
 export default function fetchMovies() {
@@ -7,11 +9,11 @@ export default function fetchMovies() {
   return fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       markup(data);
     })
     .catch((err) => console.log(err));
 }
+
 
 export function fetchGenres() {
   const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`;
