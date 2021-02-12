@@ -1,6 +1,11 @@
 import "./styles.css";
 import fetchMovies from "../src/js/fetchMovies.js";
-import "./components/pagination/pagination.css";
 import "./js/header/header.js";
+import { fetchGenres } from "./js/fetchMovies.js";
 
-fetchMovies();
+export let genres = [];
+
+fetchGenres().then((res) => {
+  genres = res;
+  fetchMovies();
+});
