@@ -5,7 +5,6 @@ import cardTemplate from "../templates/movie-card.hbs";
 
 const KEY = "6f1c32f58bd439b838f8f392fdf2c4dc";
 
-
 // fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${KEY}`)
 //   .then(response => (response.json())
 //     .then(data => {
@@ -15,11 +14,8 @@ const KEY = "6f1c32f58bd439b838f8f392fdf2c4dc";
 
 const gallery = document.querySelector(".photo-gallery-list");
 
-
-
 export default function fetchMovies() {
-    const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${KEY}`;
-        
+  const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${KEY}`;
 
   return fetch(url)
     .then((res) => res.json())
@@ -30,6 +26,6 @@ export default function fetchMovies() {
     .catch((err) => console.log(err));
 }
 
-function markup(data) {    
-  gallery.innerHTML = data.results.map((cover) => cardTemplate(cover)).join('');
+function markup(data) {
+  gallery.innerHTML = data.results.map((cover) => cardTemplate(cover)).join("");
 }
