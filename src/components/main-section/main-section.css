@@ -32,7 +32,7 @@ body {
 .photo-gallery-item {
   max-width: 280px;
   margin: 0 auto;
-  height: 443px;
+  height: 440px;
   display: block;
   /* outline: 1px solid red; */
   margin-bottom: 20px;
@@ -52,8 +52,20 @@ body {
   line-height: 16px;
 }
 
-.title-accent {
+.title.accent-color {
   color: #ff6b08;
+  margin: 0;
+}
+
+.vote-average {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 5px;
+  width: 36px;
+  height: 16px;
+  background-color: #ff6b08;
 }
 
 .photo-gallery-photo {
@@ -90,12 +102,16 @@ body {
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1024px;
+    max-width: 1200px;
     padding: 0 71px;
   }
 
   .photo-gallery-item {
-    width: calc((100% - 6 * 15px) / 3);
+    width: calc((100% - 8 * 15px) / 4);
     margin: 15px;
+  }
+
+  .photo-gallery-photo {
+    height: 370px;
   }
 }
