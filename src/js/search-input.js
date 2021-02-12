@@ -1,11 +1,10 @@
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/Material.css';
-import {notice, success, error, defaultModules, Notice, PNotifyConfirm} from '@pnotify/core';
-// import refs from './refs.js';
-// import config from '../config.json';
-import cardTemplate from "../templates/movie-card.hbs";
-import { genres } from "../index.js";
+import {notice, error} from '@pnotify/core';
+import markup from './markup.js';
+
+import { onSpin, offSpin } from './spinner.js';
 
 
 const KEY = '4fbdbd8abdbcde78896e194e86813212';
@@ -13,10 +12,22 @@ const baseUrl = `https://api.themoviedb.org/3/`;
 // const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`;
 // const genreUrl = `${baseUrl}genre/movie/list?api_key=${KEY}&language=en-US`;
 
-let form = document.querySelector('#search-form');
+let form = document.querySelector('.search');
 let gallery = document.querySelector('.photo-gallery-list');    
 
-// let input = '';
+
+    
+let input = '';
+
+const genreUrl = `${baseUrl}genre/movie/list?api_key=${KEY}&language=en-US`;
+
+fetch(genreUrl)
+     .then(response => (response.status === 200) ? response.json() : '')
+         .then(data => {
+          console.log(data);
+          return data;
+         })
+      .catch(err => console.log(err));
 
 
 function fetchAPI(searchQuery) {
@@ -24,28 +35,26 @@ function fetchAPI(searchQuery) {
   
   fetch(url)
     .then(response => (response.status === 200) ? response.json() : '')
-      .then(data => {       
-        if (searchQuery.length === 0) {
+    .then(data => {     
+                if (searchQuery.length === 0) {
       notice({
             title: 'NICE TRY!',
             text: ' But please, give us at least one word.',
             delay: 2000
-          });
+      });
+                    offSpin();
         return
     } else if (!data.results.length) {
-         return error({
+         error({
             text: 'There are no movies with this title! Keep up! Try again!',
             delay: 2000,
-          });
+         });
+                  offSpin();
+                   return
         }
-    // } else if (!data.results.poster_path) {
-              
-    //        poster_path = 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg';
-
-    //     }   
-        
+  
         console.log(data)
-
+      offSpin();
        markup(data);
   })    
  .catch(err => console.log(err));
@@ -53,39 +62,22 @@ function fetchAPI(searchQuery) {
 }
 
 
-refs.form.addEventListener('submit', searchMovieHandler);
+form.addEventListener('change', searchMovieHandler);
 
 function searchMovieHandler(event) {
-    event.preventDefault();
-   gallery.innerHTML = "";
-  input = event.target[0].value;
+  event.preventDefault();
+  gallery.innerHTML = "";
+  onSpin();
+  input = event.target.value;
   fetchAPI(input);
+
+  // offSpin();
 }
   
 
-function markup(data) {
-  gallery.innerHTML = data.results
-    .map((cover) => {
-      let movieGenres = [];
-      cover.genre_ids.forEach((el) => {
-        const foundGenreName = genres.find((item) => item.id === el);
-        movieGenres.push(" " + foundGenreName.name);
-      });
-      cover.genre_ids = movieGenres.slice(0, 3);
+  // } else if (!data.results.poster_path) {
+              
+    //        poster_path = 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg';
 
-      cover.release_date = cover.release_date.substring(0, 4);
-      // console.log(cover);
-      return cardTemplate(cover);
-    })
-    .join("");
-}
-
-export function fetchGenres() {
-  const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`;
-  return fetch(genreUrl)
-    .then((response) => (response.status === 200 ? response.json() : ""))
-    .then((data) => {
-      return data.genres;
-    })
-    .catch((err) => console.log(err));
-}
+    //     }   
+        
