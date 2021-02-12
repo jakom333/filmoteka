@@ -24,8 +24,8 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-.footer-developed-link {
-  color: inherit;
+.footer-developed-students {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 319px) {
