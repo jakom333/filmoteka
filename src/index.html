@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="header header-home-background">
       <div class="header-wrapper">
         <nav class="header-nav">
           <div class="header-nav-logo">
@@ -25,14 +25,18 @@
             <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
           </div>
           <ul class="header-nav-list">
-            <li class="header-nav-list-item">home</li>
-            <li class="header-nav-list-item">
-              <a href="./library.html">my library</a>
+            <li class="header-nav-list-item home-button underline">home</li>
+            <li class="header-nav-list-item library-button">
+              my library
             </li>
           </ul>
         </nav>
-        <div class="search">
+        <div class="search search-show">
           <input class="search-input" type="text" placeholder="Поиск фильмов" />
+        </div>
+        <div class="header-buttons hidden">
+          <button class="button watched-button button-anactive">watched</button>
+          <button class="button queue-button button-anactive">queue</button>
         </div>
       </div>
     </header>
