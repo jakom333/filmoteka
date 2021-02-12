@@ -14,7 +14,6 @@ export default function fetchMovies() {
     .catch((err) => console.log(err));
 }
 
-
 export function fetchGenres() {
   const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`;
   return fetch(genreUrl)
