@@ -28,7 +28,7 @@ function markup(data) {
       cover.genre_ids = movieGenres.slice(0, 3);
 
       cover.release_date = cover.release_date.substring(0, 4);
-      console.log(cover);
+      // console.log(cover);
       return cardTemplate(cover);
     })
     .join("");
