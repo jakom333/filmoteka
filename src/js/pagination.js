@@ -1,3 +1,5 @@
+import fetchMovies from "./fetchMovies";
+
 const refs = {
   pagination: document.querySelector(".pagination"),
   btnPage1: document.querySelector(".btn-page1"),
@@ -70,6 +72,7 @@ function onBtnClick(event) {
     if (event.target.classList.contains("btn")) {
       setBtnActiveStyle(event);
     }
+    fetchMovies();
   }
 
   if (Number(currentPage) > 1) {
