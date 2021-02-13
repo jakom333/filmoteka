@@ -41,30 +41,3 @@ function fetchFilmInfo(film_ID) {
 
 // export default modalMarkup;
 // export default fetchFilmInfo;
-
-// ! --------- MODAL WINDOW --------- UPDATE needed
-
-// refs.openModalWindow.addEventListener("click", onOpenModal);
-// refs.closeModalBtn.addEventListener("click", onCloseModal);
-// refs.overlay.addEventListener("click", onOverlayClick);
-
-// function onOpenModal() {
-//   window.addEventListener("keydown", onPressKey);
-//   refs.modalWindow.classList.add("is-open");
-// }
-
-// function onCloseModal() {
-//   window.removeEventListener("keydown", onPressKey);
-//   refs.modalWindow.classList.remove("is-open");
-//   setLargeImageSrc("");
-// }
-
-// function onOverlayClick(event) {
-//   if (event.target === event.currentTarget) {
-//     onCloseModal();
-//   }
-// }
-
-// function onPressKey(event) {
-//   if (event.code === "Escape") onCloseModal();
-// }

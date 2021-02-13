@@ -9,10 +9,18 @@ import modalWindowTpl from "./templates/modal-window.hbs";
 
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
+const modalWindow = document.querySelector(".modal-window");
 
-filmsList.addEventListener("click", onFilmsListClick);
+// const overlay = document.querySelector(".modalWindow-overlay");
+// const closeModalBtn = document.querySelector(
+//   'button[data-action="close-lightbox"]',
+// );
 
-function onFilmsListClick(event) {
+filmsList.addEventListener("click", onOpenModal);
+// overlay.addEventListener("click", onOverlayClick);
+// closeModalBtn.addEventListener("click", onCloseModal);
+
+function onOpenModal(event) {
   if (event.target.nodeName !== "IMG") {
     return;
   }
@@ -36,5 +44,26 @@ function onFilmsListClick(event) {
 
 function modalMarkup(data) {
   const markup = modalWindowTpl(data);
-  filmsList.insertAdjacentHTML("afterbegin", markup);
+  modalWindow.insertAdjacentHTML("afterbegin", markup);
+
+  console.log(modalWindow);
+
+  // window.addEventListener("keydown", onPressKey);
+  modalWindow.classList.add("is-open");
 }
+
+// function onPressKey(event) {
+//   if (event.code === "Escape") onCloseModal();
+// }
+
+// function onCloseModal() {
+//   window.removeEventListener("keydown", onPressKey);
+//   modalWindow.classList.remove("is-open");
+//   // fetch() -  перерисовать страницу?
+// }
+
+// function onOverlayClick(event) {
+//   if (event.target === event.currentTarget) {
+//     onCloseModal();
+//   }
+// }

@@ -13,7 +13,7 @@ body {
 } */
 
 /* * ------------- modal-window ---------------- */
-.wrapper {
+.modal-window {
   font-family: Roboto;
   font-weight: 500;
   font-size: 12px;
@@ -25,18 +25,63 @@ body {
   margin-right: auto;
   padding: 20px;
 
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; */
 
+  display: none;
   /* position: fixed;
   top: 250px;
   left: 20px;
   width: 100vw;
   height: 100vh;
-  opacity: 0;
   pointer-events: none; */
 }
+
+.modal-window.is-open {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  pointer-events: initial;
+}
+
+/* .modal-window-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox__button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color var(--animation-duration) var(--timing-function);
+  outline: none;
+  background-image: url("../../images/modal-window/icon-close.svg");
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+}
+
+.lightbox__button:hover,
+.lightbox__button:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+} */
 
 .poster {
   width: 280px;
@@ -47,7 +92,7 @@ body {
   margin-bottom: 30px;
 }
 
-.modal-window {
+.film-data {
   text-align: left;
 }
 
@@ -149,7 +194,7 @@ table td {
 
 /* * ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .wrapper {
+  .film-data {
     width: 618px;
     flex-wrap: nowrap;
     justify-content: center;
@@ -187,7 +232,7 @@ table td {
 
 /* * ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1024px) {
-  .wrapper {
+  .film-data {
     width: 882px;
     flex-wrap: nowrap;
     justify-content: center;
