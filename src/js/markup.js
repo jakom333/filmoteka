@@ -10,7 +10,7 @@ export default function markup(data) {
       movie.title = movie.title.toUpperCase();
 
       if (movie.title.length > 20) {
-        movie.title = movie.title.substring(0, 32) + "...";
+        movie.title = movie.title.substring(0, 38) + "...";
       }
 
       let movieGenres = [];
