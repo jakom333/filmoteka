@@ -1,4 +1,3 @@
-
 import markup from "./markup.js";
 
 const KEY = "6f1c32f58bd439b838f8f392fdf2c4dc";
