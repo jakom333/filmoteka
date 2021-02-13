@@ -5,26 +5,25 @@ const gallery = document.querySelector(".photo-gallery-list");
 
 export default function markup(data) {
   gallery.innerHTML = data.results
-    .map((movie) => {    
-      
-      movie.title = movie.title.toUpperCase();   
-      
+    .map((movie) => {
+      movie.title = movie.title.toUpperCase();
+
       if (movie.title.length > 20) {
-        movie.title = movie.title.substring(0,32) + '...';       
+        movie.title = movie.title.substring(0, 32) + "...";
       }
-     
+
       let movieGenres = [];
       movie.genre_ids.forEach((el) => {
         const foundGenreName = genres.find((item) => item.id === el);
         movieGenres.push(" " + foundGenreName.name);
       });
 
-      !movieGenres.length ? movieGenres.push('Other') : '';
+      !movieGenres.length ? movieGenres.push("Other") : "";
 
-      movie.genre_ids = movieGenres.slice(0, 2);     
+      movie.genre_ids = movieGenres.slice(0, 2);
 
       movie.release_date = movie.release_date.substring(0, 4);
-    
+
       if (movie.poster_path)
         movie.poster_path =
           "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" +
@@ -37,7 +36,3 @@ export default function markup(data) {
     })
     .join("");
 }
-
-
-
-
