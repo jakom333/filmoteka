@@ -41,6 +41,8 @@ function onBtnClick(event) {
 
     const previous = refs.previous;
     const next = refs.next;
+    // const dots1 = refs.dots1;
+    // const dots2 = refs.dots2;
 
     if (event.target.classList.contains("next") && currentPage < 999) {
       next.dataset.index = Number(next.dataset.index) + 1;
@@ -80,6 +82,45 @@ function onBtnClick(event) {
       currentPage = Number(previousPage) - 1;
     }
 
+    // let result = Number(previousPage) - currentPage;
+    // console.log(result);
+
+    if (
+      event.target.classList.contains("dots1") &&
+      Number(btn1.textContent) > 5
+    ) {
+      next.dataset.index = Number(next.dataset.index) - 5;
+      previous.dataset.index = next.dataset.index;
+      // dots2.dataset.index = Number(dots2.dataset.index) - 5;
+      // dots1.dataset.index = dots2.dataset.index;
+      btn1.textContent = Number(btn1.textContent) - 5;
+      btn2.textContent = Number(btn2.textContent) - 5;
+      btn3.textContent = Number(btn3.textContent) - 5;
+      btn4.textContent = Number(btn4.textContent) - 5;
+      btn5.textContent = Number(btn5.textContent) - 5;
+      btn1.dataset.index = Number(btn1.dataset.index) - 5;
+      btn2.dataset.index = Number(btn2.dataset.index) - 5;
+      btn3.dataset.index = Number(btn3.dataset.index) - 5;
+      btn4.dataset.index = Number(btn4.dataset.index) - 5;
+      btn5.dataset.index = Number(btn5.dataset.index) - 5;
+      currentPage = Number(previousPage) - 5;
+    }
+
+    if (event.target.classList.contains("dots2") && currentPage < 999) {
+      next.dataset.index = Number(next.dataset.index) + 5;
+      btn1.textContent = Number(btn1.textContent) + 5;
+      btn2.textContent = Number(btn2.textContent) + 5;
+      btn3.textContent = Number(btn3.textContent) + 5;
+      btn4.textContent = Number(btn4.textContent) + 5;
+      btn5.textContent = Number(btn5.textContent) + 5;
+      btn1.dataset.index = Number(btn1.dataset.index) + 5;
+      btn2.dataset.index = Number(btn2.dataset.index) + 5;
+      btn3.dataset.index = Number(btn3.dataset.index) + 5;
+      btn4.dataset.index = Number(btn4.dataset.index) + 5;
+      btn5.dataset.index = Number(btn5.dataset.index) + 5;
+      currentPage = Number(previousPage) + 5;
+    }
+
     console.log("currentPage>", currentPage);
     if (event.target.classList.contains("btn")) {
       setBtnActiveStyle(event);
@@ -93,7 +134,7 @@ function onBtnClick(event) {
     // refs.btnFirst.hidden = false;
   }
 
-  if (btn1.textContent > "3") {
+  if (btn1.textContent > 5) {
     refs.dots1.hidden = false;
     refs.btnFirst.hidden = false;
   }
