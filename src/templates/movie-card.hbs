@@ -1,11 +1,12 @@
 <li class="photo-gallery-item">
-    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}" alt="{{title}}"
-        class="photo-gallery-photo">
+    <img src="{{poster_path}}" alt="{{title}}" class="photo-gallery-photo">
 
     <p class="title">{{title}}</p>
 
-    <p class="title accent-color">{{genre_ids}}<span> | </span>{{release_date}} <span
-            class="vote-average">{{vote_average}}</span>
+    <p class="title accent-color">{{genre_ids}}<span> | </span>{{release_date}}
+        {{#if vote_average}}
+        <span class="vote-average">{{vote_average}}</span>
+        {{/if}}
     </p>
 
 </li>
