@@ -29,6 +29,10 @@ body {
   margin: 0 auto;
 }
 
+.no-poster-card {
+  background-image: url("../../images/compresspng/header-320-modal-min.png");
+}
+
 .photo-gallery-item {
   max-width: 280px;
   margin: 0 auto;
@@ -66,6 +70,7 @@ body {
   width: 36px;
   height: 16px;
   background-color: #ff6b08;
+  margin-left: 3px;
 }
 
 .photo-gallery-photo {
@@ -91,7 +96,7 @@ body {
   .photo-gallery-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .photo-gallery-item {
@@ -109,6 +114,7 @@ body {
   .photo-gallery-item {
     width: calc((100% - 8 * 15px) / 4);
     margin: 15px;
+    height: 410px;
   }
 
   .photo-gallery-photo {

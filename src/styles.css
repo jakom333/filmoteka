@@ -7,6 +7,7 @@
 @import "./components/footer/footer.css";
 @import "./components/header/header.css";
 @import "./components/main-section/main-section.css";
+@import "./components/modal-window/modal-window.css";
 @import "./components/pagination/pagination.css";
 @import "./components/spinner/spinner.css";
 @import "./components/trailer/trailer.css";
