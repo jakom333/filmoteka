@@ -9,7 +9,7 @@ export default function markup(data) {
     .map((movie) => {
       movie.title = movie.title.toUpperCase();
 
-      if (movie.title.length > 20) {
+      if (movie.title.length > 40) {
         movie.title = movie.title.substring(0, 38) + "...";
       }
 
