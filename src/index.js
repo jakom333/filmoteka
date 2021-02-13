@@ -1,8 +1,10 @@
 import "./styles.css";
 import fetchMovies from "../src/js/fetchMovies.js";
-import "./components/pagination/pagination.css";
-
-fetchMovies();
+import "./js/header/header.js";
+import { fetchGenres } from "./js/fetchMovies.js";
+import "./js/pagination.js";
+import "./js/spinner.js";
+import "./js/search-input.js";
 
 /* * ------------- modal-window ---------------- */
 import modalWindowTpl from "./templates/modal-window.hbs";
@@ -67,3 +69,9 @@ function modalMarkup(data) {
 //     onCloseModal();
 //   }
 // }
+export let genres = [];
+
+fetchGenres().then((res) => {
+  genres = res;
+  fetchMovies();
+});

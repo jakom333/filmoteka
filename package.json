@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jakom333/filmoteka"
+    "url": "git+https://github.com/jakom333/filmoteka.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jakom333/filmoteka"
   },
-  "homepage": "// тут вставить url GitHub Pages после команды npm run deploy",
+  "homepage": "http://// тут вставить url GitHub Pages после команды npm run deploy",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
@@ -37,6 +37,7 @@
     "html-webpack-plugin": "^4.5.1",
     "mini-css-extract-plugin": "^0.11.2",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "pnotify": "^4.0.1",
     "postcss": "^8.2.4",
     "postcss-loader": "^4.2.0",
     "style-loader": "^1.2.1",
@@ -51,6 +52,7 @@
     "flipdown": "^0.3.2",
     "material-design-icon-fonts": "^3.0.1",
     "material-design-icons": "^3.0.1",
-    "pnotify": "^4.0.1"
+    "pnotify": "^4.0.1",
+    "spin.js": "^4.1.0"
   }
 }
