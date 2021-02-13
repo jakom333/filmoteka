@@ -5,6 +5,7 @@ const gallery = document.querySelector(".photo-gallery-list");
 
 export default function markup(data) {
   gallery.innerHTML = data.results
+
     .map((movie) => {
       movie.title = movie.title.toUpperCase();
 
