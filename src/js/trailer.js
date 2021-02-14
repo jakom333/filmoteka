@@ -1,3 +1,4 @@
+const backTrailerRef = document.querySelector(".trailer-box");
 const key = "4fbdbd8abdbcde78896e194e86813212";
 const baseUrl = "https://api.themoviedb.org/3";
 
@@ -9,116 +10,65 @@ function fetchUrl(movieID) {
     .then((data) => {
       let youtubeKey = data.results[0].key;
       console.log(youtubeKey);
-
-      document.body.insertAdjacentHTML(
+      backTrailerRef.classList.add("is-open");
+      backTrailerRef.insertAdjacentHTML(
         "beforeend",
-        `<div class="trailer-backdrop">
-        <iframe class ="trailer"
+        `<iframe class ="trailer"
           src="http://www.youtube.com/embed/${youtubeKey}?autoplay=1&color=white&modestbranding=1" 
           frameborder="0"
            allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen
-          >
-          <img></img>
-          </iframe>
+          ></iframe>
            <button class="btn-close-player">
           <svg class="btn-close-icon">
               <use href="./images/symbol-defs.svg#icon-cancel"></use>
             </svg>
           </button> 
-          </div>`,
+        `,
       );
     })
     .catch(() => {
-      document.body.insertAdjacentHTML(
+      backTrailerRef.insertAdjacentHTML(
         "beforeend",
-
         `<iframe class ="trailer"
-          src="http://www.youtube.com/embed/${youtubeKey}?enablejsapi=1&origin=http://example.com"
+         src="http://www.youtube.com/embed/50?autoplay=1&color=white&modestbranding=1" 
           frameborder="0"
-          allow="accelerometer; autoplay=1; picture-in-picture; allowfullscreen"
+           allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen
           ></iframe>
           `,
       );
     });
 }
+
+function escPlayerHandler(event) {
+  console.log(event.code);
+  if (event.code === "Escape") {
+    onClosePlayer();
+  }
+}
+
+function onClosePlayer() {
+  window.addEventListener("keydown", escPlayerHandler);
+  backTrailerRef.classList.remove("is-open");
+  backTrailerRef.innerHTML = "";
+}
+
+window.addEventListener("keydown", escPlayerHandler);
+backTrailerRef.addEventListener("click", onClosePlayer);
+
 export function playTrailer() {
-  const trailerBoxSvgRefs = document.querySelector(".trailer-box-svg");
-  // const posterRefs = document.querySelector(".poster");
-  // const posterBoxRefs = document.querySelector(".poster-box");
   const buttonTrailerRefs = document.querySelector(".button-trailer");
   const posterSvgRefs = document.querySelector(".trailer-box-svg-on");
+
   function showPosterPlay(event) {
     let movieID = event.target.dataset.id;
     console.log(movieID);
     fetchUrl(movieID);
-    // trailerBoxSvgRefs.style.opacity = "0";
   }
-  const escClickHandler = (event) => {
-    const backTrailerRef = document.querySelector(".trailer-backdrop");
-    if (event.code === "Escape") {
-      backTrailerRef.innerHTML = "";
-      window.removeEventListener("keydown", (event) => {});
-    }
-  };
-
   posterSvgRefs.addEventListener("click", showPosterPlay);
   buttonTrailerRefs.addEventListener("click", showPosterPlay);
-  window.addEventListener("keydown", escClickHandler);
 }
-
-// export default {
-//   key: "4fbdbd8abdbcde78896e194e86813212",
-//   baseUrl: "https://api.themoviedb.org/3/",
-//   idTrailer: "",
-
-//   fetchUrl() {
-//     const url = `https://api.themoviedb.org/3/movie/551/videos?api_key=4fbdbd8abdbcde78896e194e86813212`;
-//     fetch(url)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         let youtubeKey = data.results[0].key;
-//         console.log(youtubeKey);
-
-//         document.body.insertAdjacentHTML(
-//           "beforeend",
-//           `<iframe class ="trailer"
-//           src="http://www.youtube.com/embed/${youtubeKey}?enablejsapi=1&origin=http://example.com"
-//           frameborder="0"
-//           allow="accelerometer; autoplay=1; picture-in-picture; allowfullscreen"
-//           allowfullscreen
-//           ></iframe>`,
-//         );
-//       })
-//       .catch(() => {
-//         document.body.insertAdjacentHTML(
-//           "beforeend",
-//           `<iframe class ="trailer"
-//           src="http://www.youtube.com/embed/${youtubeKey}?enablejsapi=1&origin=http://example.com"
-//           frameborder="0"
-//           allow="accelerometer; autoplay=1; picture-in-picture; allowfullscreen"
-//           allowfullscreen
-//           ></iframe>`,
-//         );
-//       });
-//   },
-//   showModalPosterPlay() {
-//     // const trailerBoxSvgRefs = document.querySelector(".trailer-box-svg");
-//     // const posterRefs = document.querySelector(".poster");
-//     // const posterBoxRefs = document.querySelector(".poster-box");
-//     const buttonTrailerRefs = document.querySelector(".button-trailer");
-//     const posterSvgRefs = document.querySelector(".trailer-box-svg-on");
-//     const fetchUrlFn = this.fetchUrl;
-//     function showPosterPlay(event) {
-//       fetchUrlFn();
-//       console.log(event.target.dataset.id);
-//     }
-
-//     posterSvgRefs.addEventListener("click", showPosterPlay);
-//     buttonTrailerRefs.addEventListener("click", showPosterPlay);
-//   },
-// };
 
 // async fetchUrl() {
 //     const response = await fetch(this.url);
