@@ -3,14 +3,16 @@ import cardTemplate from "../templates/movie-card.hbs";
 
 const gallery = document.querySelector(".photo-gallery-list");
 
-export default function markup(data) {
-  gallery.innerHTML = data.results
 
+
+export default function markup(data) {
+  
+  data.results
     .map((movie) => {
       movie.title = movie.title.toUpperCase();
-
-      if (movie.title.length > 40) {
-        movie.title = movie.title.substring(0, 38) + "...";
+      
+      if (movie.title.length > 33) {        
+        movie.title = movie.title.substring(0, 31) + "...";
       }
 
       let movieGenres = [];
@@ -31,9 +33,12 @@ export default function markup(data) {
           movie.poster_path;
       else
         movie.poster_path =
-          "https://cdn.bookauthority.org/dist/images/book-cover-not-available.6b5a104fa66be4eec4fd16aebd34fe04.png";
+          "https://sales.arecontvision.com/images/products/img_placeholder_41845_xl.jpg";
 
-      return cardTemplate(movie);
-    })
-    .join("");
+      return movie;
+    });
+  
+  gallery.insertAdjacentHTML('beforeend', cardTemplate(data.results));
+  
 }
+
