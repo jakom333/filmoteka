@@ -19,15 +19,11 @@ function fetchUrl(movieID) {
            allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen
           ></iframe>
-           <button class="btn-close-player">
-          <svg class="btn-close-icon">
-              <use href="./images/symbol-defs.svg#icon-cancel"></use>
-            </svg>
-          </button> 
-        `,
+          `,
       );
     })
     .catch(() => {
+      backTrailerRef.classList.add("is-open");
       backTrailerRef.insertAdjacentHTML(
         "beforeend",
         `<iframe class ="trailer"
@@ -70,6 +66,11 @@ export function playTrailer() {
   buttonTrailerRefs.addEventListener("click", showPosterPlay);
 }
 
+//  <button class="btn-close-player">
+//    <svg class="btn-close-icon">
+//      <use href="./images/symbol-defs.svg#icon-cancel"></use>
+//    </svg>
+//  </button>;
 // async fetchUrl() {
 //     const response = await fetch(this.url);
 //     const movie = await response.json();
