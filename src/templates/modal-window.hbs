@@ -1,17 +1,14 @@
-<div class="modal-window-overlay"></div>
-
-<img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{backdrop_path}}" // ?
-    alt="a poster to {{title}} film">
+<img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}"
+    alt="a poster to {{title}} film" data-id="{{id}}">
 
 <div class="film-data">
-
-    <h2 class="film-title">{{title}}</h2>
+    <p class="film-title">{{title}}</p>
 
     <table class="film-info-box">
         <tr>
             <td id="col1" class="film-info vote">Vote / Votes</td>
             <td id="col2" class="film-info-data">
-                <span class="film-info-data vote-average">{{vote_average}}</span> / {{vote_count}}
+                <span class="film-info-data vote-average">{{vote_average}}</span> / {{ vote_count}}
             </td>
         </tr>
         <tr>
@@ -38,7 +35,5 @@
         <button class="buttons action-watch active" type="button">add to Watched</button>
         <button class="buttons action-queue" type="button">add to queue</button>
     </div>
-
-    {{!-- <button type="button" class="lightbox__button" data-action="close-lightbox"></button> --}}
 
 </div>

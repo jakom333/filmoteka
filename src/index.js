@@ -11,16 +11,17 @@ import modalWindowTpl from "./templates/modal-window.hbs";
 
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
-const modalWindow = document.querySelector(".modal-window");
 
-// const overlay = document.querySelector(".modalWindow-overlay");
-// const closeModalBtn = document.querySelector(
-//   'button[data-action="close-lightbox"]',
-// );
+const modalWindow = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-content");
+const overlay = document.querySelector(".modal-overlay");
+const closeModalBtn = document.querySelector(
+  'button[data-action="close-modal"]',
+);
 
 filmsList.addEventListener("click", onOpenModal);
-// overlay.addEventListener("click", onOverlayClick);
-// closeModalBtn.addEventListener("click", onCloseModal);
+overlay.addEventListener("click", onOverlayClick);
+closeModalBtn.addEventListener("click", onCloseModal);
 
 function onOpenModal(event) {
   if (event.target.nodeName !== "IMG") {
@@ -45,30 +46,40 @@ function onOpenModal(event) {
 }
 
 function modalMarkup(data) {
+  modalWindow.classList.remove("is-hidden");
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+
   const markup = modalWindowTpl(data);
-  modalWindow.insertAdjacentHTML("afterbegin", markup);
+  modalContent.insertAdjacentHTML("afterbegin", markup);
 
-  console.log(modalWindow);
-
-  // window.addEventListener("keydown", onPressKey);
-  modalWindow.classList.add("is-open");
+  document.body.classList.add("modal-open");
+  window.addEventListener("keydown", onPressKey);
 }
 
-// function onPressKey(event) {
-//   if (event.code === "Escape") onCloseModal();
-// }
+function onCloseModal() {
+  window.removeEventListener("keydown", onPressKey);
+  modalWindow.classList.add("is-hidden");
+  document.body.classList.remove("modal-open");
+  modalContent.innerHTML = "";
+}
 
-// function onCloseModal() {
-//   window.removeEventListener("keydown", onPressKey);
-//   modalWindow.classList.remove("is-open");
-//   // fetch() -  перерисовать страницу?
-// }
+function onPressKey(event) {
+  if (event.code === "Escape") onCloseModal();
+}
 
-// function onOverlayClick(event) {
-//   if (event.target === event.currentTarget) {
-//     onCloseModal();
-//   }
-// }
+function onOverlayClick(event) {
+  if (event.target === event.currentTarget) {
+    onCloseModal();
+  }
+}
+
+/* * ------------- end of modal-window ---------------- */
+
 export let genres = [];
 
 fetchGenres().then((res) => {
