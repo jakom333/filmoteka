@@ -1,26 +1,99 @@
-.trailer-box {
+/* ----------YuoTube Window------------- */
+.trailer-backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vw;
+  background-color: transparent;
+}
+.trailer {
+  width: 320px;
+  height: 160px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* --------------- */
+.btn-close-player {
+  opacity: 0.8;
+  position: fixed;
+  top: 8.5%;
+  left: 70%;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: #000;
+  outline: none;
+  z-index: 100000;
+}
+.btn-close-icon {
+  fill: red;
+  width: 20px;
+  height: 20px;
+  color: red;
+}
+
+.trailer-svg {
   display: flex;
+  margin-right: 10px;
+  fill: black;
+  width: 22px;
+  height: 22px;
+}
+
+.button-trailer {
+  display: flex;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: center;
+  width: 136px;
+  height: 44px;
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+}
+
+.button-trailer:hover {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: white;
+}
+
+.button-trailer:hover > .trailer-svg {
+  fill: white;
+}
+
+.poster-box {
+  position: relative;
+}
+
+.trailer-box-svg {
+  opacity: 0;
   width: 100%;
-  height: 100vh;
-  background-color: grey;
+  height: 100%;
+  background-color: rgba(105, 105, 105, 0.5);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.trailer {
-  background-color: #fff;
+.trailer-box-svg:hover {
+  opacity: 1;
+}
+
+.trailer-box-svg-on {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  fill: rgba(255, 255, 255, 0.6);
 }
 
-.trailer-close {
-  position: absolute;
-  z-index: 10;
-  color: red;
+@media screen and (min-width: 767px) {
+  .trailer {
+    width: 720px;
+    height: 360px;
+  }
 }

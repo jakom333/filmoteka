@@ -1,8 +1,14 @@
 <div class="modal-window-overlay"></div>
 
-<img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{backdrop_path}}" // ?
-    alt="a poster to {{title}} film">
-
+<div class="poster-box">
+    <img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{backdrop_path}}" // ?
+        alt="a poster to {{title}} film">
+    <div class="trailer-box-svg">
+        <svg class="trailer-box-svg-on" data-id="{{id}}">
+            <use href=" ../images/symbol-defs.svg#icon-play3"></use>
+        </svg>
+    </div>
+</div>
 <div class="film-data">
 
     <h2 class="film-title">{{title}}</h2>
@@ -27,6 +33,12 @@
             <td class="film-info-data">{{#each genres}}{{name}}, {{/each}}</td>
         </tr>
     </table>
+    <button class="button button-trailer" data-id="{{id}}">
+        <svg class="trailer-svg">
+            <use href="../images/symbol-defs.svg#icon-play3"></use>
+        </svg>
+        <span class="btn-text">trailer</span>
+    </button>
 
     <div class="film-about">
         <p class="film-about-title">ABOUT</p>

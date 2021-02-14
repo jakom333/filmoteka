@@ -5,7 +5,7 @@ import { fetchGenres } from "./js/fetchMovies.js";
 import "./js/pagination.js";
 import "./js/spinner.js";
 import "./js/search-input.js";
-import "./js/trailer.js";
+import { playTrailer } from "./js/trailer.js";
 
 /* * ------------- modal-window ---------------- */
 import modalWindowTpl from "./templates/modal-window.hbs";
@@ -38,7 +38,8 @@ function onOpenModal(event) {
     return fetch(movieIUrl)
       .then((response) => response.json())
       .then((data) => {
-        return modalMarkup(data);
+        modalMarkup(data);
+        playTrailer();
       })
       .catch((err) => console.log(err));
   }
