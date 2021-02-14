@@ -14,11 +14,9 @@ function fetchUrl(movieID) {
         "beforeend",
         `<div class="trailer-backdrop">
         <iframe class ="trailer"
-          src="http://www.youtube.com/embed/${youtubeKey}?color=white" modestbranding=1"
-          modestbranding=1
+          src="http://www.youtube.com/embed/${youtubeKey}?autoplay=1&color=white&modestbranding=1" 
           frameborder="0"
-          autoplay=1
-          allow="accelerometer; picture-in-picture; autoplay"
+           allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen
           >
           <img></img>
