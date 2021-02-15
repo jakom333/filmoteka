@@ -43,8 +43,6 @@ function onBtnClick(event) {
 
     const prev = refs.prev;
     const next = refs.next;
-    // const dots1 = refs.dots1;
-    // const dots2 = refs.dots2;
 
     if (event.target.classList.contains("next") && currentPage < 995) {
       next.dataset.index = Number(next.dataset.index) + 1;
