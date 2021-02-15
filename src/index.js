@@ -6,6 +6,8 @@ import "./js/pagination.js";
 import "./js/spinner.js";
 import "./js/search-input.js";
 
+import firebaseAuth from 'firebase-auth';
+
 /* * ------------- modal-window ---------------- */
 import modalWindowTpl from "./templates/modal-window.hbs";
 
