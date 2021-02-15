@@ -4,7 +4,9 @@ const gallery = document.querySelector(".photo-gallery-list");
 
 export default function watchedHandler(data) {
   return function () {
-    const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    if (!watchedInLocalstorage)
+      watchedInLocalstorage = [];
     const watchBtn = document.querySelector(".watch-js");
     if (watchBtn.textContent === "add to Watched") {
       watchedInLocalstorage.push(data);

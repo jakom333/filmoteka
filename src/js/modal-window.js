@@ -78,5 +78,8 @@ function onOverlayClick(event) {
 }
 
 function checkFilm(filmArr, film) {
+  if (!filmArr)
+    return false;
+  
   return filmArr.find((item) => item.id === film.id);
 }
