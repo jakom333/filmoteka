@@ -1,10 +1,12 @@
 .pagination {
   margin-bottom: 60px;
+  user-select: none;
 }
 
 @media screen and (max-width: 640px) {
   .pagination {
     margin-bottom: 40px;
+    user-select: none;
   }
 }
 
