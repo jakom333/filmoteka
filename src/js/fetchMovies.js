@@ -1,7 +1,6 @@
 import markupSearch from "./markup.js";
 import { currentPage } from "./pagination";
 import './search-input.js';
-import config from '../data-base/config.json';
 import renderTopRated from './top-filters.js';
 
 
@@ -16,8 +15,7 @@ export default function fetchMovies() {
     .then((res) => res.json())
     .then((data) => {
       renderTopRated(data);
-      markupSearch (data);
-      // console.log(data);
+      markupSearch (data);      
     })
     .catch((err) => console.log(err));
 }

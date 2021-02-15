@@ -21,6 +21,8 @@ function libraryBtnHandler() {
 }
 
 export function markupLibrary(data) {
+  if (!data)
+    return;
   data.map((movie) => markupWatchedMovies(movie));  
   gallery.innerHTML = libraryTemplate(data);
 }
