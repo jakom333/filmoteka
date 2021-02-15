@@ -6,13 +6,9 @@ let film_ID;
 const modalWindow = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
 const overlay = document.querySelector(".modal-overlay");
-const closeModalBtn = document.querySelector(
-  'button[data-action="close-modal"]',
-);
 
 filmsList.addEventListener("click", onOpenModal);
 overlay.addEventListener("click", onOverlayClick);
-closeModalBtn.addEventListener("click", onCloseModal);
 
 function onOpenModal(event) {
   if (event.target.nodeName !== "IMG") {
@@ -29,6 +25,7 @@ function onOpenModal(event) {
     return fetch(movieIUrl)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         return modalMarkup(data);
       })
       .catch((err) => console.log(err));
@@ -40,13 +37,21 @@ function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
 
   window.scrollTo({
+    // ! may be to delete ?
     top: 0,
     left: 0,
     behavior: "smooth",
   });
 
   const markup = modalWindowTpl(data);
-  modalContent.insertAdjacentHTML("afterbegin", markup);
+  modalContent.insertAdjacentHTML("beforeend", markup);
+
+  const closeModalBtn = document.querySelector(
+    'button[data-action="close-modal"]',
+  );
+  closeModalBtn.addEventListener("click", onCloseModal);
+
+  // document.body.style.overflow = "hidden";
 
   window.addEventListener("keydown", onPressKey);
 }
@@ -54,6 +59,8 @@ function modalMarkup(data) {
 function onCloseModal() {
   window.removeEventListener("keydown", onPressKey);
   modalWindow.classList.add("is-hidden");
+
+  // document.body.style.overflow = "unset";
   modalContent.innerHTML = "";
 }
 
