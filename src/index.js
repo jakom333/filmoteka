@@ -5,8 +5,7 @@ import { fetchGenres } from "./js/fetchMovies.js";
 import "./js/pagination.js";
 import "./js/spinner.js";
 import "./js/search-input.js";
-import "./js/modal-window.js"
-import { playTrailer } from "./js/trailer.js";
+import "./js/modal-window.js";
 
 export let genres = [];
 

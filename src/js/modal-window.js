@@ -1,3 +1,4 @@
+import { playTrailer } from "./trailer.js";
 import modalWindowTpl from "../templates/modal-window.hbs";
 
 const filmsList = document.querySelector(".photo-gallery-list");
@@ -29,7 +30,8 @@ function onOpenModal(event) {
     return fetch(movieIUrl)
       .then((response) => response.json())
       .then((data) => {
-        return modalMarkup(data);
+        modalMarkup(data);
+        playTrailer();
       })
       .catch((err) => console.log(err));
   }

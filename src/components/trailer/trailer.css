@@ -8,6 +8,8 @@
   width: 100%;
   height: 100vw;
   background-color: transparent;
+  /* pointer-events: none; */
+  z-index: 5;
 }
 .trailer-box.is-open {
   display: flex;
@@ -16,12 +18,14 @@
   width: 320px;
   height: 160px;
   position: fixed;
+  z-index: 6;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 /* --------------- */
 .btn-close-player {
+  z-index: 7;
   padding-top: 0.9px;
   padding-right: 0.3px;
   opacity: 0.9;
@@ -86,13 +90,12 @@
 
 .trailer-box-svg {
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 426px;
+  height: 514px;
   background-color: rgba(105, 105, 105, 0.5);
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0%;
+  left: 0%;
 }
 
 .trailer-box-svg:hover {
@@ -116,6 +119,11 @@
   .btn-close-player {
     top: 4px;
     right: 4px;
+  }
+
+  .trailer-box-svg {
+    width: 280px;
+    height: 416px;
   }
 }
 
