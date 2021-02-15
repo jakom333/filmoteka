@@ -6,6 +6,9 @@ import "./js/pagination.js";
 import "./js/spinner.js";
 import "./js/search-input.js";
 import "./js/modal-window.js";
+import "./js/localstorage/localstorage.js";
+import "./js/markup-library.js";
+import "./js/markup.js";
 
 export let genres = [];
 

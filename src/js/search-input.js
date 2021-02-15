@@ -2,7 +2,7 @@ import "@pnotify/core/dist/BrightTheme.css";
 import "@pnotify/core/dist/PNotify.css";
 import "@pnotify/core/dist/Material.css";
 import { notice, error } from "@pnotify/core";
-import markup from "./markup.js";
+import markupSearch from "./markup.js";
 
 import { onSpin, offSpin } from "./spinner.js";
 
@@ -51,7 +51,7 @@ function fetchAPI(searchQuery) {
 
       // console.log(data)
       offSpin();
-      markup(data);
+      markupSearch(data);
     })
     .catch((err) => console.log(err));
 }
