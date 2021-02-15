@@ -42,12 +42,23 @@
         </div>
       </div>
     </header>
-    <section class="modal-window"></section>
+
+    <section class="modal is-hidden">
+      <div class="modal-overlay"></div>
+      <div class="modal-content"></div>
+      <button
+        type="button"
+        class="modal-button"
+        data-action="close-modal"
+      ></button>
+    </section>
+
     <section class="section-main">
       <div class="container">
         <ul class="photo-gallery-list"></ul>
       </div>
     </section>
+
     <div class="pagination container">
       <div class="paginator">
         <button class="btn-page previous" data-index="1">&larr;</button>
@@ -63,7 +74,9 @@
         <button class="btn-page next" data-index="1">&rarr;</button>
       </div>
     </div>
+
     <div id="spinner"></div>
+
     <footer class="footer">
       <div class="container">
         <div class="footer-box">
