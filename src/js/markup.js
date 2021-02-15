@@ -34,5 +34,6 @@ export default function markup(data) {
     return movie;
   });
 
-  gallery.insertAdjacentHTML("beforeend", cardTemplate(data.results));
+  // gallery.insertAdjacentHTML("beforeend", cardTemplate(data.results));
+  gallery.innerHTML = cardTemplate(data.results);
 }

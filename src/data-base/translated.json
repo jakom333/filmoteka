@@ -1,17 +1,16 @@
-export default {
-  
-  "RU": {
+{
+   "RU": {
     "home": "Главная",
     "library": "Моя библиотека",
     "watchedButton": "смотрел",
     "queueButton": "очередь",
     "input": "Поиск фильмов",
-    "copyright": "&#169 2020 | Все права защищены |",
-    "footerDeveloped": "Разработано ",
-    "by": "командой GoIT",
+    "copyright": "© 2020 | Все права защищены |",
+    "footerDeveloped": "Разработано с",
+    "by": " ",
+    "footerStudents": "студентами GoIT",
     "addWatched": "добавить к просмотренным",
-    "addQueue": "добавить в очередь",
-    
+    "addQueue": "добавить в очередь"
   },
 
   "EN": {
@@ -20,11 +19,11 @@ export default {
     "watchedButton": "watched",
     "queueButton": "queue",
     "input": "Search movie",
-    "copyright": " 2020 | All Rights Reserved ",
+    "copyright": "© 2020 | All Rights Reserved ",
     "footerDeveloped": "Developed with",
-    "by": "GoIT Students",
+    "by": "by",
     "footerStudents": "GoIT Students",
     "addWatched": "ADD TO WATCHED",
-    "addQueue":"ADD TO QUEUE",
+    "addQueue":"ADD TO QUEUE"
   }
-};
+}

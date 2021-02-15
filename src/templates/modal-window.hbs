@@ -6,34 +6,68 @@
 
     <table class="film-info-box">
         <tr>
-            <td id="col1" class="film-info vote">Vote / Votes</td>
+            <td id="col1" class="film-info vote">
+                {{#if langSearch }} Rating / Votes
+                {{else}} Рейтинг / Голоса
+                {{/if}}
+            </td>
             <td id="col2" class="film-info-data">
                 <span class="film-info-data vote-average">{{vote_average}}</span> / {{ vote_count}}
             </td>
         </tr>
         <tr>
-            <td class="film-info pop">Popularity</td>
+            <td class="film-info pop">
+                {{#if langSearch }} Popularity
+                {{else}} Популярность
+                {{/if}}
+            </td>
             <td class="film-info-data">{{popularity}}</td>
         </tr>
         <tr>
-            <td class="film-info orig">Original Title</td>
+            <td class="film-info orig">
+                {{#if langSearch }} Original Title
+                {{else}} Оригинальное название
+                {{/if}}
+            </td>
             <td class="film-info-data original-title">{{original_title}}</td>
         </tr>
         <tr>
-            <td class="film-info genre">Genre</td>
+            <td class="film-info genre">
+                {{#if langSearch }} Genre
+                {{else}} Жанр
+                {{/if}}
+            </td>
             <td class="film-info-data">{{#each genres}}{{name}}, {{/each}}</td>
         </tr>
     </table>
 
     <div class="film-about">
-        <p class="film-about-title">ABOUT</p>
+        <p class="film-about-title">
+            {{#if langSearch }}
+            ABOUT
+            {{else}} О фильме
+            {{/if}}
+        </p>
         <p class="film-about-text">{{overview}}</p>
     </div>
 
 
     <div class="user-action-buttons">
-        <button class="buttons action-watch active" type="button">add to Watched</button>
-        <button class="buttons action-queue" type="button">add to queue</button>
+
+        <button class="buttons action-watch active" type="button">
+            {{#if langSearch }}
+            add to Watched
+            {{else}} добавить к просмотренным
+            {{/if}}
+        </button>
+
+
+        <button class="buttons action-queue" type="button">
+            {{#if langSearch }}
+            add to queue
+            {{else}} добавить в очередь
+            {{/if}}
+        </button>
     </div>
 
 </div>

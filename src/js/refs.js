@@ -1,5 +1,7 @@
-export default  {
+export default {
+  html: document.querySelectorAll('html'),
   form: document.querySelector(".search-form"),
+   input: document.querySelectorAll('.search-input'),
   gallery:document.querySelector(".photo-gallery-list"),
   switcher:document.querySelectorAll('a'),
   langEl: document.querySelector('.languages'),
@@ -9,10 +11,6 @@ export default  {
   queueBtn: document.querySelector('.queue-button'),
   copyright: document.querySelector('.footer-copyright'),
   developed: document.querySelector('.footer-developed-text'),
-  by: document.querySelector('.by'),
+  by: document.querySelector('.by-text'),
   byStudents: document.querySelector('.footer-developed-students'),
-  addW: document.querySelector('.add-to-watched'),
-  addQ: document.querySelector('.add-to-queue'),
-  input: document.querySelectorAll('.search-input'),
-
 }

@@ -22,14 +22,16 @@ function onOpenModal(event) {
   const filmRef = event.target;
   film_ID = filmRef.dataset.id;
 
-  const KEY = "8c70e92845ff03879b2dd3fe0ba57aa8";
-  let movieIUrl = `https://api.themoviedb.org/3/movie/${film_ID}?api_key=${KEY}&language=en-US`;
+const KEY = "8c70e92845ff03879b2dd3fe0ba57aa8";
+ let langSearch = localStorage.getItem('lang');
+  let movieIUrl = `https://api.themoviedb.org/3/movie/${film_ID}?api_key=${KEY}&language=${langSearch}`;
 
   function fetchFilmInfo() {
     return fetch(movieIUrl)
       .then((response) => response.json())
       .then((data) => {
-        return modalMarkup(data);
+      langSearch= langSearch === 'ru-RU' ? false : true;
+        return modalMarkup({ ...data, langSearch });
       })
       .catch((err) => console.log(err));
   }
