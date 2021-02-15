@@ -17,7 +17,7 @@ export default function watchedHandler(data) {
         if (film.id === data.id) {
           watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(data), 1);
         }
-        gallery.innerHTML = "";
+        // gallery.innerHTML = "";
         markupLibrary(watchedInLocalstorage);
       });
       watchBtn.textContent = "add to Watched";
