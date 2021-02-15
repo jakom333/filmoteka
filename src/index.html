@@ -28,13 +28,19 @@
             /></a>
             <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
           </div>
+          <div class="languages">
+            <a href="#" language="EN" class="active">EN</a>
+            <a href="#" language="RU">RU</a>
+          </div>
           <ul class="header-nav-list">
             <li class="header-nav-list-item home-button underline">home</li>
             <li class="header-nav-list-item library-button">my library</li>
           </ul>
         </nav>
         <div class="search search-show">
-          <input class="search-input" type="text" placeholder="Поиск фильмов" />
+          <form class="search-form">
+          <input class="search-input" type="text" placeholder="Search movie" />
+          </form>
         </div>
         <div class="header-buttons hidden">
           <button class="button watched-button button-anactive">watched</button>
@@ -86,8 +92,9 @@
             <svg class="footer-developed-icon">
               <use href="./images/symbol-defs.svg#icon-heart-footer"></use>
             </svg>
-            <p>
-              by <span class="footer-developed-students">GoIT Students</span>
+            <p class="by">
+             <span class="by-text">by</span>
+             <span class="footer-developed-students">GoIT Students</span>
             </p>
           </div>
         </div>
