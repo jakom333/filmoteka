@@ -3,7 +3,7 @@ export default function watchedHandler(data) {
     let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));    
     if (!watchedInLocalstorage)
       watchedInLocalstorage = [];
-    const watchBtn = document.querySelector(".watch-js");
+    const watchBtn = document.querySelector(".action-watch");
     if (watchBtn.textContent === "add to Watched") {
       watchedInLocalstorage.push(data);
       watchBtn.textContent = "remove from Watched";

@@ -53,7 +53,8 @@ function modalMarkup(data) {
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("afterbegin", markup);
   window.addEventListener("keydown", onPressKey);
-  const watchBtn = document.querySelector(".watch-js");
+  const watchBtn = document.querySelector(".action-watch");
+  console.log(watchBtn);
   
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
   if (checkFilm(watchedInLocalstorage, data)) {
