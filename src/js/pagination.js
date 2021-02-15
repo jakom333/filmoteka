@@ -118,6 +118,7 @@ function onBtnClick(event) {
     if (event.target.classList.contains("btn")) {
       setBtnActiveStyle(event);
     }
+
     fetchMovies();
   }
 
@@ -160,6 +161,7 @@ function onBtnClick(event) {
   if (Number(currentPage) >= 1000) {
     refs.next.hidden = true;
     refs.prev.hidden = false;
+    refs.dots1.hidden = false;
 
     btn1.textContent = Number(currentPage) - 5;
     btn2.textContent = Number(currentPage) - 4;
