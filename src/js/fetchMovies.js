@@ -16,7 +16,7 @@ export default function fetchMovies() {
     .then((res) => res.json())
     .then((data) => {
       renderTopRated(data);
-      markup(data);
+      markupSearch (data);
       // console.log(data);
     })
     .catch((err) => console.log(err));
