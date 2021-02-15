@@ -1,5 +1,7 @@
 import modalWindowTpl from "../templates/modal-window.hbs";
 import watchedHandler from "../js/localstorage/localstorage.js";
+import { isHomeScreen } from "../js/markup-library.js"
+import { markupLibrary } from "../js/markup-library.js"
 
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
@@ -65,6 +67,13 @@ function onCloseModal() {
   window.removeEventListener("keydown", onPressKey);
   modalWindow.classList.add("is-hidden");
   modalContent.innerHTML = "";
+
+  if (!isHomeScreen) {
+    const gallery = document.querySelector(".photo-gallery-list");
+    gallery.innerHTML = "";
+    const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    markupLibrary(watchedInLocalstorage);
+  }
 }
 
 function onPressKey(event) {
