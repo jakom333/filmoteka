@@ -14,22 +14,18 @@ body {
 
 /* * ------------- modal-window ---------------- */
 
-body.modal-open {
-  overflow: hidden;
-}
-
 .is-hidden {
   display: none;
   pointer-events: none;
 }
 
 .modal-overlay {
-  position: absolute;
-  top: 230px;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
-  height: 150vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  /* background-color: red; */
   transition: opacity var(--animation-duration) var(--timing-function);
 }
 
@@ -54,7 +50,6 @@ body.modal-open {
   left: calc((94% - 287px) / 2);
   width: min-content;
   background-color: white;
-  /* background-color: rgba(0, 255, 255, 0.9); */
   z-index: 1;
   transition: opacity var(--animation-duration) var(--timing-function);
 }
@@ -89,15 +84,9 @@ body.modal-open {
   z-index: 2;
 }
 
-/* .modal-button > svg {
-  fill: #ff6b08;
-} */
-
 .modal-button:hover,
 .modal-button:focus {
   background-color: rgba(255, 255, 255, 0.95);
-  /* stroke: #ff6b08;
-  fill: #ff6b08; */
 }
 
 .poster {
@@ -208,10 +197,6 @@ table td {
 
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .modal-overlay {
-    height: 100vh;
-  }
-
   .modal-content {
     padding-top: 20px;
     padding-left: 20px;
@@ -223,7 +208,6 @@ table td {
     top: 270px;
     left: calc((98% - 618px) / 2);
     width: min-content;
-    /* background-color: rgba(0, 255, 255, 0.9); */
     z-index: 1;
   }
 
@@ -261,10 +245,6 @@ table td {
 
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1024px) {
-  .modal-overlay {
-    height: 100vh;
-  }
-
   .modal-content {
     padding-top: 30px;
     padding-left: 30px;
@@ -272,15 +252,15 @@ table td {
     flex-wrap: nowrap;
     justify-content: center;
 
-    position: absolute;
+    position: fixed;
     top: 260px;
     left: calc((94% - 882px) / 2);
     width: min-content;
-    /* background-color: rgba(0, 255, 255, 0.9); */
     z-index: 1;
   }
 
   .modal-button {
+    position: fixed;
     top: 260px;
     left: calc(((94% - 882px) / 2) + 902px);
   }

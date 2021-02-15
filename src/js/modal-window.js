@@ -48,14 +48,12 @@ function modalMarkup(data) {
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("afterbegin", markup);
 
-  document.body.classList.add("modal-open");
   window.addEventListener("keydown", onPressKey);
 }
 
 function onCloseModal() {
   window.removeEventListener("keydown", onPressKey);
   modalWindow.classList.add("is-hidden");
-  document.body.classList.remove("modal-open");
   modalContent.innerHTML = "";
 }
 
