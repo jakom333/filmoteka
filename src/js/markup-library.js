@@ -6,15 +6,18 @@ const gallery = document.querySelector(".photo-gallery-list");
 const libraryBtn = document.querySelector(".library-button");
 const homeBtn = document.querySelector(".home-button");
 
-
+export let isHomeScreen = true;
 
 libraryBtn.addEventListener("click", libraryBtnHandler);
+
 function libraryBtnHandler() {
   const watchedInLocalstorageJson = localStorage.getItem("watched");
   const watchedInLocalstorage = JSON.parse(watchedInLocalstorageJson);  
-  gallery.innerHTML = "";
   
+  gallery.innerHTML = "";
   markupLibrary(watchedInLocalstorage);
+
+    isHomeScreen = false;
 }
 
 export function markupLibrary(data) {
@@ -51,5 +54,6 @@ homeBtn.addEventListener('click', homeBtnHandler)
 
 function homeBtnHandler() {
   gallery.innerHTML = "";
-  return fetchMovies(); 
+  fetchMovies(); 
+  isHomeScreen = true;
 }
