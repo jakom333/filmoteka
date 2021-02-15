@@ -3,6 +3,9 @@ import { onSpin, offSpin } from "./spinner.js";
 import { currentPage } from "./pagination";
 import config from '../data-base//config.json';
 import refs from './refs.js';
+import renderTopRated from './top-filters.js';
+
+
 
 let input = "";
 localStorage.setItem('lang', 'en-US');
@@ -18,20 +21,20 @@ function fetchAPI(searchQuery) {
       if (searchQuery.length === 0) {
         offSpin();
         
-  if (langSearch ==='en-US') {
+        if (langSearch === 'en-US') {
           refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Please, give us at least one word! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`
-  } else {
-           refs.gallery.innerHTML=`<div class="search-input-null"> <h2> Пожалуйста, дайте нам хоть одно слово! </h2>
+        } else {
+          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Пожалуйста, дайте нам хоть одно слово! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`}
-        
         return;
-  } else if (!data.results.length) {
-    if (langSearch === 'en-US') {
+
+      } else if (!data.results.length) {
+        if (langSearch === 'en-US') {
           refs.gallery.innerHTML = `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
    allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`
@@ -40,15 +43,20 @@ function fetchAPI(searchQuery) {
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
    allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`
         }
-        
+
         offSpin();
         return;
       }
       offSpin();
+         
+      // console.log(data);
+      renderTopRated(data);
       markup(data);
+       
     })
+ 
     .catch((err) => console.log(err));
-}
+};
 
 refs.form.addEventListener("submit", searchMovieHandler);
 function searchMovieHandler(event) {
@@ -59,3 +67,5 @@ function searchMovieHandler(event) {
   fetchAPI(input);
   refs.form.reset();
 }
+
+

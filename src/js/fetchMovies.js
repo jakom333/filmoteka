@@ -2,6 +2,7 @@ import markup from "./markup.js";
 import { currentPage } from "./pagination";
 import './search-input.js';
 import config from '../data-base/config.json';
+import renderTopRated from './top-filters.js';
 
 
 const KEY = "6f1c32f58bd439b838f8f392fdf2c4dc";
@@ -14,8 +15,9 @@ export default function fetchMovies() {
   return fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      renderTopRated(data);
       markup(data);
-      console.log(data);
+      // console.log(data);
     })
     .catch((err) => console.log(err));
 }

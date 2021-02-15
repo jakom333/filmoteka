@@ -35,6 +35,6 @@ export default
     } else {
       localStorage.setItem('lang', 'en-US');
     }
-  }
+}
     
 });
