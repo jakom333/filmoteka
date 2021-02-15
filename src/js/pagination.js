@@ -46,13 +46,18 @@ function onBtnClick(event) {
     // const dots1 = refs.dots1;
     // const dots2 = refs.dots2;
 
-    if (event.target.classList.contains("next") && currentPage < 999) {
+    if (event.target.classList.contains("next") && currentPage < 995) {
       next.dataset.index = Number(next.dataset.index) + 1;
       btn1.textContent = Number(btn1.textContent) + 1;
       btn2.textContent = Number(btn2.textContent) + 1;
       btn3.textContent = Number(btn3.textContent) + 1;
       btn4.textContent = Number(btn4.textContent) + 1;
       btn5.textContent = Number(btn5.textContent) + 1;
+      btn1.dataset.index = Number(btn1.dataset.index) + 1;
+      btn2.dataset.index = Number(btn2.dataset.index) + 1;
+      btn3.dataset.index = Number(btn3.dataset.index) + 1;
+      btn4.dataset.index = Number(btn4.dataset.index) + 1;
+      btn5.dataset.index = Number(btn5.dataset.index) + 1;
 
       currentPage = Number(previousPage) + 1;
     }
@@ -67,6 +72,11 @@ function onBtnClick(event) {
       btn3.textContent = Number(btn3.textContent) - 1;
       btn4.textContent = Number(btn4.textContent) - 1;
       btn5.textContent = Number(btn5.textContent) - 1;
+      btn1.dataset.index = Number(btn1.dataset.index) - 1;
+      btn2.dataset.index = Number(btn2.dataset.index) - 1;
+      btn3.dataset.index = Number(btn3.dataset.index) - 1;
+      btn4.dataset.index = Number(btn4.dataset.index) - 1;
+      btn5.dataset.index = Number(btn5.dataset.index) - 1;
 
       currentPage = Number(previousPage) - 1;
     }
@@ -82,17 +92,27 @@ function onBtnClick(event) {
       btn3.textContent = Number(btn3.textContent) - 5;
       btn4.textContent = Number(btn4.textContent) - 5;
       btn5.textContent = Number(btn5.textContent) - 5;
+      btn1.dataset.index = Number(btn1.dataset.index) - 5;
+      btn2.dataset.index = Number(btn2.dataset.index) - 5;
+      btn3.dataset.index = Number(btn3.dataset.index) - 5;
+      btn4.dataset.index = Number(btn4.dataset.index) - 5;
+      btn5.dataset.index = Number(btn5.dataset.index) - 5;
 
       currentPage = Number(previousPage) - 5;
     }
 
-    if (event.target.classList.contains("dots2") && currentPage < 999) {
+    if (event.target.classList.contains("dots2") && currentPage < 995) {
       next.dataset.index = Number(next.dataset.index) + 5;
       btn1.textContent = Number(btn1.textContent) + 5;
       btn2.textContent = Number(btn2.textContent) + 5;
       btn3.textContent = Number(btn3.textContent) + 5;
       btn4.textContent = Number(btn4.textContent) + 5;
       btn5.textContent = Number(btn5.textContent) + 5;
+      btn1.dataset.index = Number(btn1.dataset.index) + 5;
+      btn2.dataset.index = Number(btn2.dataset.index) + 5;
+      btn3.dataset.index = Number(btn3.dataset.index) + 5;
+      btn4.dataset.index = Number(btn4.dataset.index) + 5;
+      btn5.dataset.index = Number(btn5.dataset.index) + 5;
 
       currentPage = Number(previousPage) + 5;
     }
@@ -102,6 +122,8 @@ function onBtnClick(event) {
     }
     fetchMovies();
   }
+
+  console.log(currentPage);
 
   if (btn1.textContent > 1) {
     refs.previous.hidden = false;
@@ -113,10 +135,22 @@ function onBtnClick(event) {
   }
 
   if (event.target.classList.contains("btn-first")) {
-    btn1.textContent = 2;
-    btn2.textContent = 3;
-    btn3.textContent = 4;
-    btn4.textContent = 5;
+    btn1.textContent = Number(currentPage) + 1;
+    btn2.textContent = Number(currentPage) + 2;
+    btn3.textContent = Number(currentPage) + 3;
+    btn4.textContent = Number(currentPage) + 4;
+    btn5.textContent = Number(currentPage) + 5;
+
+    btn1.dataset.index = Number(currentPage) + 1;
+    btn2.dataset.index = Number(currentPage) + 2;
+    btn3.dataset.index = Number(currentPage) + 3;
+    btn4.dataset.index = Number(currentPage) + 4;
+    btn5.dataset.index = Number(currentPage) + 5;
+
+    // btn1.textContent = 2;
+    // btn2.textContent = 3;
+    // btn3.textContent = 4;
+    // btn4.textContent = 5;
 
     refs.dots1.hidden = true;
     refs.btnPage5.hidden = true;
@@ -127,11 +161,17 @@ function onBtnClick(event) {
     refs.next.hidden = true;
     refs.dots2.hidden = true;
 
-    btn1.textContent = 995 - 5;
-    btn2.textContent = 995 - 4;
-    btn3.textContent = 995 - 3;
-    btn4.textContent = 995 - 2;
-    btn5.textContent = 995 - 1;
+    btn1.textContent = Number(currentPage) - 5;
+    btn2.textContent = Number(currentPage) - 4;
+    btn3.textContent = Number(currentPage) - 3;
+    btn4.textContent = Number(currentPage) - 2;
+    btn5.textContent = Number(currentPage) - 1;
+
+    btn1.dataset.index = Number(currentPage) - 5;
+    btn2.dataset.index = Number(currentPage) - 4;
+    btn3.dataset.index = Number(currentPage) - 3;
+    btn4.dataset.index = Number(currentPage) - 2;
+    btn5.dataset.index = Number(currentPage) - 1;
   } else {
     refs.next.hidden = false;
     refs.dots2.hidden = false;
