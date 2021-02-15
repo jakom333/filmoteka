@@ -44,7 +44,7 @@ function onBtnClick(event) {
     const prev = refs.prev;
     const next = refs.next;
 
-    if (event.target.classList.contains("next") && currentPage < 995) {
+    if (event.target.classList.contains("next") && currentPage < 1000) {
       next.dataset.index = Number(next.dataset.index) + 1;
       btn1.textContent = Number(btn1.textContent) + 1;
       btn2.textContent = Number(btn2.textContent) + 1;
@@ -99,7 +99,7 @@ function onBtnClick(event) {
       currentPage = Number(previousPage) - 5;
     }
 
-    if (event.target.classList.contains("dots2") && currentPage < 995) {
+    if (event.target.classList.contains("dots2") && currentPage < 1000) {
       next.dataset.index = Number(next.dataset.index) + 5;
       btn1.textContent = Number(btn1.textContent) + 5;
       btn2.textContent = Number(btn2.textContent) + 5;
@@ -157,9 +157,9 @@ function onBtnClick(event) {
     refs.prev.hidden = true;
   }
 
-  if (Number(currentPage) >= 995) {
+  if (Number(currentPage) >= 1000) {
     refs.next.hidden = true;
-    refs.dots2.hidden = true;
+    refs.prev.hidden = false;
 
     btn1.textContent = Number(currentPage) - 5;
     btn2.textContent = Number(currentPage) - 4;
@@ -175,6 +175,10 @@ function onBtnClick(event) {
   } else {
     refs.next.hidden = false;
     refs.dots2.hidden = false;
+  }
+
+  if (btn5.textContent >= 995) {
+    refs.dots2.hidden = true;
   }
 }
 
