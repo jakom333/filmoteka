@@ -1,4 +1,5 @@
 const backTrailerRef = document.querySelector(".trailer-box");
+// const posterBoxRef = document.querySelector(".poster-box");
 const key = "4fbdbd8abdbcde78896e194e86813212";
 const baseUrl = "https://api.themoviedb.org/3";
 
@@ -8,6 +9,7 @@ function fetchUrl(movieID) {
     .then((response) => response.json())
     .then((data) => {
       let youtubeKey = data.results[0].key;
+      console.log(youtubeKey);
       backTrailerRef.classList.add("is-open");
       backTrailerRef.insertAdjacentHTML(
         "beforeend",
@@ -66,6 +68,7 @@ function showBtnClosePlayer(trailerFrameRefs) {
 }
 
 function escPlayerHandler(event) {
+  console.log(event);
   if (event.code === "Escape") {
     onClosePlayer();
   }
