@@ -14,7 +14,7 @@ function fetchUrl(movieID) {
         `<div class="trailer-iframe">
       <iframe class ="trailer"
       type="text/html"
-      src="http://www.youtube.com/embed/${youtubeKey}?color=white&modestbranding=1" 
+      src="http://www.youtube.com/embed/${youtubeKey}?color=red&modestbranding=1" 
       frameborder="0"
       allow="accelerometer; picture-in-picture; autoplay"
       allowfullscreen
@@ -23,16 +23,8 @@ function fetchUrl(movieID) {
       `,
       );
       const trailerFrameRefs = document.querySelector(".trailer-iframe");
-      console.log(trailerFrameRefs);
       setTimeout(() => {
-        trailerFrameRefs.insertAdjacentHTML(
-          "beforeend",
-          `<button class="btn-close-player">
-      <svg class="btn-close-icon">
-      <use href="./images/symbol-defs.svg#icon-cancel"></use>
-      </svg>
-      </button>`,
-        );
+        showBtnClosePlayer(trailerFrameRefs);
       }, 500);
     })
     .catch(() => {
@@ -42,7 +34,7 @@ function fetchUrl(movieID) {
         `<div class="trailer-iframe">
         <iframe class ="trailer"
         type="text/html"
-          src="http://www.youtube.com/embed/551?color=white&modestbranding=1" 
+          src="http://www.youtube.com/embed/2jPdejek5QA?color=red&modestbranding=1" 
           frameborder="0"
           allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen
@@ -55,7 +47,22 @@ function fetchUrl(movieID) {
           </div>
           `,
       );
+      const trailerFrameRefs = document.querySelector(".trailer-iframe");
+      setTimeout(() => {
+        showBtnClosePlayer(trailerFrameRefs);
+      }, 500);
     });
+}
+
+function showBtnClosePlayer(trailerFrameRefs) {
+  trailerFrameRefs.insertAdjacentHTML(
+    "beforeend",
+    `<button class="btn-close-player">
+      <svg class="btn-close-icon">
+      <use href="./images/symbol-defs.svg#icon-cancel"></use>
+      </svg>
+      </button>`,
+  );
 }
 
 function escPlayerHandler(event) {
@@ -68,6 +75,7 @@ function onClosePlayer() {
   window.addEventListener("keydown", escPlayerHandler);
   backTrailerRef.classList.remove("is-open");
   backTrailerRef.innerHTML = "";
+  // window.removeEventListener("keydown", escPlayerHandler);
 }
 
 window.addEventListener("keydown", escPlayerHandler);
