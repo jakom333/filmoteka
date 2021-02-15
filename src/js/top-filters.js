@@ -6,13 +6,11 @@ export default function renderTopRated(data) {
 }
 
 
-
 function makeTopDateRelease(data) {
     data.results.sort(function (a, b) {
      return b.release_date - a.release_date;
   });
 };
-
 
 function makeTopPopularity(data) {
   data.results.sort(function (a, b) {
