@@ -1,18 +1,25 @@
 import { genres } from "../index.js";
 import cardTemplate from "../templates/movie-card.hbs";
 
+
+
 const gallery = document.querySelector(".photo-gallery-list");
 
-export default function markup(data) {
-  data.results.map((movie) => {
+export default function markupSearch(data) {
+  data.results.map((movie) => markup(movie));
+  gallery.innerHTML = cardTemplate(data.results);
+}
+
+export function markup(movie) {  
+    // console.log(movie);
     movie.title = movie.title.toUpperCase();
 
-    if (movie.title.length > 33) {
-      movie.title = movie.title.substring(0, 31) + "...";
-    }
+    // if (movie.title.length > 33) {
+    //   movie.title = movie.title.substring(0, 31) + "...";
+    // }
 
-    let movieGenres = [];
-    movie.genre_ids.forEach((el) => {
+  let movieGenres = [];
+  movie.genre_ids.forEach((el) => {
       const foundGenreName = genres.find((item) => item.id === el);
       movieGenres.push(" " + foundGenreName.name);
     });
@@ -32,7 +39,4 @@ export default function markup(data) {
         "https://sales.arecontvision.com/images/products/img_placeholder_41845_xl.jpg";
 
     return movie;
-  });
-
-  gallery.insertAdjacentHTML("beforeend", cardTemplate(data.results));
-}
+  }
