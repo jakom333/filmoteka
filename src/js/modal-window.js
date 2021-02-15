@@ -1,4 +1,5 @@
 import modalWindowTpl from "../templates/modal-window.hbs";
+import watchedHandler from "../js/localstorage/localstorage.js";
 
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
@@ -9,6 +10,7 @@ const overlay = document.querySelector(".modal-overlay");
 const closeModalBtn = document.querySelector(
   'button[data-action="close-modal"]',
 );
+
 
 filmsList.addEventListener("click", onOpenModal);
 overlay.addEventListener("click", onOverlayClick);
@@ -40,7 +42,6 @@ const KEY = "8c70e92845ff03879b2dd3fe0ba57aa8";
 
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
-
   window.scrollTo({
     top: 0,
     left: 0,
@@ -49,8 +50,17 @@ function modalMarkup(data) {
 
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("afterbegin", markup);
-
   window.addEventListener("keydown", onPressKey);
+  const watchBtn = document.querySelector(".watch-js");
+  
+  const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+  if (checkFilm(watchedInLocalstorage, data)) {
+    watchBtn.textContent = "remove from Watched";
+  } else {
+    watchBtn.textContent = "add to Watched";
+  }
+
+  watchBtn.addEventListener("click", watchedHandler(data));
 }
 
 function onCloseModal() {
@@ -67,4 +77,11 @@ function onOverlayClick(event) {
   if (event.target === event.currentTarget) {
     onCloseModal();
   }
+}
+
+function checkFilm(filmArr, film) {
+  if (!filmArr)
+    return false;
+  
+  return filmArr.find((item) => item.id === film.id);
 }
