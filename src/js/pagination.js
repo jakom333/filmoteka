@@ -7,7 +7,7 @@ const refs = {
   btnPage3: document.querySelector(".btn-page3"),
   btnPage4: document.querySelector(".btn-page4"),
   btnPage5: document.querySelector(".btn-page5"),
-  previous: document.querySelector(".previous"),
+  prev: document.querySelector(".prev"),
   next: document.querySelector(".next"),
   dots1: document.querySelector(".dots1"),
   dots2: document.querySelector(".dots2"),
@@ -26,7 +26,7 @@ const btn3 = refs.btnPage3;
 const btn4 = refs.btnPage4;
 const btn5 = refs.btnPage5;
 
-refs.previous.hidden = true;
+refs.prev.hidden = true;
 refs.dots1.hidden = true;
 refs.btnFirst.hidden = true;
 
@@ -37,11 +37,11 @@ function onBtnClick(event) {
     // console.log("previousPage", previousPage);
     currentPage = Number(activeBtn);
 
-    refs.previous.hidden = true;
+    refs.prev.hidden = true;
     refs.dots1.hidden = true;
     refs.btnFirst.hidden = true;
 
-    const previous = refs.previous;
+    const prev = refs.prev;
     const next = refs.next;
     // const dots1 = refs.dots1;
     // const dots2 = refs.dots2;
@@ -62,11 +62,11 @@ function onBtnClick(event) {
       currentPage = Number(previousPage) + 1;
     }
 
-    previous.dataset.index = currentPage;
+    prev.dataset.index = currentPage;
 
-    if (event.target.classList.contains("previous") && btn1.textContent > 1) {
+    if (event.target.classList.contains("prev") && btn1.textContent > 1) {
       next.dataset.index = Number(next.dataset.index) - 1;
-      previous.dataset.index = next.dataset.index;
+      prev.dataset.index = next.dataset.index;
       btn1.textContent = Number(btn1.textContent) - 1;
       btn2.textContent = Number(btn2.textContent) - 1;
       btn3.textContent = Number(btn3.textContent) - 1;
@@ -86,7 +86,7 @@ function onBtnClick(event) {
       Number(btn1.textContent) > 5
     ) {
       next.dataset.index = Number(next.dataset.index) - 5;
-      previous.dataset.index = next.dataset.index;
+      prev.dataset.index = next.dataset.index;
       btn1.textContent = Number(btn1.textContent) - 5;
       btn2.textContent = Number(btn2.textContent) - 5;
       btn3.textContent = Number(btn3.textContent) - 5;
@@ -123,15 +123,23 @@ function onBtnClick(event) {
     fetchMovies();
   }
 
-  console.log(currentPage);
+  // console.log(currentPage);
 
   if (btn1.textContent > 1) {
-    refs.previous.hidden = false;
+    refs.prev.hidden = false;
   }
 
   if (btn1.textContent > 5) {
     refs.dots1.hidden = false;
     refs.btnFirst.hidden = false;
+  }
+
+  if (document.body.clientWidth < 768) {
+    refs.btnPage5.hidden = true;
+    refs.dots1.hidden = true;
+    refs.dots2.hidden = true;
+    refs.btnFirst.hidden = true;
+    refs.btnLast.hidden = true;
   }
 
   if (event.target.classList.contains("btn-first")) {
@@ -147,14 +155,8 @@ function onBtnClick(event) {
     btn4.dataset.index = Number(currentPage) + 4;
     btn5.dataset.index = Number(currentPage) + 5;
 
-    // btn1.textContent = 2;
-    // btn2.textContent = 3;
-    // btn3.textContent = 4;
-    // btn4.textContent = 5;
-
     refs.dots1.hidden = true;
-    refs.btnPage5.hidden = true;
-    refs.previous.hidden = true;
+    refs.prev.hidden = true;
   }
 
   if (Number(currentPage) >= 995) {
