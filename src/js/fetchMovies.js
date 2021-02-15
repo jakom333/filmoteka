@@ -11,8 +11,9 @@ export default function fetchMovies() {
 
   return fetch(url)
     .then((res) => res.json())
-    .then((data) => {      
+    .then((data) => {
       markup(data);
+      console.log(data);
     })
     .catch((err) => console.log(err));
 }
@@ -26,5 +27,3 @@ export function fetchGenres() {
     })
     .catch((err) => console.log(err));
 }
-
-
