@@ -1,8 +1,14 @@
 import { playTrailer } from "./trailer.js";
 import modalWindowTpl from "../templates/modal-window.hbs";
 import watchedHandler from "../js/localstorage/localstorage.js";
+import {queueHandler} from "../js/localstorage/localstorage.js";
 import { isHomeScreen } from "../js/markup-library.js";
+import { isWatched } from "../js/markup-library.js";
 import { markupLibrary } from "../js/markup-library.js";
+
+
+
+ 
 
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
@@ -56,18 +62,31 @@ function modalMarkup(data) {
   );
   closeModalBtn.addEventListener("click", onCloseModal);
 
-  window.addEventListener("keydown", onPressKey);
-  const watchBtn = document.querySelector(".action-watch");
+  window.addEventListener("keydown", onPressKey);  
 
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
-  if (checkFilm(watchedInLocalstorage, data)) {
-    watchBtn.textContent = "remove from Watched";
+  let queueInLocalstorage = JSON.parse(localStorage.getItem("queue")); 
+
+  const watchBtnModal = document.querySelector(".action-watch");
+  const queueBtnModal = document.querySelector(".action-queue");
+
+  if (checkFilm(watchedInLocalstorage, data)) {    
+    watchBtnModal.textContent = "remove from Watched";
   } else {
-    watchBtn.textContent = "add to Watched";
+    watchBtnModal.textContent = "add to Watched";
   }
 
-  watchBtn.addEventListener("click", watchedHandler(data));
+  if (checkFilm(queueInLocalstorage, data)) {
+    queueBtnModal.textContent = "remove from queue";    
+  } else {
+    queueBtnModal.textContent = "add to queue";
+  }
+
+  watchBtnModal.addEventListener("click", watchedHandler(data));
+  queueBtnModal.addEventListener("click", queueHandler(data));  
 }
+
+
 
 function onCloseModal() {
   window.removeEventListener("keydown", onPressKey);
@@ -75,11 +94,16 @@ function onCloseModal() {
 
   modalContent.innerHTML = "";
 
-  if (!isHomeScreen) {
+  if (!isHomeScreen && isWatched) {
     const gallery = document.querySelector(".photo-gallery-list");
     gallery.innerHTML = "";
     const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
     markupLibrary(watchedInLocalstorage);
+  } else if (!isHomeScreen && !isWatched) {
+    const gallery = document.querySelector(".photo-gallery-list");
+    gallery.innerHTML = "";
+    const queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+    markupLibrary(queueInLocalstorage);
   }
 }
 
@@ -93,7 +117,7 @@ function onOverlayClick(event) {
   }
 }
 
-function checkFilm(filmArr, film) {
+export function checkFilm(filmArr, film) {
   if (!filmArr) return false;
 
   return filmArr.find((item) => item.id === film.id);

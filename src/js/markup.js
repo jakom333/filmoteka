@@ -12,12 +12,11 @@ export default function markupSearch(data) {
 }
 
 export function markup(movie) {
-  // console.log(movie);
   movie.title = movie.title.toUpperCase();
 
-  // if (movie.title.length > 33) {
-  //   movie.title = movie.title.substring(0, 31) + "...";
-  // }
+  if (movie.title.length > 33) {
+    movie.title = movie.title.substring(0, 31) + "...";
+  }
 
   let movieGenres = [];
   movie.genre_ids.forEach((el) => {
