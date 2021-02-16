@@ -1,8 +1,13 @@
 <button type="button" class="modal-button" data-action="close-modal"></button>
-
-<img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}"
-    alt="a poster to {{title}} film" data-id="{{id}}">
-
+<div class="poster-box">
+    <img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}"
+        alt="a poster to {{title}} film">
+    <div class="trailer-box-svg">
+        <svg class="trailer-box-svg-on" data-id="{{id}}">
+            <use href=" ../images/symbol-defs.svg#icon-play3"></use>
+        </svg>
+    </div>
+</div>
 <div class="film-data">
     <p class="film-title">{{title}}</p>
 
@@ -61,6 +66,12 @@
             </td>
         </tr>
     </table>
+    <button class="button button-trailer" data-id="{{id}}">
+        <svg class="trailer-svg">
+            <use href="../images/symbol-defs.svg#icon-play3"></use>
+        </svg>
+        <span class="btn-text">play trailer</span>
+    </button>
 
     <div class="film-about">
         <p class="film-about-title">

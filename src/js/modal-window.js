@@ -1,3 +1,4 @@
+import { playTrailer } from "./trailer.js";
 import modalWindowTpl from "../templates/modal-window.hbs";
 import watchedHandler from "../js/localstorage/localstorage.js";
 import { isHomeScreen } from "../js/markup-library.js";
@@ -30,7 +31,8 @@ function onOpenModal(event) {
       .then((response) => response.json())
       .then((data) => {
         langSearch = langSearch === "ru-RU" ? false : true;
-        return modalMarkup({ ...data, langSearch });
+        modalMarkup({ ...data, langSearch });
+        playTrailer();
       })
       .catch((err) => console.log(err));
   }
