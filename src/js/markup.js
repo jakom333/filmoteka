@@ -10,13 +10,12 @@ export default function markupSearch(data) {
   gallery.innerHTML = cardTemplate(data.results);
 }
 
-export function markup(movie) {  
-    // console.log(movie);
+export function markup(movie) {      
     movie.title = movie.title.toUpperCase();
 
-    // if (movie.title.length > 33) {
-    //   movie.title = movie.title.substring(0, 31) + "...";
-    // }
+    if (movie.title.length > 33) {
+      movie.title = movie.title.substring(0, 31) + "...";
+    }
 
   let movieGenres = [];
   movie.genre_ids.forEach((el) => {
