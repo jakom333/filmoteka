@@ -1,5 +1,8 @@
 import fetchMovies from "./fetchMovies";
 import { input, fetchAPI } from "./search-input.js";
+// import totalPages from "./fetchMovies";
+
+// console.log(totalPages);
 
 const refs = {
   pagination: document.querySelector(".pagination"),
