@@ -127,7 +127,26 @@
   }
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 767px) and (max-width: 1199px) {
+  .trailer {
+    width: 640px;
+    height: 320px;
+  }
+  .trailer-iframe {
+    width: 640px;
+    height: 320px;
+  }
+  .btn-close-player {
+    top: 4px;
+    right: 4px;
+  }
+  .trailer-box-svg {
+    width: 294px;
+    height: 416px;
+  }
+}
+
+@media screen and (min-width: 1199px) {
   .trailer {
     width: 720px;
     height: 360px;
