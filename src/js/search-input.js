@@ -5,8 +5,20 @@ import config from "../data-base//config.json";
 import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
 
+let localStorageLang = localStorage.getItem("lang");
+let activeLang;
+
+if (localStorageLang === "en-EN") {
+  activeLang = refs.switcher.querySelector(".circle-color");
+  activeLang.classList.remove("circle-color");
+  refs.enBtn.classList.add("circle-color");
+} else if (localStorageLang === "ru-RU") {
+  activeLang = refs.switcher.querySelector(".circle-color");
+  activeLang.classList.remove("circle-color");
+  refs.ruBtn.classList.add("circle-color");
+}
+
 export let input = "";
-localStorage.setItem("lang", "en-US");
 
 let totalPages;
 
