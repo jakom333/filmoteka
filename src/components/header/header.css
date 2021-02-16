@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,22 +17,20 @@ body {
   margin: 0 auto;
 }
 .header-home-background {
-  background-image: 
-  linear-gradient(
-   to right,
-   rgba(0,0,0,.5),
-   rgba(0,0,0,.5)
- ), 
- url('../../images/header/header-bg-mobile.png');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../../images/header/header-bg-mobile.png");
 }
 .header-library-background {
-  background-image: 
-  linear-gradient(
-   to right,
-   rgba(0,0,0,.5),
-   rgba(0,0,0,.5)
- ), 
- url('../../images/header/header-library-bg-mobile.png');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../../images/header/header-library-bg-mobile.png");
 }
 .header-wrapper {
   width: 320px;
@@ -63,7 +61,7 @@ body {
   font-weight: 500;
   font-size: 30px;
   line-height: 35px;
-  margin-left: 10px;  
+  margin-left: 10px;
 }
 .header-nav-logo-icon {
   width: 24px;
@@ -76,7 +74,7 @@ body {
   text-transform: uppercase;
 }
 .header-nav-list-item {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -91,8 +89,27 @@ body {
   display: block;
   width: 100%;
   height: 3px;
-  background: #FF6B08;
+  background: #ff6b08;
 }
+
+.languages {
+  display: flex;
+}
+
+.languages > a {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-en {
+  margin-right: 3px;
+}
+
 /* ----------------------------------------------search------------------------------------------------------- */
 .search {
   width: 280px;
@@ -104,7 +121,7 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Roboto;
   font-weight: 400;
   font-size: 14px;
@@ -124,24 +141,48 @@ body {
   width: 12px;
   height: 12px;
   background: transparent;
-  background-image: url('../../images/header/search.svg');
+  background-image: url("../../images/header/search.svg");
   position: absolute;
   right: 0;
   top: 5px;
   cursor: pointer;
 }
 /* ----красиво убираем плейсхолдер инпута при фокусе------- */
-.search-input::-webkit-input-placeholder       {text-indent: 0px;   transition: text-indent 0.3s ease;}
-.search-input::-moz-placeholder                {text-indent: 0px;   transition: text-indent 0.3s ease;}
-.search-input:-moz-placeholder                 {text-indent: 0px;   transition: text-indent 0.3s ease;}
-.search-input:-ms-input-placeholder            {text-indent: 0px;   transition: text-indent 0.3s ease;}
-.search-input:focus::-webkit-input-placeholder {text-indent: 500px; transition: text-indent 0.3s ease;}
-.search-input:focus::-moz-placeholder          {text-indent: 500px; transition: text-indent 0.3s ease;}
-.search-input:focus:-moz-placeholder           {text-indent: 500px; transition: text-indent 0.3s ease;}
-.search-input:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-indent 0.3s ease;}
+.search-input::-webkit-input-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.search-input::-moz-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.search-input:-moz-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.search-input:-ms-input-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.search-input:focus::-webkit-input-placeholder {
+  text-indent: 500px;
+  transition: text-indent 0.3s ease;
+}
+.search-input:focus::-moz-placeholder {
+  text-indent: 500px;
+  transition: text-indent 0.3s ease;
+}
+.search-input:focus:-moz-placeholder {
+  text-indent: 500px;
+  transition: text-indent 0.3s ease;
+}
+.search-input:focus:-ms-input-placeholder {
+  text-indent: 500px;
+  transition: text-indent 0.3s ease;
+}
 /* -----------------\\----------------- */
 .search-input::placeholder {
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Roboto;
   font-weight: 400;
   font-size: 14px;
@@ -174,39 +215,38 @@ body {
   border: 1px solid white;
 }
 .button-active {
-  background: #FF6B01;
-  border: 1px solid #FF6B01;
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
 }
+
 /* ------------------MEDIA------------------ */
-@media screen  and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .header-nav-logo-title {
     display: none;
   }
 }
 
-@media screen  and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .header-home-background {
-    background-image: 
-    linear-gradient(
-     to right,
-     rgba(0,0,0,.5),
-     rgba(0,0,0,.5)
-   ), 
-   url('../../images/header/header-bg-tablet.png');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("../../images/header/header-bg-tablet.png");
   }
   .header-library-background {
-    background-image: 
-    linear-gradient(
-     to right,
-     rgba(0,0,0,.5),
-     rgba(0,0,0,.5)
-   ), 
-   url('../../images/header/header-library-bg-tablet.png');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("../../images/header/header-library-bg-tablet.png");
   }
   .header-nav-logo-title {
     display: block;
   }
-  .header-wrapper{
+  .header-wrapper {
     min-width: 768px;
     padding-top: 41px;
     padding-right: 76px;
@@ -217,26 +257,24 @@ body {
     margin: 0 auto;
   }
 }
-@media screen  and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .header-home-background {
-    background-image: 
-    linear-gradient(
-     to right,
-     rgba(0,0,0,.5),
-     rgba(0,0,0,.5)
-   ), 
-   url('../../images/header/header-bg-desktop.png');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("../../images/header/header-bg-desktop.png");
   }
   .header-library-background {
-    background-image: 
-    linear-gradient(
-     to right,
-     rgba(0,0,0,.5),
-     rgba(0,0,0,.5)
-   ), 
-   url('../../images/header/header-library-bg-desktop.png');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("../../images/header/header-library-bg-desktop.png");
   }
-  .header-wrapper{
+  .header-wrapper {
     width: 100%;
     padding-top: 41px;
     padding-right: 76px;
@@ -252,3 +290,5 @@ body {
   display: none;
 }
 /* ------------------hidden content---------------- */
+
+/* ------------------language buttons----------------- */
