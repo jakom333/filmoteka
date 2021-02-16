@@ -1,8 +1,8 @@
-import fetchMovies from "./fetchMovies";
+import fetchMovies from "./fetchMovies.js";
 import { input, fetchAPI } from "./search-input.js";
-// import totalPages from "./fetchMovies";
+// import totalPages from "./fetchMovies.js";
 
-// console.log(totalPages);
+// console.log(totalPages());
 
 const refs = {
   pagination: document.querySelector(".pagination"),
@@ -122,7 +122,7 @@ function onBtnClick(event) {
     if (event.target.classList.contains("btn")) {
       setBtnActiveStyle(event);
     }
-
+    let totalPages;
     if (!input) {
       fetchMovies();
     } else {

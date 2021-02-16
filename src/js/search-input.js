@@ -8,6 +8,8 @@ import renderTopRated from "./top-filters.js";
 export let input = "";
 localStorage.setItem("lang", "en-US");
 
+let totalPages;
+
 export function fetchAPI(searchQuery) {
   const langSearch = localStorage.getItem("lang");
   const url = `${config.baseURL}search/movie?api_key=${config.KEY}&page=${currentPage}
@@ -50,6 +52,10 @@ export function fetchAPI(searchQuery) {
       // console.log(data);
       renderTopRated(data);
       markup(data);
+      console.log("search input", data);
+      document.querySelector(".btn-last").textContent = data.total_pages;
+      document.querySelector(".btn-last").dataset.index = data.total_pages;
+      return data.total_pages;
     })
 
     .catch((err) => console.log(err));
