@@ -5,7 +5,6 @@ import config from "../data-base//config.json";
 import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
 
-let input = "";
 let localStorageLang = localStorage.getItem("lang");
 let activeLang;
 
@@ -19,7 +18,11 @@ if (localStorageLang === "en-EN") {
   refs.ruBtn.classList.add("circle-color");
 }
 
-function fetchAPI(searchQuery) {
+export let input = "";
+
+let totalPages;
+
+export function fetchAPI(searchQuery) {
   const langSearch = localStorage.getItem("lang");
   const url = `${config.baseURL}search/movie?api_key=${config.KEY}&page=${currentPage}
   &primary_release_year&query=${searchQuery}&language=${langSearch}`;
@@ -36,7 +39,7 @@ function fetchAPI(searchQuery) {
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Пожалуйста, введите хотя бы одно слово! </h2>
+          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Пожалуйста, дайте нам хоть одно слово! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
@@ -61,6 +64,10 @@ function fetchAPI(searchQuery) {
       // console.log(data);
       renderTopRated(data);
       markup(data);
+      console.log("search input", data);
+      document.querySelector(".btn-last").textContent = data.total_pages;
+      document.querySelector(".btn-last").dataset.index = data.total_pages;
+      return data.total_pages;
     })
 
     .catch((err) => console.log(err));
