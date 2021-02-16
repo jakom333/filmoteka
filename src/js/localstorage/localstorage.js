@@ -1,24 +1,48 @@
+import { checkFilm } from "../modal-window.js";
+
 export default function watchedHandler(data) {
   return function () {
-    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));    
+    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
 
-    if (!watchedInLocalstorage)
-      watchedInLocalstorage = [];
-    const watchBtn = document.querySelector(".action-watch");
+    if (!watchedInLocalstorage) watchedInLocalstorage = [];
 
-    if (watchBtn.textContent === "add to Watched") {
+    const watchBtnModal = document.querySelector(".action-watch");
+
+    if (!checkFilm(watchedInLocalstorage, data)) {
       watchedInLocalstorage.push(data);
-      watchBtn.textContent = "remove from Watched";
+      watchBtnModal.textContent = "remove from Watched";
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
-      
-    } else if ((watchBtn.textContent = "remove from Watched")) {
-      watchedInLocalstorage.forEach((film) => {
-        if (film.id === data.id) {
-          watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(film), 1);
+    } else {
+      watchedInLocalstorage.forEach((movie) => {
+        if (movie.id === data.id) {
+          watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(movie), 1);
         }
       });
-      watchBtn.textContent = "add to Watched";
+      watchBtnModal.textContent = "add to Watched";
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
+    }
+  };
+}
+
+export function queueHandler(data) {
+  return function () {
+    let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+    if (!queueInLocalstorage) queueInLocalstorage = [];
+
+    const queueBtnModal = document.querySelector(".action-queue");
+
+    if (!checkFilm(queueInLocalstorage, data)) {
+      queueInLocalstorage.push(data);
+      queueBtnModal.textContent = "remove from queue";
+      localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
+    } else  {
+      queueInLocalstorage.forEach((movie) => {
+        if (movie.id === data.id) {
+          queueInLocalstorage.splice(queueInLocalstorage.indexOf(movie), 1);
+        }
+      });
+      queueBtnModal.textContent = "add to queue";
+      localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
     }
   };
 }

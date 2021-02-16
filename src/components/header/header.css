@@ -206,14 +206,13 @@ body {
   outline: none;
   border-radius: 5px;
   user-select: none;
+  background: transparent;
+  border: 1px solid white;
 }
 .button:first-child {
   margin-right: 15px;
 }
-.button-anactive {
-  background: transparent;
-  border: 1px solid white;
-}
+
 .button-active {
   background: #ff6b01;
   border: 1px solid #ff6b01;
@@ -289,6 +288,34 @@ body {
 .hidden {
   display: none;
 }
-/* ------------------hidden content---------------- */
+/* ------------------/hidden content---------------- */
+/* ------------------Film overlay + overlay buttons---------------- */
 
-/* ------------------language buttons----------------- */
+.film-overlay {
+  width: 234px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  );
+  position: absolute;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: show;
+  user-select: none;
+  pointer-events: none;
+}
+.film-overlay .button:first-child {
+  margin-bottom: 15px;
+  margin-right: 0;
+}
+.film-overlay .button {
+  pointer-events: all;
+  cursor: pointer;
+}
+/* ------------------/Film overlay + overlay buttons---------------- */
