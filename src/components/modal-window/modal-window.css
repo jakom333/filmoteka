@@ -14,6 +14,14 @@ body {
 
 /* * ------------- modal-window ---------------- */
 
+.modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 .is-hidden {
   display: none;
   pointer-events: none;
@@ -23,8 +31,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  height: 300vh;
   width: 100vw;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   transition: opacity var(--animation-duration) var(--timing-function);
 }
@@ -45,23 +53,43 @@ body {
   justify-content: center;
   pointer-events: initial;
 
-  position: absolute;
-  top: 230px;
+  position: relative;
+  /* top: 230px; */
+  top: 90px;
   left: calc((94% - 287px) / 2);
-  width: min-content;
+
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+
   background-color: white;
   z-index: 1;
   transition: opacity var(--animation-duration) var(--timing-function);
+
+  width: min-content;
+
+  height: min-content;
+  /* overflow-y: scroll; */
+  border-radius: 7px;
 }
 
 .modal-button {
-  position: absolute;
-  top: 220px;
-  left: calc(((94% - 287px) / 2) + 277px);
-
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+
+  /* top: 220px;
+  left: calc(((94% - 287px) / 2) + 277px); */
+
+  /* top: -10px;
+  left: calc(((94% - 300px) / 2) + 287px); */
+
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
 
   width: 40px;
   height: 40px;
@@ -82,6 +110,86 @@ body {
   background-repeat: no-repeat;
 
   z-index: 2;
+}
+
+.film-info-share {
+  display: flex;
+}
+
+a.fb-btn {
+  box-sizing: border-box;
+  display: block;
+  background-color: #3b5b9b;
+  border-radius: 5px;
+  overflow: hidden;
+  line-height: 0;
+  padding: 0 2px 0 2px;
+  height: 28px;
+  width: 40px;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 5px;
+}
+.fb-label {
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+  padding-top: 4px;
+  display: inline-block;
+  line-height: 22px;
+  vertical-align: baseline;
+}
+
+a.tgme-btn {
+  box-sizing: border-box;
+  display: block;
+  background-color: #54a9eb;
+  border-radius: 5px;
+  overflow: hidden;
+  line-height: 0;
+  padding: 0 2px 0 2px;
+  height: 28px;
+  width: 40px;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 5px;
+}
+span.tgme-icon {
+  box-sizing: border-box;
+  background: url(../../images/modal-window/tgme-logo.png) no-repeat 0 0;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a.whatsapp-btn {
+  box-sizing: border-box;
+  display: block;
+  background-color: #26d365;
+  border-radius: 5px;
+  overflow: hidden;
+  line-height: 0;
+  padding: 0 2px 0 2px;
+  height: 28px;
+  width: 40px;
+  text-decoration: none;
+  text-align: center;
+  margin-right: 5px;
+}
+span.whatsapp-icon {
+  box-sizing: border-box;
+  background: url(../../images/modal-window/whatsapp.png) no-repeat 0 0;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  /* z-index: 3; */
 }
 
 .modal-button:hover,
@@ -111,7 +219,7 @@ body {
 
 table {
   border-collapse: collapse;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 table td {
@@ -156,7 +264,6 @@ table td {
 
 .film-about-title {
   margin-bottom: 10px;
-  width: 39px;
   height: 16px;
   text-transform: uppercase;
 }
@@ -204,16 +311,21 @@ table td {
     flex-wrap: nowrap;
     justify-content: center;
 
-    position: absolute;
-    top: 270px;
+    position: fixed;
+    /* top: 250px; */
     left: calc((98% - 618px) / 2);
+
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
     width: min-content;
     z-index: 1;
   }
 
   .modal-button {
-    top: 270px;
-    left: calc(((98% - 618px) / 2) + 618px);
+    top: -5px;
+    right: -6px;
   }
 
   .poster {
@@ -253,16 +365,21 @@ table td {
     justify-content: center;
 
     position: fixed;
-    top: 260px;
+    /* top: 260px; */
+    top: 120px;
     left: calc((94% - 882px) / 2);
+
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
     width: min-content;
     z-index: 1;
   }
 
   .modal-button {
-    position: fixed;
-    top: 260px;
-    left: calc(((94% - 882px) / 2) + 902px);
+    top: -5px;
+    right: -5px;
   }
 
   .poster {
