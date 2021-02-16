@@ -1,3 +1,5 @@
+import { onPressKey } from "./modal-window.js";
+
 const backTrailerRef = document.querySelector(".trailer-box");
 // const posterBoxRef = document.querySelector(".poster-box");
 const key = "4fbdbd8abdbcde78896e194e86813212";
@@ -55,8 +57,6 @@ function fetchUrl(movieID) {
     });
 }
 
-function makeIframe() {}
-
 function showBtnClosePlayer(trailerFrameRefs) {
   trailerFrameRefs.insertAdjacentHTML(
     "beforeend",
@@ -72,11 +72,10 @@ function escPlayerHandler(event) {
   if (event.code === "Escape") {
     onClosePlayer();
   }
-  // window.removeEventListener("keydown", escPlayerHandler);
+  window.addEventListener("keydown", onPressKey);
 }
 
 function onClosePlayer() {
-  window.addEventListener("keydown", escPlayerHandler);
   backTrailerRef.classList.remove("is-open");
   backTrailerRef.innerHTML = "";
 }
@@ -89,8 +88,9 @@ export function playTrailer() {
   const posterSvgRefs = document.querySelector(".trailer-box-svg-on");
 
   function showPosterPlay(event) {
-    let movieID = event.target.dataset.id;
+    let movieID = event.currentTarget.dataset.id;
     fetchUrl(movieID);
+    window.removeEventListener("keydown", onPressKey);
   }
   posterSvgRefs.addEventListener("click", showPosterPlay);
   buttonTrailerRefs.addEventListener("click", showPosterPlay);
