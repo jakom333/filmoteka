@@ -1,7 +1,7 @@
 import { playTrailer } from "./trailer.js";
 import modalWindowTpl from "../templates/modal-window.hbs";
 import watchedHandler from "../js/localstorage/localstorage.js";
-import {queueHandler} from "../js/localstorage/localstorage.js";
+import { queueHandler } from "../js/localstorage/localstorage.js";
 import { isHomeScreen } from "../js/markup-library.js";
 import { isWatched } from "../js/markup-library.js";
 import { markupLibrary } from "../js/markup-library.js";
@@ -32,7 +32,7 @@ function onOpenModal(event) {
 
   function fetchFilmInfo() {
     return fetch(movieIUrl)
-      .then((response) => response.json())
+      .then((response) => (response.status === 200 ? response.json() : ""))
       .then((data) => {
         lang = lang === "ru-RU" ? false : true;
         modalMarkup({ ...data, lang });
@@ -45,46 +45,44 @@ function onOpenModal(event) {
 
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
-  window.scrollTo({
-    // ! may be to delete ?
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
+
+  // window.scrollTo({
+  //   // ! may be to delete ?
+  //   top: 0,
+  //   left: 0,
+  //   behavior: "smooth",
+  // });
 
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("beforeend", markup);
 
-  const closeModalBtn = document.querySelector(
-    'button[data-action="close-modal"]',
-  );
+  const closeModalBtn = document.querySelector(".modal-button");
   closeModalBtn.addEventListener("click", onCloseModal);
 
-  window.addEventListener("keydown", onPressKey);  
+  const watchBtn = document.querySelector(".action-watch");
+  window.addEventListener("keydown", onPressKey);
 
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
-  let queueInLocalstorage = JSON.parse(localStorage.getItem("queue")); 
+  let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
 
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
 
-  if (checkFilm(watchedInLocalstorage, data)) {    
+  if (checkFilm(watchedInLocalstorage, data)) {
     watchBtnModal.textContent = "remove from Watched";
   } else {
     watchBtnModal.textContent = "add to Watched";
   }
 
   if (checkFilm(queueInLocalstorage, data)) {
-    queueBtnModal.textContent = "remove from queue";    
+    queueBtnModal.textContent = "remove from queue";
   } else {
     queueBtnModal.textContent = "add to queue";
   }
 
-  watchBtnModal.addEventListener("click", watchedHandler(data));
-  queueBtnModal.addEventListener("click", queueHandler(data));  
+  watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
+  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
 }
-
-
 
 function onCloseModal() {
   window.removeEventListener("keydown", onPressKey);

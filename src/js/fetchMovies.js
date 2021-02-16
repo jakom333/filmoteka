@@ -11,8 +11,11 @@ export default function fetchMovies() {
   return fetch(url)
     .then((res) => res.json())
     .then((data) => {
-     markupSearch(data); 
-    
+      renderTopRated(data);
+      markupSearch(data);
+      document.querySelector(".btn-last").textContent = data.total_pages;
+      document.querySelector(".btn-last").dataset.index = data.total_pages;
+      return (totalPages = data.total_pages);
     })
     .catch((err) => console.log(err));
 }
@@ -27,4 +30,3 @@ const genreUrl = `${config.baseURL}genre/movie/list?api_key=${config.KEY}&langua
     })
     .catch((err) => console.log(err));
 }
-

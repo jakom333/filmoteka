@@ -9,7 +9,7 @@ export default function watchedHandler(data) {
 
     if (!watchedInLocalstorage) watchedInLocalstorage = [];
 
-    const watchBtnModal = document.querySelector(".action-watch");
+    
 
     if (!checkFilm(watchedInLocalstorage, data)) {
       watchedInLocalstorage.push(data);
@@ -38,12 +38,12 @@ export default function watchedHandler(data) {
   };
 }
 
-export function queueHandler(data) {
+export function queueHandler(data, btn) {
   return function () {
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
     if (!queueInLocalstorage) queueInLocalstorage = [];
 
-    const queueBtnModal = document.querySelector(".action-queue");
+    
 
     if (!checkFilm(queueInLocalstorage, data)) {
       queueInLocalstorage.push(data);
