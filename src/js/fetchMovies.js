@@ -15,7 +15,8 @@ export default function fetchMovies() {
     .then((data) => {
       renderTopRated(data);
       markupSearch(data);
-
+      document.querySelector(".btn-last").textContent = data.total_pages;
+      document.querySelector(".btn-last").dataset.index = data.total_pages;
       return (totalPages = data.total_pages);
     })
     .catch((err) => console.log(err));
