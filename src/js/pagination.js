@@ -1,4 +1,8 @@
-import fetchMovies from "./fetchMovies";
+import fetchMovies from "./fetchMovies.js";
+import { input, fetchAPI } from "./search-input.js";
+// import totalPages from "./fetchMovies.js";
+
+// console.log(totalPages());
 
 const refs = {
   pagination: document.querySelector(".pagination"),
@@ -34,7 +38,7 @@ function onBtnClick(event) {
   if (event.target.tagName === "BUTTON") {
     const activeBtn = event.target.dataset.index;
     let previousPage = document.querySelector(".active").textContent;
-    // console.log("previousPage", previousPage);
+    // console.log("previousPage:", previousPage);
     currentPage = Number(activeBtn);
 
     refs.prev.hidden = true;
@@ -118,11 +122,15 @@ function onBtnClick(event) {
     if (event.target.classList.contains("btn")) {
       setBtnActiveStyle(event);
     }
-
-    fetchMovies();
+    let totalPages;
+    if (!input) {
+      fetchMovies();
+    } else {
+      fetchAPI(input);
+    }
   }
 
-  // console.log(currentPage);
+  console.log("currentPage:", currentPage);
 
   if (btn1.textContent > 1) {
     refs.prev.hidden = false;
