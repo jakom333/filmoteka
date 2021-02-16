@@ -8,6 +8,7 @@ export default
 refs.switcher.addEventListener('click', switchLangHandler);
 function switchLangHandler(event) {
   event.preventDefault();
+  let lang;
 
   let activeLang = refs.switcher.querySelector(".circle-color");
   activeLang.classList.remove("circle-color");
@@ -15,7 +16,7 @@ function switchLangHandler(event) {
 
   if (event.target === refs.enBtn) {
     lang = "EN";
-  } else {
+  } else if (event.target === refs.ruBtn) {
     lang = "RU";
   }
 
