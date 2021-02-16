@@ -55,12 +55,13 @@ body {
 
   position: relative;
   /* top: 230px; */
-  top: 90px;
-  left: calc((94% - 287px) / 2);
 
-  /* top: 50%;
+  /* top: 90px;
+  left: calc((94% - 287px) / 2); */
+
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -30%);
 
   background-color: white;
   z-index: 1;
@@ -73,26 +74,17 @@ body {
   border-radius: 7px;
 }
 
+/* ! --------- MODAL BUTTON --------- */
 .modal-button {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 3px;
+  right: 2px;
 
-  /* top: 220px;
-  left: calc(((94% - 287px) / 2) + 277px); */
-
-  /* top: -10px;
-  left: calc(((94% - 300px) / 2) + 287px); */
-
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-
-  width: 40px;
-  height: 40px;
+  width: 15px;
+  height: 15px;
   padding: 0;
   margin: 0;
   border: none;
@@ -100,53 +92,75 @@ body {
 
   background-color: transparent;
   color: #fff;
+  fill: #ff6b08;
 
   cursor: pointer;
   transition: background-color var(--animation-duration) var(--timing-function);
   outline: none;
-  background-image: url("../../images/modal-window/icon-close.svg");
   background-position: center;
-  background-size: 60%;
   background-repeat: no-repeat;
+  background-size: 60%;
 
   z-index: 2;
 }
 
-.film-info-share {
+.modal-button:hover {
+  background-color: #ff6b08;
+  border: 3px solid #ff6b08;
+  fill: #fff;
+}
+
+.film-info-trailer {
+  padding: 0;
+}
+
+/* ! --------- SOCIAL --------- */
+
+.film-info-social {
   display: flex;
+  padding: 7px;
 }
 
 a.fb-btn {
   box-sizing: border-box;
   display: block;
   background-color: #3b5b9b;
+  /* background-color: #fff; */
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   overflow: hidden;
   line-height: 0;
-  padding: 0 2px 0 2px;
+  padding: 3px 2px 0 2px;
   height: 28px;
   width: 40px;
   text-decoration: none;
   text-align: center;
   margin-right: 5px;
 }
-.fb-label {
+/* a.fb-btn:hover {
+  background-color: #3b5b9b;
+} */
+
+span.fb-icon {
   box-sizing: border-box;
-  color: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 28px;
-  padding-top: 4px;
+  background: url(../../images/modal-window/facebook.svg) no-repeat 0 0;
+  width: 19px;
+  height: 22px;
   display: inline-block;
-  line-height: 22px;
-  vertical-align: baseline;
+  vertical-align: middle;
+  fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+span.fb-icon:hover {
+  fill: #fff;
 }
 
 a.tgme-btn {
   box-sizing: border-box;
   display: block;
   background-color: #54a9eb;
+  /* background-color: #fff; */
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   overflow: hidden;
   line-height: 0;
@@ -157,20 +171,30 @@ a.tgme-btn {
   text-align: center;
   margin-right: 5px;
 }
+/* a.tgme-btn:hover {
+  background-color: #54a9eb;
+} */
+
 span.tgme-icon {
   box-sizing: border-box;
-  background: url(../../images/modal-window/tgme-logo.png) no-repeat 0 0;
+  background: url(../../images/modal-window/telegram5.svg) no-repeat 0 0;
   width: 28px;
   height: 28px;
   line-height: 28px;
   display: inline-block;
   vertical-align: middle;
+  fill: #afb1b8;
+}
+span.tgme-icon:hover {
+  fill: #fff;
 }
 
 a.whatsapp-btn {
   box-sizing: border-box;
   display: block;
   background-color: #26d365;
+  /* background-color: #fff; */
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   overflow: hidden;
   line-height: 0;
@@ -181,21 +205,24 @@ a.whatsapp-btn {
   text-align: center;
   margin-right: 5px;
 }
+/* a.whatsapp-btn:hover {
+  background-color: #26d365;
+} */
+
 span.whatsapp-icon {
   box-sizing: border-box;
-  background: url(../../images/modal-window/whatsapp.png) no-repeat 0 0;
+  background: url(../../images/modal-window/whatsapp.svg) no-repeat 0 0;
   width: 28px;
   height: 28px;
   line-height: 28px;
   display: inline-block;
   vertical-align: middle;
-  /* z-index: 3; */
+  fill: #afb1b8;
 }
-
-.modal-button:hover,
-.modal-button:focus {
-  background-color: rgba(255, 255, 255, 0.95);
+span.tgme-icon:hover {
+  fill: #fff;
 }
+/* ! --------- End of SOCIAL --------- */
 
 .poster {
   width: 280px;
@@ -217,15 +244,18 @@ span.whatsapp-icon {
   text-transform: uppercase;
 }
 
+/* ! --------- TABLE --------- */
+
 table {
   border-collapse: collapse;
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px;
 }
 
 table td {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 3px;
+  /* border: 1px solid #2a2a2a; */
 }
 
 #col1 {
@@ -253,6 +283,7 @@ table td {
 .genre {
   color: #8c8c8c;
 }
+/* ! --------- End of TABLE --------- */
 
 .original-title {
   text-transform: uppercase;
@@ -303,7 +334,7 @@ table td {
 }
 
 /* !  ------------------TABLET ver.------------------ */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   .modal-content {
     padding-top: 20px;
     padding-left: 20px;
@@ -313,19 +344,23 @@ table td {
 
     position: fixed;
     /* top: 250px; */
-    left: calc((98% - 618px) / 2);
 
-    /* top: 50%;
+    /* left: calc((98% - 618px) / 2); */
+
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
 
     width: min-content;
     z-index: 1;
   }
 
   .modal-button {
-    top: -5px;
-    right: -6px;
+    top: 2px;
+    right: 2px;
+
+    width: 20px;
+    height: 20px;
   }
 
   .poster {
@@ -356,7 +391,7 @@ table td {
 }
 
 /* ! ------------------DESKTOP ver.------------------ */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   .modal-content {
     padding-top: 30px;
     padding-left: 30px;
@@ -366,20 +401,24 @@ table td {
 
     position: fixed;
     /* top: 260px; */
-    top: 120px;
-    left: calc((94% - 882px) / 2);
 
-    /* top: 50%;
+    /* top: 120px;
+    left: calc((94% - 882px) / 2); */
+
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
 
     width: min-content;
     z-index: 1;
   }
 
   .modal-button {
-    top: -5px;
-    right: -5px;
+    top: 2px;
+    right: 2px;
+
+    width: 24px;
+    height: 24px;
   }
 
   .poster {

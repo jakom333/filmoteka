@@ -64,7 +64,7 @@
 
 .button-trailer {
   display: flex;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   justify-content: center;
   align-items: center;
   width: 136px;
@@ -72,6 +72,10 @@
   color: black;
   background: transparent;
   border: 1px solid black;
+}
+
+.button:first-child {
+  margin-right: 0;
 }
 
 .button-trailer:hover {

@@ -28,9 +28,10 @@ function onOpenModal(event) {
 
   function fetchFilmInfo() {
     return fetch(movieIUrl)
-      .then((response) => response.json())
+      .then((response) => (response.status === 200 ? response.json() : ""))
       .then((data) => {
         langSearch = langSearch === "ru-RU" ? false : true;
+        console.log(data);
         modalMarkup({ ...data, langSearch });
         playTrailer();
       })
@@ -41,6 +42,7 @@ function onOpenModal(event) {
 
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
+
   window.scrollTo({
     // ! may be to delete ?
     top: 0,
@@ -51,12 +53,11 @@ function modalMarkup(data) {
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("beforeend", markup);
 
-  const closeModalBtn = document.querySelector(
-    'button[data-action="close-modal"]',
-  );
+  const closeModalBtn = document.querySelector(".modal-button");
   closeModalBtn.addEventListener("click", onCloseModal);
 
   window.addEventListener("keydown", onPressKey);
+
   const watchBtn = document.querySelector(".action-watch");
 
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
