@@ -70,7 +70,12 @@
         <svg class="trailer-svg">
             <use href="../images/symbol-defs.svg#icon-play3"></use>
         </svg>
-        <span class="btn-text">play trailer</span>
+        <span class="btn-text">
+            {{#if langSearch }} play trailer
+            {{else}} трейлер
+            {{/if}}
+
+        </span>
     </button>
 
     <div class="film-about">
