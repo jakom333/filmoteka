@@ -4,13 +4,13 @@ import fetchMovies, { fetchGenres } from "./fetchMovies.js";
 
 
 export default
-
+  
 refs.switcher.addEventListener('click', switchLangHandler);
 function switchLangHandler(event) {
   event.preventDefault();
-  let lang;
 
 
+let lang;
 let activeLang = refs.switcher.querySelector('.underline');
   activeLang.classList.remove('underline');
   event.target.classList.add('underline');
@@ -23,16 +23,13 @@ let activeLang = refs.switcher.querySelector('.underline');
   
   document.documentElement.lang = lang.toLocaleLowerCase();
   changeLangSearch(lang);
+  translateHTMLtext(lang);
 
-  
   fetchGenres(lang).then((res) => {
   fetchMovies();
   });
 
-  traslateHTMLtext(lang);
-  
-
-  };
+ };
   
   function changeLangSearch(lang) {
     if (lang === 'RU') {   
@@ -42,7 +39,8 @@ let activeLang = refs.switcher.querySelector('.underline');
     }
 };
 
-function traslateHTMLtext(lang){
+export function translateHTMLtext(lang) {
+  
   refs.input[0].placeholder = translatedData[lang].input;
   refs.homeBtn.textContent = translatedData[lang].home;
   refs.byStudents.textContent = translatedData[lang].footerStudents;

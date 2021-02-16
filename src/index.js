@@ -13,21 +13,27 @@ import "./js/markup-library.js";
 import "./js/markup.js";
 import "./js/buttons-movie";
 import refs from './js/refs.js';
+import { translateHTMLtext } from './js/switch-language.js';
 
-export let genres =  [];
+
 
 let lang = localStorage.getItem('lang');
 let activeLang;
+
 if (lang === 'en-EN') {
   activeLang = refs.switcher.querySelector('.underline');
   activeLang.classList.remove('underline');
   refs.enBtn.classList.add('underline');
+  translateHTMLtext('EN');
 
 }  else if (lang === 'ru-RU'){
   activeLang = refs.switcher.querySelector('.underline');
   activeLang.classList.remove('underline');
   refs.ruBtn.classList.add('underline');
+  translateHTMLtext('RU');
 }
+
+export let genres =  [];
 
 fetchGenres(lang).then((res) => {
   genres = res;

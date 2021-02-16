@@ -53,8 +53,6 @@ function fetchAPI(searchQuery) {
         return;
       }
       offSpin();
-         
-      // console.log(data);
       renderTopRated(data);
       markup(data);
        
