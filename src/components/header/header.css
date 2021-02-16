@@ -255,6 +255,10 @@ body {
   .header-nav-list-item:first-child {
     margin-right: 10px;
   }
+
+  .button:last-child {
+    margin-left: 15px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -287,6 +291,9 @@ body {
     width: 340px;
     margin: 0 auto;
   }
+  .button {
+    margin-left: 19px;
+  }
 }
 @media screen and (min-width: 1200px) {
   .header-home-background {
@@ -314,6 +321,9 @@ body {
   .search {
     width: 340px;
     margin: 0 auto;
+  }
+  .button {
+    margin-left: 19px;
   }
 }
 /* ------------------hidden content---------------- */
@@ -344,7 +354,6 @@ body {
 }
 .film-overlay .button:first-child {
   margin-bottom: 15px;
-  margin-right: 0;
 }
 .film-overlay .button {
   pointer-events: all;
