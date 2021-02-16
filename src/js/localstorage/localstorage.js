@@ -1,6 +1,9 @@
 import { checkFilm } from "../modal-window.js";
 
 export default function watchedHandler(data) {
+
+   let lang = localStorage.getItem('lang');
+
   return function () {
     let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
 
@@ -10,15 +13,26 @@ export default function watchedHandler(data) {
 
     if (!checkFilm(watchedInLocalstorage, data)) {
       watchedInLocalstorage.push(data);
-      watchBtnModal.textContent = "remove from Watched";
+
+      if (lang === 'en-EN') {
+        watchBtnModal.textContent = "remove from Watched";
+      } else if (lang === 'ru-RU') {
+        watchBtnModal.textContent = "удалить из просмотренных"
+      }
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
+      
     } else {
       watchedInLocalstorage.forEach((movie) => {
         if (movie.id === data.id) {
           watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(movie), 1);
         }
       });
-      watchBtnModal.textContent = "add to Watched";
+
+      if (lang === 'en-EN') {
+        watchBtnModal.textContent = "add to Watched";
+      } else if (lang === 'ru-RU') {
+         watchBtnModal.textContent = "добавить в просмотренные";
+    }
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
     }
   };
@@ -33,15 +47,25 @@ export function queueHandler(data) {
 
     if (!checkFilm(queueInLocalstorage, data)) {
       queueInLocalstorage.push(data);
-      queueBtnModal.textContent = "remove from queue";
+      if (lang === 'en-EN') {
+        queueBtnModal.textContent = "remove from queue";
+      } else if (lang === 'ru-RU') {
+        queueBtnModal.textContent = "удалить из добавленных";
+      }
+
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
-    } else  {
+    } else {
       queueInLocalstorage.forEach((movie) => {
         if (movie.id === data.id) {
           queueInLocalstorage.splice(queueInLocalstorage.indexOf(movie), 1);
         }
       });
-      queueBtnModal.textContent = "add to queue";
+
+      if (lang === 'en-EN') {
+        queueBtnModal.textContent = "add to queue";
+      } else if (lang === 'ru-RU') {
+        queueBtnModal.textContent = "добавить";
+    }
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
     }
   };
