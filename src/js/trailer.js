@@ -89,7 +89,8 @@ export function playTrailer() {
   const posterSvgRefs = document.querySelector(".trailer-box-svg-on");
 
   function showPosterPlay(event) {
-    let movieID = event.target.dataset.id;
+    console.log(event.target);
+    let movieID = event.currentTarget.dataset.id;
     fetchUrl(movieID);
   }
   posterSvgRefs.addEventListener("click", showPosterPlay);
