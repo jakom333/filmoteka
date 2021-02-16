@@ -28,13 +28,19 @@
             /></a>
             <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
           </div>
+          <div class="languages">
+            <a href="#" language="EN" class="active">EN</a>
+            <a href="#" language="RU">RU</a>
+          </div>
           <ul class="header-nav-list">
             <li class="header-nav-list-item home-button underline">home</li>
             <li class="header-nav-list-item library-button">my library</li>
           </ul>
         </nav>
         <div class="search search-show">
-          <input class="search-input" type="text" placeholder="Поиск фильмов" />
+          <form class="search-form">
+          <input class="search-input" type="text" placeholder="Search movie" />
+          </form>
         </div>
         <div class="header-buttons hidden">
           <button class="button watched-button button-anactive">watched</button>
@@ -56,7 +62,7 @@
 
     <div class="pagination container">
       <div class="paginator">
-        <button class="btn-page previous" data-index="1">&larr;</button>
+        <button class="btn-page prev" data-index="1">&larr;</button>
         <button class="btn-first btn" data-index="1">1</button>
         <button class="btn-dots dots1" data-index="1">...</button>
         <button class="btn-page1 active btn" data-index="1">1</button>
@@ -65,7 +71,7 @@
         <button class="btn-page4 btn" data-index="4">4</button>
         <button class="btn-page5 btn" data-index="5">5</button>
         <button class="btn-dots dots2" data-index="1">...</button>
-        <button class="btn-last btn" data-index="995">995</button>
+        <button class="btn-last btn" data-index="1000">1000</button>
         <button class="btn-page next" data-index="1">&rarr;</button>
       </div>
     </div>
@@ -81,8 +87,9 @@
             <svg class="footer-developed-icon">
               <use href="./images/symbol-defs.svg#icon-heart-footer"></use>
             </svg>
-            <p>
-              by <span class="footer-developed-students">GoIT Students</span>
+            <p class="by">
+             <span class="by-text">by</span>
+             <span class="footer-developed-students">GoIT Students</span>
             </p>
           </div>
         </div>

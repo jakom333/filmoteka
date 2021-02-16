@@ -1,75 +1,71 @@
-import "@pnotify/core/dist/BrightTheme.css";
-import "@pnotify/core/dist/PNotify.css";
-import "@pnotify/core/dist/Material.css";
-import { notice, error } from "@pnotify/core";
 import markup from "./markup.js";
-
 import { onSpin, offSpin } from "./spinner.js";
+import { currentPage } from "./pagination";
+import config from '../data-base//config.json';
+import refs from './refs.js';
+import renderTopRated from './top-filters.js';
 
-const KEY = "4fbdbd8abdbcde78896e194e86813212";
-const baseUrl = `https://api.themoviedb.org/3/`;
-// const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`;
-// const genreUrl = `${baseUrl}genre/movie/list?api_key=${KEY}&language=en-US`;
 
-let form = document.querySelector(".search");
-let gallery = document.querySelector(".photo-gallery-list");
 
 let input = "";
-
-const genreUrl = `${baseUrl}genre/movie/list?api_key=${KEY}&language=en-US`;
-
-fetch(genreUrl)
-  .then((response) => (response.status === 200 ? response.json() : ""))
-  .then((data) => {
-    // console.log(data);
-    return data;
-  })
-  .catch((err) => console.log(err));
+localStorage.setItem('lang', 'en-US');
 
 function fetchAPI(searchQuery) {
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-US&page=1&per_page=9&primary_release_year&query=${searchQuery}`;
+  const langSearch = localStorage.getItem('lang');
+  const url = `${config.baseURL}search/movie?api_key=${config.KEY}&page=${currentPage}
+  &primary_release_year&query=${searchQuery}&language=${langSearch}`;
 
   fetch(url)
     .then((response) => (response.status === 200 ? response.json() : ""))
     .then((data) => {
       if (searchQuery.length === 0) {
-        notice({
-          title: "NICE TRY!",
-          text: " But please, give us at least one word.",
-          delay: 2000,
-        });
         offSpin();
+        
+        if (langSearch === 'en-US') {
+          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Please, give us at least one word! </h2>
+         <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
+         class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
+         </a></div>`
+        } else {
+          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Пожалуйста, дайте нам хоть одно слово! </h2>
+         <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
+         class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
+         </a></div>`}
         return;
+
       } else if (!data.results.length) {
-        error({
-          text: "There are no movies with this title! Keep up! Try again!",
-          delay: 2000,
-        });
+        if (langSearch === 'en-US') {
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+   <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
+   allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`
+        } else {
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету! Попробуйте ещё раз!</h2>
+   <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
+   allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`
+        }
+
         offSpin();
         return;
       }
-
-      // console.log(data)
       offSpin();
+         
+      // console.log(data);
+      renderTopRated(data);
       markup(data);
+       
     })
+ 
     .catch((err) => console.log(err));
-}
+};
 
-form.addEventListener("change", searchMovieHandler);
-
+refs.form.addEventListener("submit", searchMovieHandler);
 function searchMovieHandler(event) {
   event.preventDefault();
-  gallery.innerHTML = "";
+  refs.gallery.innerHTML = "";
   onSpin();
-  input = event.target.value;
+  input = event.target[0].value;
   fetchAPI(input);
-
-  // offSpin();
+  refs.form.reset();
 }
 
-// } else if (!data.results.poster_path) {
 
-//        poster_path = 'https://www.prokerala.com/movies/assets/img/no-poster-available.jpg';
-
-//     }
