@@ -45,12 +45,12 @@ function onOpenModal(event) {
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
 
-  window.scrollTo({
-    // ! may be to delete ?
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
+  // window.scrollTo({
+  //   // ! may be to delete ?
+  //   top: 0,
+  //   left: 0,
+  //   behavior: "smooth",
+  // });
 
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("beforeend", markup);
