@@ -1,0 +1,154 @@
+/* ----------YuoTube Window------------- */
+.trailer-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vw;
+  background-color: transparent;
+  /* pointer-events: none; */
+  z-index: 5;
+}
+.trailer-box.is-open {
+  display: flex;
+}
+.trailer {
+  position: fixed;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* --------------- */
+.btn-close-player {
+  z-index: 7;
+  padding-top: 0.9px;
+  padding-right: 0.3px;
+  opacity: 0.9;
+  position: absolute;
+  top: 13.3px;
+  right: 6px;
+  border-radius: 50%;
+  width: 19.7px;
+  height: 19.7px;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.btn-close-icon {
+  fill: red;
+  width: 10px;
+  height: 10px;
+}
+
+.trailer-iframe {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  height: 360px;
+}
+.trailer-svg {
+  display: flex;
+  margin-right: 10px;
+  fill: black;
+  width: 22px;
+  height: 22px;
+}
+
+.button-trailer {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 136px;
+  height: 44px;
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+}
+
+.button-trailer:hover {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: white;
+}
+
+.button-trailer:hover > .trailer-svg {
+  fill: white;
+}
+
+.poster-box {
+  position: relative;
+}
+
+.trailer-box-svg {
+  opacity: 0;
+  width: 426px;
+  height: 514px;
+  background-color: rgba(105, 105, 105, 0.5);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+
+.trailer-box-svg:hover {
+  opacity: 1;
+}
+
+.trailer-box-svg-on {
+  position: absolute;
+  width: 120px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .trailer-iframe {
+    width: 310px;
+    height: 150px;
+  }
+  .btn-close-player {
+    top: 4px;
+    right: 4px;
+  }
+
+  .trailer-box-svg {
+    width: 280px;
+    height: 416px;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1199px) {
+  .trailer-box-svg {
+    width: 294px;
+    height: 416px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .trailer {
+    width: 640px;
+    height: 320px;
+  }
+  .trailer-iframe {
+    width: 640px;
+    height: 320px;
+  }
+  .btn-close-player {
+    top: 4px;
+    right: 4px;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  .trailer-box-svg {
+    width: 426px;
+    height: 514px;
+  }
+}

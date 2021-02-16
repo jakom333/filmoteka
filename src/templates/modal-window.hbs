@@ -1,6 +1,13 @@
-<img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}"
-    alt="a poster to {{title}} film" data-id="{{id}}">
-
+<button type="button" class="modal-button" data-action="close-modal"></button>
+<div class="poster-box">
+    <img class="poster film-pic" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}"
+        alt="a poster to {{title}} film">
+    <div class="trailer-box-svg">
+        <svg class="trailer-box-svg-on" data-id="{{id}}">
+            <use href=" ../images/symbol-defs.svg#icon-play3"></use>
+        </svg>
+    </div>
+</div>
 <div class="film-data">
     <p class="film-title">{{title}}</p>
 
@@ -39,7 +46,32 @@
             </td>
             <td class="film-info-data">{{#each genres}}{{name}}, {{/each}}</td>
         </tr>
+        <tr>
+            <td class="film-info genre">
+            </td>
+            <td class="film-info-share">
+
+                <a href="https://www.facebook.com/sharer.php?display=page&u=https://www.themoviedb.org/movie/{{id}}&amp;text=Would%20you%20like%20to%20watch%20this%20movie%3F%20"
+                    class="fb-btn" rel="nofollow" target="_blank">
+                    <span class="fb-label">f</span></a>
+
+                <a href="https://t.me/share?url=https://www.themoviedb.org/movie/{{id}}&amp;text=Would%20you%20like%20to%20watch%20this%20movie%3F%20"
+                    class="tgme-btn" rel="nofollow" target="_blank">
+                    <span class="tgme-icon"></span></a>
+
+                <a href="https://api.whatsapp.com/send?text=https://www.themoviedb.org/movie/{{id}}&amp;text=Would%20you%20like%20to%20watch%20this%20movie%3F%20"
+                    class="whatsapp-btn" rel="nofollow" target="_blank">
+                    <span class="whatsapp-icon"></span></a>
+
+            </td>
+        </tr>
     </table>
+    <button class="button button-trailer" data-id="{{id}}">
+        <svg class="trailer-svg">
+            <use href="../images/symbol-defs.svg#icon-play3"></use>
+        </svg>
+        <span class="btn-text">play trailer</span>
+    </button>
 
     <div class="film-about">
         <p class="film-about-title">

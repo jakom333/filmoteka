@@ -7,6 +7,7 @@ const refs = {
   watchedBtn: document.querySelector(".watched-button"),
   queueBtn: document.querySelector(".queue-button"),
 };
+
 const changeHeaderBgc = function () {
   refs.header.classList.toggle("header-home-background");
   refs.header.classList.toggle("header-library-background");
@@ -24,6 +25,7 @@ const changeQueueBtnTheme = function () {
   refs.queueBtn.classList.toggle("button-anactive");
   refs.queueBtn.classList.toggle("button-active");
 };
+
 refs.libraryBtn.addEventListener("click", changeHeaderBgc);
 refs.homeBtn.addEventListener("click", changeHeaderBgc);
 refs.watchedBtn.addEventListener("click", changeWatchedBtnTheme);

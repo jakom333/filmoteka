@@ -11,6 +11,7 @@ import "./js/top-filters.js";
 import "./js/localstorage/localstorage.js";
 import "./js/markup-library.js";
 import "./js/markup.js";
+import "./js/buttons-movie";
 
 export let genres = [];
 
