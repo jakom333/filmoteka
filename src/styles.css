@@ -7,6 +7,10 @@ a {
   text-decoration: none;
 }
 
+.search-error {
+  margin: 0 auto;
+}
+
 @import "./components/header/header.css";
 @import "./components/modal-window/modal-window.css";
 @import "./components/main-section/main-section.css";
