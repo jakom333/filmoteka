@@ -29,6 +29,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
     "file-loader": "^6.2.0",
+    "firebase": "^8.2.7",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "gh-pages": "^3.1.0",
     "handlebars": "^4.7.6",
@@ -49,7 +50,6 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "firebase": "^8.2.7",
     "flipdown": "^0.3.2",
     "material-design-icon-fonts": "^3.0.1",
     "material-design-icons": "^3.0.1",

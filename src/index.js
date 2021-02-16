@@ -12,6 +12,7 @@ import "./js/localstorage/localstorage.js";
 import "./js/markup-library.js";
 import "./js/markup.js";
 import "./js/buttons-movie";
+import "./js/firebase.js";
 
 export let genres = [];
 
