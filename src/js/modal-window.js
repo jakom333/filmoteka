@@ -82,8 +82,8 @@ function modalMarkup(data) {
     queueBtnModal.textContent = "add to queue";
   }
 
-  watchBtnModal.addEventListener("click", watchedHandler(data));
-  queueBtnModal.addEventListener("click", queueHandler(data));  
+  watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
+  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
 }
 
 
