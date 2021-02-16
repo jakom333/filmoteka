@@ -28,7 +28,7 @@
   padding-right: 0.3px;
   opacity: 0.9;
   position: absolute;
-  top: 13.3px;
+  top: 13.2px;
   right: 6px;
   border-radius: 50%;
   width: 19.7px;
@@ -90,7 +90,7 @@
   opacity: 0;
   width: 426px;
   height: 514px;
-  background-color: rgba(105, 105, 105, 0.5);
+  background-color: transparent;
   position: absolute;
   top: 0%;
   left: 0%;
@@ -107,6 +107,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   fill: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -139,10 +140,6 @@
   .trailer-iframe {
     width: 640px;
     height: 320px;
-  }
-  .btn-close-player {
-    top: 4px;
-    right: 4px;
   }
 }
 

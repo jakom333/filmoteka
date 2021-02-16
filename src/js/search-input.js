@@ -4,6 +4,7 @@ import { currentPage } from "./pagination";
 import config from "../data-base//config.json";
 import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
+import markupPagination from "./pagination.js";
 
 export let input = "";
 localStorage.setItem("lang", "en-US");
@@ -52,7 +53,6 @@ export function fetchAPI(searchQuery) {
       // console.log(data);
       renderTopRated(data);
       markup(data);
-      console.log("search input", data);
       document.querySelector(".btn-last").textContent = data.total_pages;
       document.querySelector(".btn-last").dataset.index = data.total_pages;
       return data.total_pages;
