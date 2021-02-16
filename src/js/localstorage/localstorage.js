@@ -1,16 +1,16 @@
 import { checkFilm } from "../modal-window.js";
 
-export default function watchedHandler(data) {
+export default function watchedHandler(data, btn) {
   return function () {
     let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
 
     if (!watchedInLocalstorage) watchedInLocalstorage = [];
 
-    const watchBtnModal = document.querySelector(".action-watch");
+    
 
     if (!checkFilm(watchedInLocalstorage, data)) {
       watchedInLocalstorage.push(data);
-      watchBtnModal.textContent = "remove from Watched";
+      btn.textContent = "remove from Watched";
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
     } else {
       watchedInLocalstorage.forEach((movie) => {
@@ -18,22 +18,22 @@ export default function watchedHandler(data) {
           watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(movie), 1);
         }
       });
-      watchBtnModal.textContent = "add to Watched";
+      btn.textContent = "add to Watched";
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
     }
   };
 }
 
-export function queueHandler(data) {
+export function queueHandler(data, btn) {
   return function () {
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
     if (!queueInLocalstorage) queueInLocalstorage = [];
 
-    const queueBtnModal = document.querySelector(".action-queue");
+    
 
     if (!checkFilm(queueInLocalstorage, data)) {
       queueInLocalstorage.push(data);
-      queueBtnModal.textContent = "remove from queue";
+      btn.textContent = "remove from queue";
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
     } else  {
       queueInLocalstorage.forEach((movie) => {
@@ -41,7 +41,7 @@ export function queueHandler(data) {
           queueInLocalstorage.splice(queueInLocalstorage.indexOf(movie), 1);
         }
       });
-      queueBtnModal.textContent = "add to queue";
+      btn.textContent = "add to queue";
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
     }
   };
