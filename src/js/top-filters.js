@@ -1,8 +1,5 @@
 export default function renderTopRated(data) {
-    data.results.sort((a, b) =>{
-      
-        return b.vote_average - a.vote_average;
-  });
+    data.results.sort((a, b) => b.vote_average - a.vote_average);
 }
 
 function makeTopDateRelease(data) {
