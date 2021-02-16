@@ -1,4 +1,4 @@
-import markup from "./markup.js";
+import { markup } from "./markup.js";
 import { onSpin, offSpin } from "./spinner.js";
 import { currentPage } from "./pagination";
 import config from "../data-base//config.json";
