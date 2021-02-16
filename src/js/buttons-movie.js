@@ -1,25 +1,38 @@
-export default function movieButtons(li) {
-  li.forEach((el) => {
+import { checkFilm } from "../js/modal-window.js";
+import watchedHandler, { queueHandler } from "./localstorage/localstorage.js";
+
+export default function movieButtons(li, data) {
+  if (!li || !data) return;
+
+  for (let index = 0; index < li.length; ++index) {
+    let el = li[index];
+    let movie = data.results[index];
+
     el.addEventListener("mouseenter", (e) => {
+      let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+      let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+      const watchedBtnText = checkFilm(watchedInLocalstorage, movie) ? "remove from watched" : "add to watched";
+      const queueBtnText = checkFilm(queueInLocalstorage, movie) ? "remove from queue" : "add to queue";   
+      
+      
       e.target.insertAdjacentHTML(
         "afterBegin",
-        `<div class="film-overlay"><button class="button watched-button button-anactive li-btn-js-watched">watched</button>
-              <button class="button queue-button button-anactive li-btn-js-queue">queue</button></div>`,
+        `<div class="film-overlay"><button class="button watched-button button-anactive li-btn-js-watched">${watchedBtnText}</button>
+              <button class="button queue-button button-anactive li-btn-js-queue">${queueBtnText}</button></div>`,
       );
-      const buttonQueue = document.querySelector(".li-btn-js-queue");
-      const buttonWatched = document.querySelector(".li-btn-js-watched");
-      buttonQueue.addEventListener("click", () => {
-        buttonQueue.classList.toggle("button-anactive");
-        buttonQueue.classList.toggle("button-active");
-        console.log("кнопка: queue");
-        // тут пишем вызов функции которая добавляет фильм в "queue"
-      });
-      buttonWatched.addEventListener("click", () => {
-        buttonWatched.classList.toggle("button-anactive");
-        buttonWatched.classList.toggle("button-active");
-        console.log("кнопка: watched");
-        // тут пишем вызов функции которая добавляет фильм в "watched"
-      });
+        
+      const mainSectionBtnQueue = document.querySelector(".li-btn-js-queue");
+      const mainSectionBtnWatched = document.querySelector(
+        ".li-btn-js-watched",
+      );
+      mainSectionBtnWatched.addEventListener(
+        "click",
+        watchedHandler(movie, mainSectionBtnWatched),
+      );
+      mainSectionBtnQueue.addEventListener(
+        "click",
+        queueHandler(movie, mainSectionBtnQueue),
+      );
     });
     el.addEventListener("mouseleave", () => {
       const overlay = document.querySelector(".film-overlay");
@@ -27,5 +40,5 @@ export default function movieButtons(li) {
         overlay.remove();
       }
     });
-  });
+  }
 }
