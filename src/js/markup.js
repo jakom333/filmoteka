@@ -36,7 +36,7 @@ export function markup(movie) {
       movie.poster_path;
   else
     movie.poster_path =
-      "https://sales.arecontvision.com/images/products/img_placeholder_41845_xl.jpg";
+      "https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg";
 
   return movie;
 }
