@@ -107,7 +107,7 @@ function onCloseModal() {
   }
 }
 
-function onPressKey(event) {
+export function onPressKey(event) {
   if (event.code === "Escape") onCloseModal();
 }
 
