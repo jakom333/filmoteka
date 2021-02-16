@@ -25,7 +25,6 @@ function onOpenModal(event) {
     return fetch(movieIUrl)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         return modalMarkup(data);
       })
       .catch((err) => console.log(err));
@@ -51,8 +50,6 @@ function modalMarkup(data) {
   );
   closeModalBtn.addEventListener("click", onCloseModal);
 
-  // document.body.style.overflow = "hidden";
-
   window.addEventListener("keydown", onPressKey);
 }
 
@@ -60,7 +57,6 @@ function onCloseModal() {
   window.removeEventListener("keydown", onPressKey);
   modalWindow.classList.add("is-hidden");
 
-  // document.body.style.overflow = "unset";
   modalContent.innerHTML = "";
 }
 
