@@ -34,6 +34,7 @@ body {
 }
 .header-wrapper {
   width: 320px;
+  height: 210px;
   margin: 0 auto;
   padding: 48px 23px;
   margin: 0 auto;
@@ -91,23 +92,38 @@ body {
   height: 3px;
   background: #ff6b08;
 }
-
 .languages {
   display: flex;
+  justify-content: center;
+  width: 60px;
+  margin-left: 20px;
 }
-
 .languages > a {
   color: white;
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  font-size: 12px;
-  line-height: 14px;
   cursor: pointer;
   user-select: none;
 }
-
 .lang-en {
-  margin-right: 3px;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  background-image: url("../../images/header/united-kingdom.svg");
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+.circle-color {
+  background-color: #ffffff;
+}
+.lang-ru {
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/header/russia.svg");
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
 }
 
 /* ----------------------------------------------search------------------------------------------------------- */
@@ -223,6 +239,22 @@ body {
   .header-nav-logo-title {
     display: none;
   }
+  .languages {
+    margin-left: 0;
+  }
+  .header-nav {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-nav-list {
+    align-items: center;
+  }
+  .header-nav-list-item {
+    text-align: center;
+  }
+  .header-nav-list-item:first-child {
+    margin-right: 10px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -319,3 +351,7 @@ body {
   cursor: pointer;
 }
 /* ------------------/Film overlay + overlay buttons---------------- */
+.icon-home {
+  width: 25px;
+  height: 25px;
+}
