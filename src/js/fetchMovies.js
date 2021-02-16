@@ -2,31 +2,29 @@ import markupSearch from "./markup.js";
 import { currentPage } from "./pagination";
 import './search-input.js';
 import renderTopRated from './top-filters.js';
-
-
-const KEY = "6f1c32f58bd439b838f8f392fdf2c4dc";
-
+import config from '../data-base//config.json';
 
 export default function fetchMovies() {
-  const langSearch = localStorage.getItem('lang');
-  const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${KEY}&page=${currentPage}&language=${langSearch}`;
+  const lang = localStorage.getItem('lang');
+  const url = `${config.baseURL}trending/movie/day?api_key=${config.KEY}&page=${currentPage}&language=${lang}`;
 
   return fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      renderTopRated(data);
-      markupSearch(data); 
+     markupSearch(data); 
     
     })
     .catch((err) => console.log(err));
 }
 
-export function fetchGenres() {
-  const langSearch = localStorage.getItem('lang');
-  const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=${langSearch}`;
+export function fetchGenres(lang) {
+const genreUrl = `${config.baseURL}genre/movie/list?api_key=${config.KEY}&language=${lang}`;
   return fetch(genreUrl)
     .then((response) => (response.status === 200 ? response.json() : ""))
-    .then((data) => data.genres)
+    .then((data) => {
+    localStorage.setItem('genres', JSON.stringify(data.genres));
+    return data.genres
+    })
     .catch((err) => console.log(err));
 }
 
