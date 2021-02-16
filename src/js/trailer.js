@@ -9,7 +9,6 @@ function fetchUrl(movieID) {
     .then((response) => response.json())
     .then((data) => {
       let youtubeKey = data.results[0].key;
-      console.log(youtubeKey);
       backTrailerRef.classList.add("is-open");
       backTrailerRef.insertAdjacentHTML(
         "beforeend",
@@ -56,6 +55,8 @@ function fetchUrl(movieID) {
     });
 }
 
+function makeIframe() {}
+
 function showBtnClosePlayer(trailerFrameRefs) {
   trailerFrameRefs.insertAdjacentHTML(
     "beforeend",
@@ -68,17 +69,16 @@ function showBtnClosePlayer(trailerFrameRefs) {
 }
 
 function escPlayerHandler(event) {
-  console.log(event);
   if (event.code === "Escape") {
     onClosePlayer();
   }
+  // window.removeEventListener("keydown", escPlayerHandler);
 }
 
 function onClosePlayer() {
   window.addEventListener("keydown", escPlayerHandler);
   backTrailerRef.classList.remove("is-open");
   backTrailerRef.innerHTML = "";
-  // window.removeEventListener("keydown", escPlayerHandler);
 }
 
 window.addEventListener("keydown", escPlayerHandler);
