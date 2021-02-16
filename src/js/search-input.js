@@ -8,19 +8,6 @@ import renderTopRated from './top-filters.js';
 
 
 let input = "";
-let localStorageLang = localStorage.getItem('lang');
-let activeLang;
-
-if (localStorageLang === 'en-EN') {
-  activeLang = refs.switcher.querySelector('.underline');
-  activeLang.classList.remove('underline');
-  refs.enBtn.classList.add('underline');
-
-} else if (localStorageLang === 'ru-RU'){
-  activeLang = refs.switcher.querySelector('.underline');
-  activeLang.classList.remove('underline');
-  refs.ruBtn.classList.add('underline');
-}
 
 function fetchAPI(searchQuery) {
   const langSearch = localStorage.getItem('lang');
@@ -34,12 +21,12 @@ function fetchAPI(searchQuery) {
         offSpin();
         
         if (langSearch === 'en-US') {
-          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Please, give us at least one word! </h2>
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Please, give us at least one word! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`
         } else {
-          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Пожалуйста, введите хотя бы одно слово! </h2>
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Пожалуйста, введите хотя бы что нибуть! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`}
@@ -47,11 +34,17 @@ function fetchAPI(searchQuery) {
 
       } else if (!data.results.length) {
         if (langSearch === 'en-US') {
-          refs.gallery.innerHTML = `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+          refs.gallery.innerHTML = 
+            
+  //   `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+  //  <img src="../images/travolta.gif" alt="cool John Travolta" width="480" height="492">
+  //  <div>`
+            
+          `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
-   allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`
+   allowFullScreen></iframe><div>`
         } else {
-          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету! Попробуйте ещё раз!</h2>
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету. Не сдавайтесь! Попробуйте ещё раз!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
    allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`
         }
