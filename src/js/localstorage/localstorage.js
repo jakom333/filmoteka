@@ -3,7 +3,7 @@ import { checkFilm } from "../modal-window.js";
 export default function watchedHandler(data, btn) {
   return function () {
     let lang = localStorage.getItem('lang');
-
+    
     let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
     if (!watchedInLocalstorage) watchedInLocalstorage = [];
 
@@ -36,7 +36,7 @@ export default function watchedHandler(data, btn) {
 export function queueHandler(data, btn) {
   return function () {
     let lang = localStorage.getItem('lang');
-    
+
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
     if (!queueInLocalstorage) queueInLocalstorage = [];
 
