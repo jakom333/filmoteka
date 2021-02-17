@@ -1,13 +1,14 @@
 import fetchMovies from "./fetchMovies.js";
 import { input, fetchAPI } from "./search-input.js";
 import paginationTmp from "../templates/pagination.hbs";
-// import totalPages from "./fetchMovies.js";
 
 // console.log(totalPages());
 const paginationBox = document.querySelector(".pagination");
 let currentPage = 1;
 
 export default function markupPagination(data) {
+  console.log("Hello");
+  console.log(currentPage);
   paginationBox.innerHTML = paginationTmp(data);
 
   const refs = {
@@ -197,10 +198,12 @@ export default function markupPagination(data) {
 
   function setBtnActiveStyle(event) {
     let btnEvent = event.target;
+    console.log(btnEvent);
     if (btnEvent.classList.contains("btn")) {
       buttons.forEach((el) => {
         el.classList.remove("active");
       });
+      console.log(buttons);
       btnEvent.classList.add("active");
     }
   }

@@ -9,7 +9,7 @@ import markupPagination from "./pagination.js";
 export let input = "";
 localStorage.setItem("lang", "en-US");
 
-let totalPages;
+export let totalPages;
 
 export function fetchAPI(searchQuery) {
   const langSearch = localStorage.getItem("lang");
@@ -53,8 +53,10 @@ export function fetchAPI(searchQuery) {
       // console.log(data);
       renderTopRated(data);
       markup(data);
+
       document.querySelector(".btn-last").textContent = data.total_pages;
       document.querySelector(".btn-last").dataset.index = data.total_pages;
+      markupPagination(data);
       return data.total_pages;
     })
 
