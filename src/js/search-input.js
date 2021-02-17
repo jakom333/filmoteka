@@ -5,11 +5,12 @@ import config from "../data-base//config.json";
 import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
 import cardTemplate from "../templates/movie-card.hbs";
+import markupPagination from "./pagination.js";
 
 export let input = "";
 
-
 export function fetchAPI(searchQuery) {
+  let totalPages;
   const langSearch = localStorage.getItem("lang");
   const url = `${config.baseURL}search/movie?api_key=${config.KEY}&page=${currentPage}
   &primary_release_year&query=${searchQuery}&language=${langSearch}`;
@@ -19,8 +20,8 @@ export function fetchAPI(searchQuery) {
     .then((data) => {
       if (searchQuery.length === 0) {
         offSpin();
-        
-        if (langSearch === 'en-US') {
+
+        if (langSearch === "en-US") {
           refs.gallery.innerHTML = `<div class="search-error"> <h2> Please, give us at least one word! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
@@ -37,7 +38,7 @@ export function fetchAPI(searchQuery) {
           refs.gallery.innerHTML =        
           `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
-   allowFullScreen></iframe><div>`
+   allowFullScreen></iframe><div>`;
         } else {
           refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету. Не сдавайтесь! Попробуйте ещё раз!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
@@ -53,10 +54,10 @@ export function fetchAPI(searchQuery) {
       data.results.map((movie) => markup(movie));
       refs.gallery.innerHTML = "";
       refs.gallery.innerHTML = cardTemplate(data.results);
-
-      document.querySelector(".btn-last").textContent = data.total_pages;
-      document.querySelector(".btn-last").dataset.index = data.total_pages;
-      return data.total_pages;
+      markupPagination(data);
+      // document.querySelector(".btn-last").textContent = data.total_pages;
+      // document.querySelector(".btn-last").dataset.index = data.total_pages;
+      return (totalPages = data.total_pages);
     })
 
     .catch((err) => console.log(err));
@@ -71,6 +72,3 @@ function searchMovieHandler(event) {
   fetchAPI(input);
   refs.form.reset();
 }
-
-
-
