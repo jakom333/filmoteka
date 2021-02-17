@@ -33,9 +33,8 @@ function onOpenModal(event) {
   function fetchFilmInfo() {
     return fetch(movieIUrl)
       .then((response) => (response.status === 200 ? response.json() : ""))
-      .then((data) => {
-        lang = lang === "ru-RU" ? false : true;
-        console.log(data);
+      .then((data) => {        
+        lang = lang === "ru-RU" ? false : true;        
         modalMarkup({ ...data, lang });
         playTrailer();
       })
@@ -46,7 +45,14 @@ function onOpenModal(event) {
 
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
-  data.genres = data.genres.splice(0,4)
+    
+   let movieGenres = [];
+  data.genres.forEach((el) => {    
+    movieGenres.push(" " + el.name)
+  });
+  !movieGenres.length ? movieGenres.push("Other") : "";
+  data.genres = movieGenres.slice(0, 3);
+    
 
   // window.scrollTo({
   //   // ! may be to delete ?
