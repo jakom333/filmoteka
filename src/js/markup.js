@@ -25,24 +25,21 @@ export function markup(movie) {
   let newGenres= JSON.parse(localStorage.getItem('genres'))
   let movieGenres = [];
 
-  movie.genre_ids.forEach((el) => {
-    const foundGenreName = newGenres.find((item) => item.id === el);
-    movieGenres.push(" " + foundGenreName.name);
-  });
-
-  // if (movie.genre_ids) {
-  //   movie.genre_ids.forEach((el) => {
-  //     const foundGenreName = genres.find((item) => item.id === el);
-  //     if (foundGenreName)
-  //       movieGenres.push(" " + foundGenreName.name);
-  //   });
-  // }
-  // else if (movie.genres) {
-  //   movie.genres.forEach((el) => {
-  //       movieGenres.push(" " + el.name);
-    // });
+  if (movie.genre_ids) {
+    movie.genre_ids.forEach((el) => {
+      const foundGenreName = newGenres.find((item) => item.id === el);
+      if (foundGenreName)
+        movieGenres.push(" " + foundGenreName.name);
+    });
+  }
+  else if (movie.genres) {
+    movie.genres.forEach((el) => {
+      const foundGenreName = newGenres.find((item) => item.name === el.name);
+      if (foundGenreName)
+        movieGenres.push(" " + foundGenreName.name);
+    });
+  }
   
-
   !movieGenres.length ? movieGenres.push("Other") : "";
   movie.genres = movieGenres.slice(0, 2);
 

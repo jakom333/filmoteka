@@ -17,6 +17,10 @@ import "./js/buttons-movie";
 export let genres =  [];
 
 let lang = localStorage.getItem('lang');
+if (!lang) {
+  lang = 'en-US';
+  localStorage.setItem('lang', lang);
+}
 
 fetchGenres(lang).then((res) => {
   genres = res;
