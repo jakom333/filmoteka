@@ -1,0 +1,48 @@
+.to-up {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  display: none;
+  z-index: 22;
+  cursor: pointer;
+}
+
+.up-to-svg {
+  width: 30px;
+  height: 30px;
+  fill: #ff6b01;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .to-up {
+    bottom: 8px;
+    right: 20px;
+  }
+  .up-to-svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .up-to-svg {
+    fill: #ff6b01;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .to-up {
+    bottom: 7px;
+    right: 65px;
+  }
+  .up-to-svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .up-to-svg {
+    fill: rgba(255, 107, 1, 0.5);
+  }
+  .up-to-svg:hover {
+    fill: #ff6b01;
+    transform: scale(1.2);
+  }
+}

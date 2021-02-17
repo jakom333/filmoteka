@@ -17,10 +17,22 @@ body.dark-theme {
   color: #fff;
 }
 
+.footer.light-theme {
+  background-color: #f7f7f7;
+  color: var(--text-footer-clr);
+}
+
+.footer.dark-theme {
+  background-color: #505050;
+  color: #fff;
+}
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
-  padding: 16px 24px;
+  padding: 20px 24px;
+  padding-right: 0;
+  padding-top: 0;
 }
 
 .theme-switch {
@@ -70,7 +82,7 @@ body.dark-theme {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   transform: translateX(1px);
