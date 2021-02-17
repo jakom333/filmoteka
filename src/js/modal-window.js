@@ -6,6 +6,8 @@ import { isHomeScreen } from "../js/markup-library.js";
 import { isWatched } from "../js/markup-library.js";
 import { markupLibrary } from "../js/markup-library.js";
 
+
+
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
 
@@ -25,16 +27,15 @@ function onOpenModal(event) {
   film_ID = filmRef.dataset.id;
 
   const KEY = "8c70e92845ff03879b2dd3fe0ba57aa8";
-  let langSearch = localStorage.getItem("lang");
-  let movieIUrl = `https://api.themoviedb.org/3/movie/${film_ID}?api_key=${KEY}&language=${langSearch}`;
+  let lang = localStorage.getItem("lang");
+  let movieIUrl = `https://api.themoviedb.org/3/movie/${film_ID}?api_key=${KEY}&language=${lang}`;
 
   function fetchFilmInfo() {
     return fetch(movieIUrl)
       .then((response) => (response.status === 200 ? response.json() : ""))
       .then((data) => {
-        
-        langSearch = langSearch === "ru-RU" ? false : true;
-        modalMarkup({ ...data, langSearch });
+        lang = lang === "ru-RU" ? false : true;
+        modalMarkup({ ...data, lang });
         playTrailer();
       })
       .catch((err) => console.log(err));

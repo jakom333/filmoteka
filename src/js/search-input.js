@@ -6,22 +6,8 @@ import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
 import cardTemplate from "../templates/movie-card.hbs";
 
-let localStorageLang = localStorage.getItem("lang");
-let activeLang;
-
-if (localStorageLang === "en-EN") {
-  activeLang = refs.switcher.querySelector(".circle-color");
-  activeLang.classList.remove("circle-color");
-  refs.enBtn.classList.add("circle-color");
-} else if (localStorageLang === "ru-RU") {
-  activeLang = refs.switcher.querySelector(".circle-color");
-  activeLang.classList.remove("circle-color");
-  refs.ruBtn.classList.add("circle-color");
-}
-
 export let input = "";
 
-let totalPages;
 
 export function fetchAPI(searchQuery) {
   const langSearch = localStorage.getItem("lang");
@@ -33,26 +19,31 @@ export function fetchAPI(searchQuery) {
     .then((data) => {
       if (searchQuery.length === 0) {
         offSpin();
-
-        if (langSearch === "en-US") {
-          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Please, give us at least one word! </h2>
+        
+        if (langSearch === 'en-US') {
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Please, give us at least one word! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="search-input-null"> <h2> Пожалуйста, дайте нам хоть одно слово! </h2>
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Пожалуйста, введите хотя бы что нибуть! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         }
         return;
       } else if (!data.results.length) {
-        if (langSearch === "en-US") {
-          refs.gallery.innerHTML = `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+        if (langSearch === 'en-US') {
+          refs.gallery.innerHTML = 
+     
+    `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+   <video autoplay loop controls width="480" height="492" src="../images/travolta.gif"><div>`
+            
+          `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
-   allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`;
+   allowFullScreen></iframe><div>`
         } else {
-          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету! Попробуйте ещё раз!</h2>
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету. Не сдавайтесь! Попробуйте ещё раз!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
    allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`;
         }
@@ -61,8 +52,6 @@ export function fetchAPI(searchQuery) {
         return;
       }
       offSpin();
-
-      
       renderTopRated(data);
 
       data.results.map((movie) => markup(movie));
@@ -86,3 +75,22 @@ function searchMovieHandler(event) {
   fetchAPI(input);
   refs.form.reset();
 }
+
+
+
+// fetch(`https://api.themoviedb.org/3/search/movie?api_key=${config.KEY}&language=en-US&page=1&per_page=9&primary_release_year&query=fight-club`)
+//    .then((response) => (response.status === 200 ? response.json() : ""))
+//   .then((data) => console.log(data));
+
+
+//  fetch(`https://api.themoviedb.org/3/movie/583406?api_key=${config.KEY}&language=en-US`)
+//    .then((response) => (response.status === 200 ? response.json() : ""))
+//   .then((data) => console.log(data));
+
+//     fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${config.KEY}`)
+//   .then(response => (response.json())
+//     .then(data => {
+//       console.log(data)
+//     })
+//     .catch(err => console.log(err)));
+

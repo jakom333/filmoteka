@@ -24,7 +24,7 @@
     <table class="film-info-box">
         <tr>
             <td id="col1" class="film-info vote">
-                {{#if langSearch }} Rating / Votes
+                {{#if lang }} Rating / Votes
                 {{else}} Рейтинг / Голоса
                 {{/if}}
             </td>
@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <td class="film-info pop">
-                {{#if langSearch }} Popularity
+                {{#if lang }} Popularity
                 {{else}} Популярность
                 {{/if}}
             </td>
@@ -47,7 +47,7 @@
         </tr>
         <tr>
             <td class="film-info orig">
-                {{#if langSearch }} Original Title
+                {{#if lang }} Original Title
                 {{else}} Оригинальное название
                 {{/if}}
             </td>
@@ -55,7 +55,7 @@
         </tr>
         <tr>
             <td class="film-info genre">
-                {{#if langSearch }} Genre
+                {{#if lang }} Genre
                 {{else}} Жанр
                 {{/if}}
             </td>
@@ -67,7 +67,13 @@
                     <svg class="trailer-svg">
                         <use href="../images/symbol-defs.svg#icon-play3"></use>
                     </svg>
-                    <span class="btn-text">play trailer</span>
+                    <span class="btn-text">
+
+                        {{#if lang}} play trailer
+                        {{else}} трейлер
+                        {{/if}}
+
+                    </span>
                 </button>
             </td>
 
@@ -80,6 +86,7 @@
                     class="tgme-btn" rel="nofollow" target="_blank">
                     <span class="tgme-icon"></span></a>
 
+
                 <a href="https://api.whatsapp.com/send?text=https://www.themoviedb.org/movie/{{id}}&amp;text=Would%20you%20like%20to%20watch%20this%20movie%3F%20"
                     class="whatsapp-btn" rel="nofollow" target="_blank">
                     <span class="whatsapp-icon"></span></a>
@@ -87,11 +94,9 @@
 
         </tr>
     </table>
-
-
     <div class="film-about">
         <p class="film-about-title">
-            {{#if langSearch }}
+            {{#if lang }}
             ABOUT
             {{else}} О фильме
             {{/if}}
@@ -103,7 +108,7 @@
     <div class="user-action-buttons">
 
         <button class="buttons action-watch active" type="button">
-            {{#if langSearch }}
+            {{#if lang }}
             add to Watched
             {{else}} добавить к просмотренным
             {{/if}}
@@ -111,7 +116,7 @@
 
 
         <button class="buttons action-queue" type="button">
-            {{#if langSearch }}
+            {{#if lang}}
             add to queue
             {{else}} добавить в очередь
             {{/if}}
