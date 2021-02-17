@@ -68,16 +68,26 @@ function modalMarkup(data) {
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
 
-  if (checkFilm(watchedInLocalstorage, data)) {
+  let lang = localStorage.getItem('lang');
+
+  if (checkFilm(watchedInLocalstorage, data) && lang === 'en-US') {
     watchBtnModal.textContent = "remove from Watched";
-  } else {
+  } else if (checkFilm(watchedInLocalstorage, data) && lang === 'ru-RU') {
+    watchBtnModal.textContent = "удалить из просмотренных";
+  } else if (!checkFilm(watchedInLocalstorage, data) && lang === 'en-US') {
     watchBtnModal.textContent = "add to Watched";
+  } else if (!checkFilm(watchedInLocalstorage, data) && lang === 'ru-RU') {
+    watchBtnModal.textContent = "добавить в просмотренные";
   }
 
-  if (checkFilm(queueInLocalstorage, data)) {
+  if (checkFilm(queueInLocalstorage, data) && lang === 'en-US') {
     queueBtnModal.textContent = "remove from queue";
-  } else {
+  } else if (checkFilm(queueInLocalstorage, data) && lang === 'ru-RU') {
+    queueBtnModal.textContent = "удалить из очереди";
+  } else if (!checkFilm(queueInLocalstorage, data) && lang === 'en-US') {
     queueBtnModal.textContent = "add to queue";
+  } else if (!checkFilm(queueInLocalstorage, data) && lang === 'ru-RU') {
+    queueBtnModal.textContent = "добавить в очередь";
   }
 
   watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
