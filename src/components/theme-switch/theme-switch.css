@@ -17,6 +17,16 @@ body.dark-theme {
   color: #fff;
 }
 
+.footer.light-theme {
+  background-color: #f7f7f7;
+  color: var(--text-footer-clr);
+}
+
+.footer.dark-theme {
+  background-color: #505050;
+  color: #fff;
+}
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
