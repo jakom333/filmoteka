@@ -7,7 +7,7 @@ let currentPage = 1;
 
 export default function markupPagination(data) {
   let totalPages = data.total_pages;
-  // console.log(totalPages);
+  console.log(totalPages);
 
   if (currentPage === 1) {
     paginationBox.innerHTML = paginationTmp(data);
@@ -51,6 +51,13 @@ export default function markupPagination(data) {
   if (Number(btn1.textContent) < 5) {
     refs.dots1.hidden = true;
     refs.btnFirst.hidden = true;
+    refs.next.hidden = true;
+  }
+
+  if (totalPages < 5) {
+    btn5.hidden = true;
+    refs.dots2.hidden = true;
+    refs.btnLast.hidden = true;
   }
 
   function onBtnClick(event) {
@@ -101,6 +108,7 @@ export default function markupPagination(data) {
       refs.btnFirst.hidden = true;
 
       if (event.target.classList.contains("next") && currentPage < totalPages) {
+        console.log("IF1");
         // next.dataset.index = Number(next.dataset.index) + 1;
         btn1.textContent = Number(btn1.textContent) + 1;
         btn2.textContent = Number(btn2.textContent) + 1;
@@ -143,6 +151,7 @@ export default function markupPagination(data) {
         btn1.textContent >= totalPages - 6 &&
         currentBtn.textContent < totalPages - 1
       ) {
+        console.log("IF2");
         refs.dots2.hidden = false;
       }
 
@@ -179,7 +188,7 @@ export default function markupPagination(data) {
       }
 
       // console.log("CURRENT BTN", currentBtn.textContent);
-      // console.log("CURRENT PAGE", currentPage);
+      console.log("CURRENT PAGE", currentPage);
 
       if (
         event.target.classList.contains("dots2") &&
@@ -187,7 +196,7 @@ export default function markupPagination(data) {
       ) {
         // next.dataset.index = Number(next.dataset.index) + 5
         if (currentBtn.textContent > totalPages - 5) {
-          // console.log("IF");
+          console.log("IF3");
           btn1.textContent =
             Number(btn1.textContent) +
             (totalPages - currentBtn.textContent - 1);
@@ -221,7 +230,7 @@ export default function markupPagination(data) {
           currentPage =
             Number(previousPage) + (totalPages - currentBtn.textContent);
         } else {
-          // console.log("ELSE");
+          console.log("ELSE3");
           btn1.textContent = Number(btn1.textContent) + 5;
           btn2.textContent = Number(btn2.textContent) + 5;
           btn3.textContent = Number(btn3.textContent) + 5;
@@ -281,7 +290,11 @@ export default function markupPagination(data) {
       refs.prev.hidden = true;
     }
 
-    if (Number(currentPage) >= totalPages) {
+    if (
+      Number(currentPage) >= totalPages &&
+      event.target.classList.contains("btn-last")
+    ) {
+      console.log("IF4");
       refs.next.hidden = true;
       refs.prev.hidden = false;
       refs.dots1.hidden = false;
@@ -296,11 +309,13 @@ export default function markupPagination(data) {
       btn4.dataset.index = Number(currentPage) - 2;
       btn5.dataset.index = Number(currentPage) - 1;
     } else {
+      console.log("ELSE4");
       refs.next.hidden = false;
       refs.dots2.hidden = false;
     }
 
     if (btn5.textContent >= totalPages - 1) {
+      console.log("IF5");
       refs.dots2.hidden = true;
     }
   }
