@@ -13,19 +13,18 @@ import "./js/markup-library.js";
 import "./js/markup.js";
 import "./js/buttons-movie";
 import "./js/theme-switch.js";
+import "./js/up-to.js";
 
+export let genres = [];
 
-export let genres =  [];
-
-let lang = localStorage.getItem('lang');
+let lang = localStorage.getItem("lang");
 if (!lang) {
-  lang = 'en-US';
-  localStorage.setItem('lang', lang);
+  lang = "en-US";
+  localStorage.setItem("lang", lang);
 }
 
 fetchGenres(lang).then((res) => {
   genres = res;
-  localStorage.setItem('genres', JSON.stringify(genres));
+  localStorage.setItem("genres", JSON.stringify(genres));
   fetchMovies();
 });
-

@@ -1,4 +1,5 @@
 import { onPressKey } from "./modal-window.js";
+import config from "../data-base//config.json";
 
 const backTrailerRef = document.querySelector(".trailer-box");
 // const posterBoxRef = document.querySelector(".poster-box");
@@ -25,9 +26,8 @@ function fetchUrl(movieID) {
       </div>
       `,
       );
-      const trailerFrameRefs = document.querySelector(".trailer-iframe");
       setTimeout(() => {
-        showBtnClosePlayer(trailerFrameRefs);
+        showBtnClosePlayer(document.querySelector(".trailer-iframe"));
       }, 500);
     })
     .catch(() => {
@@ -50,9 +50,8 @@ function fetchUrl(movieID) {
           </div>
           `,
       );
-      const trailerFrameRefs = document.querySelector(".trailer-iframe");
       setTimeout(() => {
-        showBtnClosePlayer(trailerFrameRefs);
+        showBtnClosePlayer(document.querySelector(".trailer-iframe"));
       }, 500);
     });
 }

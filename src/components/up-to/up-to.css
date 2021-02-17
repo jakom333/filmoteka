@@ -1,0 +1,8 @@
+.to-up {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  display: none;
+  z-index: 22;
+  cursor: pointer;
+}
