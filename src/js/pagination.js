@@ -43,6 +43,7 @@ export default function markupPagination(data) {
   const btn3 = refs.btnPage3;
   const btn4 = refs.btnPage4;
   const btn5 = refs.btnPage5;
+  const btnLast = refs.btnLast;
 
   if (currentPage === 1) {
     refs.prev.hidden = true;
@@ -107,7 +108,11 @@ export default function markupPagination(data) {
       refs.dots1.hidden = true;
       refs.btnFirst.hidden = true;
 
-      if (event.target.classList.contains("next") && currentPage < totalPages) {
+      if (
+        event.target.classList.contains("next") &&
+        currentPage < totalPages &&
+        currentPage !== btnLast.textContent
+      ) {
         console.log("IF1");
         // next.dataset.index = Number(next.dataset.index) + 1;
         btn1.textContent = Number(btn1.textContent) + 1;
@@ -121,6 +126,8 @@ export default function markupPagination(data) {
         btn4.dataset.index = Number(btn4.dataset.index) + 1;
         btn5.dataset.index = Number(btn5.dataset.index) + 1;
         currentPage = Number(previousPage) + 1;
+      } else {
+        refs.next.hidden = true;
       }
 
       // prev.dataset.index = currentPage;
