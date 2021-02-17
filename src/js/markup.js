@@ -12,9 +12,7 @@ export default function markupSearch(data) {
 }
 
 export function markup(movie) {
-  if (movie.wasMarkedUp)
-    return;
-
+  if (movie.wasMarkedUp) return;
   movie.title = movie.title.toUpperCase();
 
   if (movie.title.length > 33) {
@@ -25,13 +23,11 @@ export function markup(movie) {
   if (movie.genre_ids) {
     movie.genre_ids.forEach((el) => {
       const foundGenreName = genres.find((item) => item.id === el);
-      if (foundGenreName)
-        movieGenres.push(" " + foundGenreName.name);
+      if (foundGenreName) movieGenres.push(" " + foundGenreName.name);
     });
-  }
-  else if (movie.genres) {
+  } else if (movie.genres) {
     movie.genres.forEach((el) => {
-        movieGenres.push(" " + el.name);
+      movieGenres.push(" " + el.name);
     });
   }
 
@@ -47,7 +43,7 @@ export function markup(movie) {
   else
     movie.poster_path =
       "https://sales.arecontvision.com/images/products/img_placeholder_41845_xl.jpg";
-  
+
   movie.wasMarkedUp = true;
 
   return movie;
