@@ -31,8 +31,8 @@ function onOpenModal(event) {
   function fetchFilmInfo() {
     return fetch(movieIUrl)
       .then((response) => (response.status === 200 ? response.json() : ""))
-      .then((data) => {
-        lang = lang === "ru-RU" ? false : true;
+      .then((data) => {        
+        lang = lang === "ru-RU" ? false : true;        
         modalMarkup({ ...data, lang });
         playTrailer();
       })
@@ -43,6 +43,14 @@ function onOpenModal(event) {
 
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
+    
+   let movieGenres = [];
+  data.genres.forEach((el) => {    
+    movieGenres.push(" " + el.name)
+  });
+  !movieGenres.length ? movieGenres.push("Other") : "";
+  data.genres = movieGenres.slice(0, 3);
+    
 
   if (innerWidth < 768) {
     window.scrollTo({
@@ -57,8 +65,7 @@ function modalMarkup(data) {
 
   const closeModalBtn = document.querySelector(".modal-button");
   closeModalBtn.addEventListener("click", onCloseModal);
-
-  const watchBtn = document.querySelector(".action-watch");
+  
   window.addEventListener("keydown", onPressKey);
 
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
@@ -90,7 +97,7 @@ function modalMarkup(data) {
   }
 
   watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
-  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
+  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal)); 
 }
 
 function onCloseModal() {

@@ -17,6 +17,16 @@ export default function watchedHandler(data, btn) {
         btn.classList.add("active");
       }
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
+
+      let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+      if (checkFilm(queueInLocalstorage, data)) {
+        queueInLocalstorage.forEach((movie) => {
+          if (movie.id === data.id) {
+            queueInLocalstorage.splice(queueInLocalstorage.indexOf(movie), 1);
+          }
+        });
+        localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
+      }
     } else {
       watchedInLocalstorage.forEach((movie) => {
         if (movie.id === data.id) {
