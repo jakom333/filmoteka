@@ -101,12 +101,16 @@
 
 .trailer-box-svg-on {
   position: absolute;
-  width: 120px;
+  width: 100px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   fill: rgba(255, 255, 255, 0.8);
   cursor: pointer;
+}
+
+.trailer-box-svg-on:hover {
+  transform: scale(1.2);
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
