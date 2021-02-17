@@ -1,6 +1,7 @@
 import cardTemplate from "../templates/movie-card.hbs";
 import movieButtons from "../js/buttons-movie";
 
+
 const gallery = document.querySelector(".photo-gallery-list");
 
 export default function markupSearch(data) {

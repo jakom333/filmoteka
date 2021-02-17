@@ -16,7 +16,6 @@
             <use href=" ../images/symbol-defs.svg#icon-play3"></use>
         </svg>
     </div>
-
 </div>
 
 <div class="film-data">
@@ -98,30 +97,25 @@
     </table>
     <div class="film-about">
         <p class="film-about-title">
-            {{#if lang }}
-            ABOUT
+            {{#if lang }} ABOUT
             {{else}} О фильме
             {{/if}}
         </p>
         <p class="film-about-text">{{overview}}</p>
     </div>
 
-
     <div class="user-action-buttons">
 
         <button class="buttons action-watch" type="button">
-            {{#if lang }}
-            add to Watched
+            {{#if lang }}add to Watched
             {{else}} добавить к просмотренным
             {{/if}}
         </button>
 
         <button class="buttons action-queue" type="button">
-            {{#if lang}}
-            add to queue
+            {{#if lang}} add to queue
             {{else}} добавить в очередь
             {{/if}}
         </button>
     </div>
-
 </div>
