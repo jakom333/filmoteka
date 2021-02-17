@@ -1,6 +1,7 @@
 import cardTemplate from "../templates/movie-card.hbs";
 import movieButtons from "../js/buttons-movie";
 
+
 const gallery = document.querySelector(".photo-gallery-list");
 
 export default function markupSearch(data) {
@@ -24,22 +25,21 @@ export function markup(movie) {
   if (movie.genre_ids) {
     movie.genre_ids.forEach((el) => {
       const foundGenreName = newGenres.find((item) => item.id === el);
-      if (foundGenreName)
-        movieGenres.push(" " + foundGenreName.name);
+      if (foundGenreName) movieGenres.push(" " + foundGenreName.name);
     });
-  }
-  else if (movie.genres) {
+  } else if (movie.genres) {
     movie.genres.forEach((el) => {
       const foundGenreName = newGenres.find((item) => item.name === el.name);
-      if (foundGenreName)
-        movieGenres.push(" " + foundGenreName.name);
+      if (foundGenreName) movieGenres.push(" " + foundGenreName.name);
     });
   }
-  
+
   !movieGenres.length ? movieGenres.push("Other") : "";
   movie.genres = movieGenres.slice(0, 2);
 
-  movie.release_date = movie.release_date.substring(0, 4);
+  if (movie.release_date) {
+    movie.release_date = movie.release_date.substring(0, 4);
+  }
 
   if (movie.poster_path)
     movie.poster_path =
