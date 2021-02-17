@@ -33,7 +33,6 @@ function onOpenModal(event) {
       .then((response) => (response.status === 200 ? response.json() : ""))
       .then((data) => {
         langSearch = langSearch === "ru-RU" ? false : true;
-        console.log(data);
         modalMarkup({ ...data, langSearch });
         playTrailer();
       })

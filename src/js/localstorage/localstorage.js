@@ -3,10 +3,7 @@ import { checkFilm } from "../modal-window.js";
 export default function watchedHandler(data, btn) {
   return function () {
     let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
-
     if (!watchedInLocalstorage) watchedInLocalstorage = [];
-
-    
 
     if (!checkFilm(watchedInLocalstorage, data)) {
       watchedInLocalstorage.push(data);
@@ -28,8 +25,6 @@ export function queueHandler(data, btn) {
   return function () {
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
     if (!queueInLocalstorage) queueInLocalstorage = [];
-
-    
 
     if (!checkFilm(queueInLocalstorage, data)) {
       queueInLocalstorage.push(data);

@@ -9,6 +9,7 @@ export default function movieButtons(li, data) {
     let movie = data.results[index];
 
     el.addEventListener("mouseenter", (e) => {
+      
       let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
       let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
       const watchedBtnText = checkFilm(watchedInLocalstorage, movie) ? "remove from watched" : "add to watched";
@@ -25,13 +26,11 @@ export default function movieButtons(li, data) {
       const mainSectionBtnWatched = document.querySelector(
         ".li-btn-js-watched",
       );
+      
       mainSectionBtnWatched.addEventListener(
-        "click",
-        watchedHandler(movie, mainSectionBtnWatched),
-      );
+        "click", mainWatchedHandler(movie, mainSectionBtnWatched));
       mainSectionBtnQueue.addEventListener(
-        "click",
-        queueHandler(movie, mainSectionBtnQueue),
+        "click", mainQueueHandler(movie, mainSectionBtnQueue),
       );
     });
     el.addEventListener("mouseleave", () => {
@@ -40,5 +39,21 @@ export default function movieButtons(li, data) {
         overlay.remove();
       }
     });
+  }
+}
+
+function mainWatchedHandler(movie, btn) {
+  return function () {
+    btn.classList.toggle("button-anactive");
+    btn.classList.toggle("button-active");
+    watchedHandler(movie, btn)();
+  }
+}
+
+function mainQueueHandler(movie, btn) {
+  return function () {
+    btn.classList.toggle("button-anactive");
+    btn.classList.toggle("button-active");
+    queueHandler(movie, btn)();
   }
 }
