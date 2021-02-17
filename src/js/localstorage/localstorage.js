@@ -1,18 +1,19 @@
 import { checkFilm } from "../modal-window.js";
 
-export default function watchedHandler(data) {
-
-
+export default function watchedHandler(data, btn) {
   return function () {
-    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    let lang = localStorage.getItem('lang');
 
+    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
     if (!watchedInLocalstorage) watchedInLocalstorage = [];
 
-        if (!checkFilm(watchedInLocalstorage, data)) {
+    if (!checkFilm(watchedInLocalstorage, data)) {
       watchedInLocalstorage.push(data);
-
-  
-       watchBtnModal.textContent = "remove from Watched";
+      if (lang === 'en-US') {
+        btn.textContent = "remove from Watched";
+      } else if (lang === 'ru-RU') {
+        btn.textContent = "удалить из просмотренных"
+      }
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
       
     } else {
@@ -22,24 +23,31 @@ export default function watchedHandler(data) {
         }
       });
 
-    
-        watchBtnModal.textContent = "add to Watched";
-       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
+      if (lang === 'en-US') {
+        btn.textContent = "add to Watched";
+      } else if (lang === 'ru-RU') {
+         btn.textContent = "добавить в просмотренные";
+    }
+      localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
     }
   };
 }
 
 export function queueHandler(data, btn) {
   return function () {
+    let lang = localStorage.getItem('lang');
+    
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
     if (!queueInLocalstorage) queueInLocalstorage = [];
 
-    
-
     if (!checkFilm(queueInLocalstorage, data)) {
       queueInLocalstorage.push(data);
-       queueBtnModal.textContent = "remove from queue";
-   
+      
+      if (lang === 'en-US') {
+        btn.textContent = "remove from queue";
+      } else if (lang === 'ru-RU') {
+        btn.textContent = "удалить из добавленных";
+      }
 
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
     } else {
@@ -48,7 +56,12 @@ export function queueHandler(data, btn) {
           queueInLocalstorage.splice(queueInLocalstorage.indexOf(movie), 1);
         }
       });
-        queueBtnModal.textContent = "add to queue";
+
+      if (lang === 'en-US') {
+        btn.textContent = "add to queue";
+      } else if (lang === 'ru-RU') {
+        btn.textContent = "добавить";
+    }
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
     }
   };
