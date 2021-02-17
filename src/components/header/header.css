@@ -351,7 +351,7 @@
   height: 25px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 1999px) {
+@media screen and (min-width: 320px) and (max-width: 1199px) {
   .film-overlay {
     display: none;
   }
