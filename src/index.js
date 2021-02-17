@@ -18,6 +18,10 @@ import "./js/theme-switch.js";
 export let genres =  [];
 
 let lang = localStorage.getItem('lang');
+if (!lang) {
+  lang = 'en-US';
+  localStorage.setItem('lang', lang);
+}
 
 fetchGenres(lang).then((res) => {
   genres = res;
