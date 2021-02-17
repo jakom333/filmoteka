@@ -33,11 +33,7 @@ export function fetchAPI(searchQuery) {
         return;
       } else if (!data.results.length) {
         if (langSearch === 'en-US') {
-          refs.gallery.innerHTML = 
-     
-    `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
-   <video autoplay loop controls width="480" height="492" src="../images/travolta.gif"><div>`
-            
+          refs.gallery.innerHTML =        
           `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
    allowFullScreen></iframe><div>`
