@@ -5,7 +5,6 @@ import movieButtons from "../js/buttons-movie";
 const gallery = document.querySelector(".photo-gallery-list");
 
 export default function markupSearch(data) {
-  
   data.results.map((movie) => markup(movie));
   gallery.innerHTML = cardTemplate(data.results);
   const li = document.querySelectorAll(".photo-gallery-item");
@@ -13,16 +12,14 @@ export default function markupSearch(data) {
 }
 
 export function markup(movie) {
-  if (movie.wasMarkedUp)
-    return;
-
+  if (movie.wasMarkedUp) return;
   movie.title = movie.title.toUpperCase();
 
   if (movie.title.length > 33) {
     movie.title = movie.title.substring(0, 31) + "...";
   }
 
-  let newGenres= JSON.parse(localStorage.getItem('genres'))
+  let newGenres = JSON.parse(localStorage.getItem("genres"));
   let movieGenres = [];
 
   if (movie.genre_ids) {
@@ -52,7 +49,7 @@ export function markup(movie) {
   else
     movie.poster_path =
       "https://sales.arecontvision.com/images/products/img_placeholder_41845_xl.jpg";
-  
+
   movie.wasMarkedUp = true;
 
   return movie;
