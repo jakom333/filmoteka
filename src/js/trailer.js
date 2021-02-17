@@ -34,7 +34,7 @@ function fetchUrl(movieID) {
         `<div class="trailer-iframe">
         <iframe class ="trailer"
         type="text/html"
-          src="http://www.youtube.com/embed/2jPdejek5QA?color=red&modestbranding=1" 
+          src="https://giphy.com/embed/WY6omKOR8oRLG" 
           frameborder="0"
           allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen

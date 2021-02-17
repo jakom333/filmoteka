@@ -9,21 +9,21 @@
   height: 100vw;
   background-color: transparent;
   /* pointer-events: none; */
-  z-index: 5;
+  z-index: 11;
 }
 .trailer-box.is-open {
   display: flex;
 }
 .trailer {
   position: fixed;
-  z-index: 6;
+  z-index: 12;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 /* --------------- */
 .btn-close-player {
-  z-index: 7;
+  z-index: 13;
   padding-top: 0.9px;
   padding-right: 0.3px;
   opacity: 0.9;
@@ -75,10 +75,14 @@
   background: #ff6b01;
   border: 1px solid #ff6b01;
   color: white;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
 }
 
 .button-trailer:hover > .trailer-svg {
   fill: white;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
 }
 
 .poster-box {
@@ -97,6 +101,8 @@
 
 .trailer-box-svg:hover {
   opacity: 1;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
 }
 
 .trailer-box-svg-on {
@@ -107,10 +113,6 @@
   transform: translate(-50%, -50%);
   fill: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-}
-
-.trailer-box-svg-on:hover {
-  transform: scale(1.2);
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -149,6 +151,12 @@
     .trailer-box-svg {
       width: 426px;
       height: 514px;
+    }
+
+    .trailer-box-svg-on:hover {
+      transform: scale(1.2) translate(-40%, -40%);
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 250ms;
     }
   }
 }
