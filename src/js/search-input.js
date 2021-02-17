@@ -7,7 +7,6 @@ import renderTopRated from "./top-filters.js";
 
 export let input = "";
 
-let totalPages;
 
 export function fetchAPI(searchQuery) {
   const langSearch = localStorage.getItem("lang");
@@ -35,10 +34,9 @@ export function fetchAPI(searchQuery) {
       } else if (!data.results.length) {
         if (langSearch === 'en-US') {
           refs.gallery.innerHTML = 
-            
-  //   `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
-  //  <img src="../images/travolta.gif" alt="cool John Travolta" width="480" height="492">
-  //  <div>`
+     
+    `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+   <video autoplay loop controls width="480" height="492" src="../images/travolta.gif"><div>`
             
           `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
@@ -73,3 +71,22 @@ function searchMovieHandler(event) {
   fetchAPI(input);
   refs.form.reset();
 }
+
+
+
+// fetch(`https://api.themoviedb.org/3/search/movie?api_key=${config.KEY}&language=en-US&page=1&per_page=9&primary_release_year&query=fight-club`)
+//    .then((response) => (response.status === 200 ? response.json() : ""))
+//   .then((data) => console.log(data));
+
+
+//  fetch(`https://api.themoviedb.org/3/movie/583406?api_key=${config.KEY}&language=en-US`)
+//    .then((response) => (response.status === 200 ? response.json() : ""))
+//   .then((data) => console.log(data));
+
+//     fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${config.KEY}`)
+//   .then(response => (response.json())
+//     .then(data => {
+//       console.log(data)
+//     })
+//     .catch(err => console.log(err)));
+
