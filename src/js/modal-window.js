@@ -32,6 +32,7 @@ function onOpenModal(event) {
     return fetch(movieIUrl)
       .then((response) => (response.status === 200 ? response.json() : ""))
       .then((data) => {
+        
         langSearch = langSearch === "ru-RU" ? false : true;
         modalMarkup({ ...data, langSearch });
         playTrailer();
