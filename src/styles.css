@@ -1,8 +1,21 @@
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 a {
   text-decoration: none;
 }
@@ -14,3 +27,4 @@ a {
 @import "./components/trailer/trailer.css";
 @import "./components/pagination/pagination.css";
 @import "./components/footer/footer.css";
+@import "./components/theme-switch/theme-switch.css";

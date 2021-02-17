@@ -10,6 +10,10 @@
     />
     <title>Filmoteka</title>
     <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
@@ -28,18 +32,45 @@
             /></a>
             <a href=""><h1 class="header-nav-logo-title">Filmoteka</h1></a>
             <div class="languages">
-              <a href="#" class="lang-en circle-color" language="EN" ></a>
+              <a href="#" class="lang-en circle-color" language="EN"></a>
               <a href="#" class="lang-ru" language="RU"></a>
             </div>
           </div>
-          <ul class="header-nav-list">
-            <li class="header-nav-list-item home-button underline">home</li>
-            <li class="header-nav-list-item library-button">my library</li>
-           </ul>
+          <div>
+            <!-- Разметка переключателя темы -->
+            <div class="toolbar">
+              <div class="theme-switch">
+                <div class="theme-switch__control">
+                  <input
+                    class="theme-switch__toggle"
+                    type="checkbox"
+                    name="theme"
+                    id="theme-switch-toggle"
+                    aria-label="Переключить между тёмной и светлой темой"
+                  />
+                  <label
+                    aria-hidden="true"
+                    class="theme-switch__track"
+                    for="theme-switch-toggle"
+                  >
+                  </label>
+                  <div aria-hidden="true" class="theme-switch__marker"></div>
+                </div>
+              </div>
+            </div>
+            <ul class="header-nav-list">
+              <li class="header-nav-list-item home-button underline">home</li>
+              <li class="header-nav-list-item library-button">my library</li>
+            </ul>
+          </div>
         </nav>
         <div class="search search-show">
           <form class="search-form">
-          <input class="search-input" type="text" placeholder="Search movie" />
+            <input
+              class="search-input"
+              type="text"
+              placeholder="Search movie"
+            />
           </form>
         </div>
         <div class="header-buttons hidden">
@@ -88,8 +119,8 @@
               <use href="./images/symbol-defs.svg#icon-heart-footer"></use>
             </svg>
             <p class="by">
-             <span class="by-text">by</span>
-             <span class="footer-developed-students">GoIT Students</span>
+              <span class="by-text">by</span>
+              <span class="footer-developed-students">GoIT Students</span>
             </p>
           </div>
         </div>
