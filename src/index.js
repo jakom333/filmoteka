@@ -14,9 +14,14 @@ import "./js/markup.js";
 import "./js/buttons-movie";
 import "./js/theme-switch.js";
 
-export let genres = [];
 
-fetchGenres().then((res) => {
+export let genres =  [];
+
+let lang = localStorage.getItem('lang');
+
+fetchGenres(lang).then((res) => {
   genres = res;
+  localStorage.setItem('genres', JSON.stringify(genres));
   fetchMovies();
 });
+
