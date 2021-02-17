@@ -4,6 +4,7 @@ import { currentPage } from "./pagination";
 import config from "../data-base//config.json";
 import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
+import cardTemplate from "../templates/movie-card.hbs";
 
 export let input = "";
 
@@ -52,8 +53,11 @@ export function fetchAPI(searchQuery) {
       }
       offSpin();
       renderTopRated(data);
-      markup(data);
-      console.log("search input", data);
+
+      data.results.map((movie) => markup(movie));
+      refs.gallery.innerHTML = "";
+      refs.gallery.innerHTML = cardTemplate(data.results);
+
       document.querySelector(".btn-last").textContent = data.total_pages;
       document.querySelector(".btn-last").dataset.index = data.total_pages;
       return data.total_pages;
