@@ -105,6 +105,10 @@
   padding: 0;
 }
 
+.film-info-data.genre {
+  vertical-align: top;
+}
+
 /* ! --------- SOCIAL --------- */
 
 .film-info-social {
@@ -324,6 +328,15 @@ table td {
   border: none;
 }
 
+.film-info-data-genre {
+  color: black;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.genre {
+  vertical-align: top;
+}
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .modal-content {

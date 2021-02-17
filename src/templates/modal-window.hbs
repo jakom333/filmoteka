@@ -59,7 +59,9 @@
                 {{else}} Жанр
                 {{/if}}
             </td>
-            <td class="film-info-data">{{#each genres}}{{name}}, {{/each}}</td>
+            <td class="film-info-data genre">{{#each genres}}<span class="film-info-data-genre"> {{name}}
+                </span>{{/each}}
+            </td>
         </tr>
         <tr>
             <td class="film-info-trailer">
