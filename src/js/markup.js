@@ -16,8 +16,8 @@ export function markup(movie) {
   if (movie.wasMarkedUp) return;
   movie.title = movie.title.toUpperCase();
 
-  if (movie.title.length > 33) {
-    movie.title = movie.title.substring(0, 31) + "...";
+  if (movie.title.length > 31) {
+    movie.title = movie.title.substring(0, 29) + "...";
   }
 
   let newGenres = JSON.parse(localStorage.getItem("genres"));

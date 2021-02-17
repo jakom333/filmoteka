@@ -24,12 +24,12 @@ export function fetchAPI(searchQuery) {
         if (langSearch === "en-US") {
           refs.gallery.innerHTML = `<div class="search-error"> <h2> Please, give us at least one word! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
-         class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
+         allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="search-error"> <h2> Пожалуйста, введите хотя бы что нибуть! </h2>
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Пожалуйста, введите хоть что-нибуть! </h2>
          <br><iframe src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
-         class="giphy-embed" allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
+         allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         }
         return;
@@ -37,12 +37,12 @@ export function fetchAPI(searchQuery) {
         if (langSearch === 'en-US') {
           refs.gallery.innerHTML =        
           `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
-   <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
+   <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="368" height="380" frameBorder="0" 
    allowFullScreen></iframe><div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нету. Не сдавайтесь! Попробуйте ещё раз!</h2>
-   <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0" class="giphy-embed" 
-   allowFullScreen></iframe><a href="https://giphy.com/gifs/memecandy-VIQfHC9jAZbt6ojTdo"></a><div>`;
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Фильмов с таким названием нет. Не сдавайтесь! Попробуйте ещё раз!</h2>
+   <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0"  
+   allowFullScreen></iframe><div>`;
         }
 
         offSpin();
