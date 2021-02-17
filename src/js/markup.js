@@ -22,7 +22,8 @@ export function markup(movie) {
     movie.title = movie.title.substring(0, 31) + "...";
   }
 
-  let newGenres= JSON.parse(localStorage.getItem('genres'))
+  let newGenres = JSON.parse(localStorage.getItem('genres'))
+  
   let movieGenres = [];
 
   movie.genre_ids.forEach((el) => {
