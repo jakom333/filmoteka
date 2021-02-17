@@ -5,6 +5,9 @@ import renderTopRated from './top-filters.js';
 import config from '../data-base//config.json';
 
 export default function fetchMovies() {
+
+let totalPages;
+
   const lang = localStorage.getItem('lang');
   const url = `${config.baseURL}trending/movie/day?api_key=${config.KEY}&page=${currentPage}&language=${lang}`;
 
