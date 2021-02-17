@@ -6,8 +6,6 @@ import { isHomeScreen } from "../js/markup-library.js";
 import { isWatched } from "../js/markup-library.js";
 import { markupLibrary } from "../js/markup-library.js";
 
-
-
 const filmsList = document.querySelector(".photo-gallery-list");
 let film_ID;
 
@@ -54,12 +52,13 @@ function modalMarkup(data) {
   data.genres = movieGenres.slice(0, 3);
     
 
-  // window.scrollTo({
-  //   // ! may be to delete ?
-  //   top: 0,
-  //   left: 0,
-  //   behavior: "smooth",
-  // });
+  if (innerWidth < 768) {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
 
   const markup = modalWindowTpl(data);
   modalContent.insertAdjacentHTML("beforeend", markup);
@@ -75,25 +74,25 @@ function modalMarkup(data) {
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
 
-  let lang = localStorage.getItem('lang');
+  let lang = localStorage.getItem("lang");
 
-  if (checkFilm(watchedInLocalstorage, data) && lang === 'en-US') {
+  if (checkFilm(watchedInLocalstorage, data) && lang === "en-US") {
     watchBtnModal.textContent = "remove from Watched";
-  } else if (checkFilm(watchedInLocalstorage, data) && lang === 'ru-RU') {
+  } else if (checkFilm(watchedInLocalstorage, data) && lang === "ru-RU") {
     watchBtnModal.textContent = "удалить из просмотренных";
-  } else if (!checkFilm(watchedInLocalstorage, data) && lang === 'en-US') {
+  } else if (!checkFilm(watchedInLocalstorage, data) && lang === "en-US") {
     watchBtnModal.textContent = "add to Watched";
-  } else if (!checkFilm(watchedInLocalstorage, data) && lang === 'ru-RU') {
+  } else if (!checkFilm(watchedInLocalstorage, data) && lang === "ru-RU") {
     watchBtnModal.textContent = "добавить в просмотренные";
   }
 
-  if (checkFilm(queueInLocalstorage, data) && lang === 'en-US') {
+  if (checkFilm(queueInLocalstorage, data) && lang === "en-US") {
     queueBtnModal.textContent = "remove from queue";
-  } else if (checkFilm(queueInLocalstorage, data) && lang === 'ru-RU') {
+  } else if (checkFilm(queueInLocalstorage, data) && lang === "ru-RU") {
     queueBtnModal.textContent = "удалить из очереди";
-  } else if (!checkFilm(queueInLocalstorage, data) && lang === 'en-US') {
+  } else if (!checkFilm(queueInLocalstorage, data) && lang === "en-US") {
     queueBtnModal.textContent = "add to queue";
-  } else if (!checkFilm(queueInLocalstorage, data) && lang === 'ru-RU') {
+  } else if (!checkFilm(queueInLocalstorage, data) && lang === "ru-RU") {
     queueBtnModal.textContent = "добавить в очередь";
   }
 
