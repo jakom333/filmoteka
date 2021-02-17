@@ -1,12 +1,10 @@
 import { onPressKey } from "./modal-window.js";
+import config from "../data-base//config.json";
 
 const backTrailerRef = document.querySelector(".trailer-box");
-// const posterBoxRef = document.querySelector(".poster-box");
-const key = "4fbdbd8abdbcde78896e194e86813212";
-const baseUrl = "https://api.themoviedb.org/3";
 
 function fetchUrl(movieID) {
-  const url = `${baseUrl}/movie/${movieID}/videos?api_key=${key}`;
+  const url = `${config.baseURL}movie/${movieID}/videos?api_key=${config.KEY}`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -25,9 +23,8 @@ function fetchUrl(movieID) {
       </div>
       `,
       );
-      const trailerFrameRefs = document.querySelector(".trailer-iframe");
       setTimeout(() => {
-        showBtnClosePlayer(trailerFrameRefs);
+        showBtnClosePlayer(document.querySelector(".trailer-iframe"));
       }, 500);
     })
     .catch(() => {
@@ -50,9 +47,8 @@ function fetchUrl(movieID) {
           </div>
           `,
       );
-      const trailerFrameRefs = document.querySelector(".trailer-iframe");
       setTimeout(() => {
-        showBtnClosePlayer(trailerFrameRefs);
+        showBtnClosePlayer(document.querySelector(".trailer-iframe"));
       }, 500);
     });
 }
