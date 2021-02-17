@@ -45,17 +45,12 @@
   pointer-events: initial;
 
   position: relative;
-  /* top: 230px; */
-
-  /* top: 90px;
-  left: calc((94% - 287px) / 2); */
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -30%);
 
   background-color: white;
-  z-index: 1;
+  z-index: 10;
   transition: opacity var(--animation-duration) var(--timing-function);
 
   width: min-content;
@@ -92,7 +87,7 @@
   background-repeat: no-repeat;
   background-size: 60%;
 
-  z-index: 2;
+  z-index: 12;
 }
 
 .modal-button:hover {
@@ -105,11 +100,16 @@
   padding: 0;
 }
 
+.film-info-data.genre {
+  vertical-align: top;
+}
+
 /* ! --------- SOCIAL --------- */
 
 .film-info-social {
   display: flex;
   padding: 7px;
+  margin-left: -6px;
 }
 
 a.fb-btn {
@@ -268,6 +268,17 @@ table td {
   padding: 1px 10px;
 }
 
+.vote-average-none {
+  width: 36px;
+  height: 16px;
+  background: #8c8c8c;
+  color: #ffff;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 1px 10px;
+}
+
 .vote,
 .pop,
 .orig,
@@ -324,6 +335,15 @@ table td {
   border: none;
 }
 
+.film-info-data-genre {
+  color: black;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.genre {
+  vertical-align: top;
+}
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .modal-content {
@@ -334,16 +354,12 @@ table td {
     justify-content: center;
 
     position: fixed;
-    /* top: 250px; */
-
-    /* left: calc((98% - 618px) / 2); */
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     width: min-content;
-    z-index: 1;
+    z-index: 10;
   }
 
   .modal-button {
@@ -391,17 +407,12 @@ table td {
     justify-content: center;
 
     position: fixed;
-    /* top: 260px; */
-
-    /* top: 120px;
-    left: calc((94% - 882px) / 2); */
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     width: min-content;
-    z-index: 1;
+    z-index: 10;
   }
 
   .modal-button {
