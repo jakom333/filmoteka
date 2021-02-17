@@ -35,6 +35,7 @@ function onOpenModal(event) {
       .then((response) => (response.status === 200 ? response.json() : ""))
       .then((data) => {
         lang = lang === "ru-RU" ? false : true;
+        console.log(data);
         modalMarkup({ ...data, lang });
         playTrailer();
       })
@@ -45,6 +46,7 @@ function onOpenModal(event) {
 
 function modalMarkup(data) {
   modalWindow.classList.remove("is-hidden");
+  data.genres = data.genres.splice(0,4)
 
   // window.scrollTo({
   //   // ! may be to delete ?
