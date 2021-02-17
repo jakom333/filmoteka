@@ -14,6 +14,7 @@ let totalPages;
   return fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       renderTopRated(data);
       markupSearch(data);
       document.querySelector(".btn-last").textContent = data.total_pages;

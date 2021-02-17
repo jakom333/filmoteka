@@ -58,8 +58,7 @@ function modalMarkup(data) {
 
   const closeModalBtn = document.querySelector(".modal-button");
   closeModalBtn.addEventListener("click", onCloseModal);
-
-  // const watchBtn = document.querySelector(".action-watch");
+  
   window.addEventListener("keydown", onPressKey);
 
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
