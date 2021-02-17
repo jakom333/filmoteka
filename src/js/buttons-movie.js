@@ -10,9 +10,7 @@ export default function movieButtons(li, data) {
 
     el.addEventListener("mouseenter", (e) => {
       let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
-      let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
-      // const watchedBtnText = checkFilm(watchedInLocalstorage, movie) ? "remove from watched" : "add to watched";
-      // const queueBtnText = checkFilm(queueInLocalstorage, movie) ? "remove from queue" : "add to queue";
+      let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));      
       let watchedBtnText;
       let queueBtnText;
       let lang = localStorage.getItem('lang');

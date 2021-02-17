@@ -90,12 +90,6 @@ function modalMarkup(data) {
     queueBtnModal.textContent = "добавить в очередь";
   }
 
-  // if (checkFilm(queueInLocalstorage, data)) {
-  //   queueBtnModal.textContent = "remove from queue";
-  // } else {
-  //   queueBtnModal.textContent = "add to queue";
-  // }
-
   watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
   queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
 }
