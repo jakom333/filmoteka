@@ -151,7 +151,7 @@ body {
   margin-top: 4px;
   background-color: white;
 }
-.search::before {
+/* .search::before {
   content: "";
   display: block;
   width: 12px;
@@ -162,7 +162,8 @@ body {
   right: 0;
   top: 5px;
   cursor: pointer;
-}
+} */
+
 /* ----красиво убираем плейсхолдер инпута при фокусе------- */
 .search-input::-webkit-input-placeholder {
   text-indent: 0px;
