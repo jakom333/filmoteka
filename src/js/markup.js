@@ -1,4 +1,3 @@
-import { genres } from "../index.js";
 import cardTemplate from "../templates/movie-card.hbs";
 import movieButtons from "../js/buttons-movie";
 
