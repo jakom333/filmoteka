@@ -7,7 +7,7 @@ let currentPage = 1;
 
 export default function markupPagination(data) {
   let totalPages = data.total_pages;
-  console.log(totalPages);
+  // console.log(totalPages);
 
   if (currentPage === 1) {
     paginationBox.innerHTML = paginationTmp(data);
@@ -54,7 +54,7 @@ export default function markupPagination(data) {
   }
 
   function onBtnClick(event) {
-    console.log("CLICK");
+    // console.log("CLICK");
     if (event.target.tagName === "BUTTON") {
       let activeBtn = event.target.dataset.index;
       if (event.target.classList.contains("dots1")) {
@@ -94,7 +94,7 @@ export default function markupPagination(data) {
       }
 
       let previousPage = document.querySelector(".active").textContent;
-      console.log(activeBtn, "activeBtn");
+      // console.log(activeBtn, "activeBtn");
       currentPage = Number(activeBtn);
       // refs.prev.hidden = true;
       refs.dots1.hidden = true;
@@ -178,8 +178,8 @@ export default function markupPagination(data) {
         }
       }
 
-      console.log("CURRENT BTN", currentBtn.textContent);
-      console.log("CURRENT PAGE", currentPage);
+      // console.log("CURRENT BTN", currentBtn.textContent);
+      // console.log("CURRENT PAGE", currentPage);
 
       if (
         event.target.classList.contains("dots2") &&
@@ -187,7 +187,7 @@ export default function markupPagination(data) {
       ) {
         // next.dataset.index = Number(next.dataset.index) + 5
         if (currentBtn.textContent > totalPages - 5) {
-          console.log("IF");
+          // console.log("IF");
           btn1.textContent =
             Number(btn1.textContent) +
             (totalPages - currentBtn.textContent - 1);
@@ -221,7 +221,7 @@ export default function markupPagination(data) {
           currentPage =
             Number(previousPage) + (totalPages - currentBtn.textContent);
         } else {
-          console.log("ELSE");
+          // console.log("ELSE");
           btn1.textContent = Number(btn1.textContent) + 5;
           btn2.textContent = Number(btn2.textContent) + 5;
           btn3.textContent = Number(btn3.textContent) + 5;
