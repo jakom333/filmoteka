@@ -67,7 +67,13 @@
                     <svg class="trailer-svg">
                         <use href="../images/symbol-defs.svg#icon-play3"></use>
                     </svg>
-                    <span class="btn-text">play trailer</span>
+                    <span class="btn-text">
+
+                        {{#if lang}} play trailer
+                        {{else}} трейлер
+                        {{/if}}
+
+                    </span>
                 </button>
             </td>
 
@@ -88,18 +94,6 @@
 
         </tr>
     </table>
-    <button class="button button-trailer" data-id="{{id}}">
-        <svg class="trailer-svg">
-            <use href="../images/symbol-defs.svg#icon-play3"></use>
-        </svg>
-        <span class="btn-text">
-            {{#if lang}} play trailer
-            {{else}} трейлер
-            {{/if}}
-
-        </span>
-    </button>
-
     <div class="film-about">
         <p class="film-about-title">
             {{#if lang }}
