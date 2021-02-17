@@ -74,19 +74,3 @@ function searchMovieHandler(event) {
 
 
 
-// fetch(`https://api.themoviedb.org/3/search/movie?api_key=${config.KEY}&language=en-US&page=1&per_page=9&primary_release_year&query=fight-club`)
-//    .then((response) => (response.status === 200 ? response.json() : ""))
-//   .then((data) => console.log(data));
-
-
-//  fetch(`https://api.themoviedb.org/3/movie/583406?api_key=${config.KEY}&language=en-US`)
-//    .then((response) => (response.status === 200 ? response.json() : ""))
-//   .then((data) => console.log(data));
-
-//     fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${config.KEY}`)
-//   .then(response => (response.json())
-//     .then(data => {
-//       console.log(data)
-//     })
-//     .catch(err => console.log(err)));
-

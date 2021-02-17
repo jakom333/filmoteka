@@ -8,7 +8,8 @@
         src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{poster_path}}" alt="a poster to {{title}} film">
     {{else}} <img class="poster film-pic"
         src="https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg"
-        alt="no poster availiable to {{title}} film"> {{/if}}
+        alt="no poster availiable to {{title}} film">
+    {{/if}}
 
     <div class="trailer-box-svg">
         <svg class="trailer-box-svg-on" data-id="{{id}}">
@@ -29,8 +30,8 @@
             </td>
             <td id="col2" class="film-info-data">
 
-                {{#if vote_average}}
-                <span class="film-info-data vote-average">{{vote_average}}</span>
+                {{#if vote_average}} <span class="film-info-data vote-average">{{vote_average}}</span>
+                {{else}} <span class="film-info-data vote-average-none">N/A</span>
                 {{/if}}
 
                 / {{ vote_count}}
@@ -58,7 +59,8 @@
                 {{else}} Жанр
                 {{/if}}
             </td>
-            <td class="film-info-data">{{#each genres}}{{name}}, {{/each}}</td>
+            <td class="film-info-data genre"><span class="film-info-data-genre">{{genres}}</span>
+            </td>
         </tr>
         <tr>
             <td class="film-info-trailer">
@@ -104,8 +106,8 @@
 
     <div class="user-action-buttons">
 
-        <button class="buttons action-watch active" type="button">
-            {{#if lang }} add to Watched
+        <button class="buttons action-watch" type="button">
+            {{#if lang }}add to Watched
             {{else}} добавить к просмотренным
             {{/if}}
         </button>
