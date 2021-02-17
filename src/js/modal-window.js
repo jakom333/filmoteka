@@ -59,7 +59,7 @@ function modalMarkup(data) {
   const closeModalBtn = document.querySelector(".modal-button");
   closeModalBtn.addEventListener("click", onCloseModal);
 
-  const watchBtn = document.querySelector(".action-watch");
+  // const watchBtn = document.querySelector(".action-watch");
   window.addEventListener("keydown", onPressKey);
 
   const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
@@ -91,7 +91,7 @@ function modalMarkup(data) {
   }
 
   watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
-  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
+  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal)); 
 }
 
 function onCloseModal() {
