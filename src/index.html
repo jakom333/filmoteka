@@ -22,6 +22,26 @@
   <body>
     <header class="header header-home-background">
       <div class="header-wrapper">
+        <div class="toolbar">
+          <div class="theme-switch">
+            <div class="theme-switch__control">
+              <input
+                class="theme-switch__toggle"
+                type="checkbox"
+                name="theme"
+                id="theme-switch-toggle"
+                aria-label="Переключить между тёмной и светлой темой"
+              />
+              <label
+                aria-hidden="true"
+                class="theme-switch__track"
+                for="theme-switch-toggle"
+              >
+              </label>
+              <div aria-hidden="true" class="theme-switch__marker"></div>
+            </div>
+          </div>
+        </div>
         <nav class="header-nav">
           <div class="header-nav-logo">
             <a href=""
@@ -37,27 +57,6 @@
             </div>
           </div>
           <div>
-            <!-- Разметка переключателя темы -->
-            <div class="toolbar">
-              <div class="theme-switch">
-                <div class="theme-switch__control">
-                  <input
-                    class="theme-switch__toggle"
-                    type="checkbox"
-                    name="theme"
-                    id="theme-switch-toggle"
-                    aria-label="Переключить между тёмной и светлой темой"
-                  />
-                  <label
-                    aria-hidden="true"
-                    class="theme-switch__track"
-                    for="theme-switch-toggle"
-                  >
-                  </label>
-                  <div aria-hidden="true" class="theme-switch__marker"></div>
-                </div>
-              </div>
-            </div>
             <ul class="header-nav-list">
               <li class="header-nav-list-item home-button underline">home</li>
               <li class="header-nav-list-item library-button">my library</li>
