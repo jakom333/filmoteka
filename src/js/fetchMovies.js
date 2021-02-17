@@ -29,6 +29,11 @@ export function fetchGenres(lang) {
   return fetch(genreUrl)
     .then((response) => (response.status === 200 ? response.json() : ""))
     .then((data) => {
+      if (lang === "ru-RU" || lang === "RU") {
+        data.genres.forEach((genre) => {
+          genre.name = genre.name.charAt(0).toUpperCase() + genre.name.slice(1);
+        });
+      }
       localStorage.setItem("genres", JSON.stringify(data.genres));
       return data.genres;
     })

@@ -51,7 +51,9 @@ export function fetchAPI(searchQuery) {
       offSpin();
       renderTopRated(data);
 
-      data.results.map((movie) => markup(movie));
+      data.results.map((movie) => {        
+        markup(movie)
+      });
       refs.gallery.innerHTML = "";
       refs.gallery.innerHTML = cardTemplate(data.results);
       markupPagination(data);

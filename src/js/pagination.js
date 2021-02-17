@@ -7,7 +7,7 @@ let currentPage = 1;
 
 export default function markupPagination(data) {
   let totalPages = data.total_pages;
-  console.log(totalPages);
+  // console.log(totalPages);
 
   if (currentPage === 1) {
     paginationBox.innerHTML = paginationTmp(data);
