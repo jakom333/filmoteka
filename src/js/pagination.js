@@ -2,15 +2,18 @@ import fetchMovies from "./fetchMovies.js";
 import { input, fetchAPI } from "./search-input.js";
 import paginationTmp from "../templates/pagination.hbs";
 
-const paginationBox = document.querySelector(".pagination");
 let currentPage = 1;
 
 export default function markupPagination(data) {
   let totalPages = data.total_pages;
+  const paginationBox = document.querySelector(".pagination");
   // console.log(totalPages);
+  const paginationBoxNew = paginationBox.cloneNode(true);
+  paginationBox.parentNode.replaceChild(paginationBoxNew, paginationBox);
+  paginationBoxNew.addEventListener("click", onBtnClick);
 
   if (currentPage === 1) {
-    paginationBox.innerHTML = paginationTmp(data);
+    paginationBoxNew.innerHTML = paginationTmp(data);
   }
 
   // console.log(currentPage, "FUNCTION BEGINNING");
@@ -32,7 +35,6 @@ export default function markupPagination(data) {
 
   const buttons = document.querySelectorAll(".btn");
 
-  paginationBox.addEventListener("click", onBtnClick);
   buttons.forEach((btn) => btn.classList.remove("active"));
 
   const currentBtn = document.querySelector(`[data-index="${currentPage}"]`);
@@ -78,7 +80,7 @@ export default function markupPagination(data) {
   }
 
   function onBtnClick(event) {
-    // console.log("CLICK");
+    console.log("CLICK");
     if (event.target.tagName === "BUTTON") {
       let activeBtn = event.target.dataset.index;
       if (event.target.classList.contains("dots1")) {
@@ -104,6 +106,7 @@ export default function markupPagination(data) {
           activeBtn = currentPage + 5;
         }
       }
+
       if (event.target.classList.contains("prev")) {
         activeBtn = currentPage - 1;
       }
@@ -141,8 +144,10 @@ export default function markupPagination(data) {
         btn3.dataset.index = Number(btn3.dataset.index) + 1;
         btn4.dataset.index = Number(btn4.dataset.index) + 1;
         btn5.dataset.index = Number(btn5.dataset.index) + 1;
-        currentPage = Number(previousPage) + 1;
+        console.log(currentPage);
+        currentPage = Number(currentPage) + 1;
       } else {
+        // currentPage = Number(currentPage) + 1;
         refs.next.hidden = true;
       }
 
@@ -159,8 +164,10 @@ export default function markupPagination(data) {
           btn3.dataset.index = Number(btn3.dataset.index) - 1;
           btn4.dataset.index = Number(btn4.dataset.index) - 1;
           btn5.dataset.index = Number(btn5.dataset.index) - 1;
-          currentPage = Number(previousPage) - 1;
+          console.log(currentPage);
+          currentPage = Number(currentPage) - 1;
         } else {
+          currentPage = Number(currentPage) - 1;
           currentBtn.classList.remove("active");
           document
             .querySelector(`[data-index="${currentBtn.dataset.index - 1}"]`)
@@ -273,10 +280,11 @@ export default function markupPagination(data) {
       }
 
       if (!input) {
-        paginationBox.removeEventListener("click", onBtnClick);
+        // paginationBoxNew.removeEventListener("click", onBtnClick);
         fetchMovies();
       } else {
-        paginationBox.removeEventListener("click", onBtnClick);
+        // paginationBoxNew.removeEventListener("click", onBtnClick);
+        // console.log("ELSE");
         fetchAPI(input);
       }
     }
@@ -327,6 +335,15 @@ export default function markupPagination(data) {
       // console.log("ELSE4");
       refs.next.hidden = false;
       refs.dots2.hidden = false;
+    }
+
+    // console.log(currentPage);
+    console.log(Number(refs.btnLast.textContent));
+
+    if (currentPage === Number(refs.btnLast.textContent)) {
+      // console.log("IF");
+      // console.log(refs.next);
+      refs.next.hidden = true;
     }
 
     if (btn5.textContent >= totalPages - 1) {
