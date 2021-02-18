@@ -48,7 +48,13 @@ function modalMarkup(data) {
   data.genres.forEach((el) => {    
     movieGenres.push(" " + el.name)
   });
-  !movieGenres.length ? movieGenres.push("Other") : "";
+
+  let lang = localStorage.getItem("lang");
+  lang === "en-US" && !movieGenres.length ? movieGenres.push(" Other") : "";
+  lang === "ru-RU" || lang === "RU" && !movieGenres.length ? movieGenres.push(" Другое") : "";
+
+  lang === "en-US" && !data.overview ? data.overview = "Content is not available." : '';
+  lang === "ru-RU" || lang === "RU" && !data.overview ? data.overview = "Контент недоступен." : '';
   data.genres = movieGenres.slice(0, 3);
     
 
@@ -74,8 +80,6 @@ function modalMarkup(data) {
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
 
-  let lang = localStorage.getItem("lang");
-
   if (checkFilm(watchedInLocalstorage, data) && lang === "en-US") {
     watchBtnModal.textContent = "remove from Watched";
   } else if (checkFilm(watchedInLocalstorage, data) && lang === "ru-RU") {
@@ -96,8 +100,59 @@ function modalMarkup(data) {
     queueBtnModal.textContent = "добавить в очередь";
   }
 
-  watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
-  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal)); 
+  
+  watchBtnModal.addEventListener("click", modalWatchedHandler(data, watchBtnModal, queueBtnModal));
+  queueBtnModal.addEventListener("click", modalQueueHandler(data, watchBtnModal, queueBtnModal));
+}
+
+function modalWatchedHandler(data, watchBtn, queueBtn) {
+  return function () {
+    watchedHandler(data, watchBtn)();
+
+    let lang = localStorage.getItem("lang");
+
+    let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+    if (!queueInLocalstorage) queueInLocalstorage = [];
+
+    if (checkFilm(queueInLocalstorage, data)) {
+      if (lang === "en-US") {
+        queueBtn.textContent = "remove from queue";
+      } else if (lang === "ru-RU") {
+        queueBtn.textContent = "удалить из очереди";
+      }
+    } else {
+      if (lang === "en-US") {
+        queueBtn.textContent = "add to queue";
+      } else if (lang === "ru-RU") {
+        queueBtn.textContent = "добавить в очередь";
+      }
+    }
+  };
+}
+
+function modalQueueHandler(data, watchBtn, queueBtn) {
+  return function () {
+    queueHandler(data, queueBtn)();
+
+    let lang = localStorage.getItem("lang");
+
+    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    if (!watchedInLocalstorage) watchedInLocalstorage = [];
+
+    if (checkFilm(watchedInLocalstorage, data)) {
+      if (lang === "en-US") {
+        watchBtn.textContent = "remove from watched";
+      } else if (lang === "ru-RU") {
+        watchBtn.textContent = "удалить из просмотренных";
+      }
+    } else {
+      if (lang === "en-US") {
+        watchBtn.textContent = "add to watched";
+      } else if (lang === "ru-RU") {
+        watchBtn.textContent = "добавить в просмотренные";
+      }
+    }
+  };
 }
 
 function onCloseModal() {

@@ -7,7 +7,7 @@ const libraryBtn = document.querySelector(".library-button");
 const homeBtn = document.querySelector(".home-button");
 const queueBtnLibrary = document.querySelector(".queue-button");
 const watchBtnLibrary = document.querySelector(".watched-button");
-const paginator = document.querySelector(".paginator");
+const footer = document.querySelector(".footer");
 
 export let isHomeScreen = true;
 export let isWatched = true;
@@ -17,6 +17,9 @@ watchBtnLibrary.addEventListener("click", libraryBtnHandler);
 queueBtnLibrary.addEventListener("click", queueBtnHandler);
 
 function libraryBtnHandler() {
+  footer.style.position = "absolute";
+  footer.style.bottom = "0";
+  isWatched = true;
   watchBtnLibrary.classList.add("button-active");
   queueBtnLibrary.classList.remove("button-active");
 
@@ -46,6 +49,8 @@ export function markupLibrary(data) {
 homeBtn.addEventListener("click", homeBtnHandler);
 
 function homeBtnHandler() {
+  footer.style.position = "initial";
+  footer.style.bottom = "0";
   gallery.innerHTML = "";
   fetchMovies();
   isHomeScreen = true;
