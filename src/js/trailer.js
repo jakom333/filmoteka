@@ -56,7 +56,7 @@ function showBtnClosePlayer(trailerFrameRefs) {
       </button>`,
     );
     clearTimeout(timerId);
-  }, 300);
+  }, 400);
 }
 
 function escPlayerHandler(event) {
