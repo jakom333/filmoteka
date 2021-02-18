@@ -1,7 +1,6 @@
 import fetchMovies from "./fetchMovies.js";
 import { input, fetchAPI } from "./search-input.js";
 import paginationTmp from "../templates/pagination.hbs";
-import { isHomeScreen } from "../js/markup-library.js";
 
 let currentPage = 1;
 
