@@ -19,6 +19,8 @@ export default function watchedHandler(data, btn) {
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
 
       let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+      if (!queueInLocalstorage) queueInLocalstorage = [];
+
       if (checkFilm(queueInLocalstorage, data)) {
         queueInLocalstorage.forEach((movie) => {
           if (movie.id === data.id) {
@@ -60,11 +62,23 @@ export function queueHandler(data, btn) {
         btn.textContent = "remove from queue";
         btn.classList.add("active");
       } else if (lang === "ru-RU") {
-        btn.textContent = "удалить из добавленных";
+        btn.textContent = "удалить из очереди";
         btn.classList.add("active");
       }
 
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
+
+      let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+      if (!watchedInLocalstorage) watchedInLocalstorage = [];
+
+      if (checkFilm(watchedInLocalstorage, data)) {
+        watchedInLocalstorage.forEach((movie) => {
+          if (movie.id === data.id) {
+            watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(movie), 1);
+          }
+        });
+        localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
+      }
     } else {
       queueInLocalstorage.forEach((movie) => {
         if (movie.id === data.id) {
@@ -76,7 +90,7 @@ export function queueHandler(data, btn) {
         btn.textContent = "add to queue";
         btn.classList.remove("active");
       } else if (lang === "ru-RU") {
-        btn.textContent = "добавить";
+        btn.textContent = "добавить в очередь";
         btn.classList.remove("active");
       }
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));

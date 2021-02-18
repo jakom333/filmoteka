@@ -1,0 +1,30 @@
+.film-overlay {
+  width: 234px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  );
+  position: absolute;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: show;
+  user-select: none;
+  pointer-events: none;
+}
+.film-overlay .button:first-child {
+  margin-bottom: 15px;
+}
+.film-overlay .button {
+  pointer-events: all;
+  cursor: pointer;
+}
+.film-overlay .button:hover {
+  border: 1px solid #ff6b01;
+  box-shadow: inset 1px 1px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
+}

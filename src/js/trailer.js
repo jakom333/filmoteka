@@ -23,15 +23,14 @@ function fetchUrl(movieID) {
       </div>
       `,
       );
-      setTimeout(() => {
-        showBtnClosePlayer(document.querySelector(".trailer-iframe"));
-      }, 500);
+
+      showBtnClosePlayer(document.querySelector(".trailer-iframe"));
     })
     .catch(() => {
       backTrailerRef.classList.add("is-open");
       backTrailerRef.insertAdjacentHTML(
         "beforeend",
-        `<div class="trailer-iframe">
+        `<div class="trailer-iframe search-error">
         <iframe class ="trailer"
         type="text/html"
           src="https://giphy.com/embed/WY6omKOR8oRLG" 
@@ -39,29 +38,25 @@ function fetchUrl(movieID) {
           allow="accelerometer; picture-in-picture; autoplay"
           allowfullscreen
           ></iframe>
-          <button class="btn-close-player">
-            <svg class="btn-close-icon">
-              <use href="./images/symbol-defs.svg#icon-cancel"></use>
-            </svg>
-          </button>
           </div>
           `,
       );
-      setTimeout(() => {
-        showBtnClosePlayer(document.querySelector(".trailer-iframe"));
-      }, 500);
+      showBtnClosePlayer(document.querySelector(".trailer-iframe"));
     });
 }
 
 function showBtnClosePlayer(trailerFrameRefs) {
-  trailerFrameRefs.insertAdjacentHTML(
-    "beforeend",
-    `<button class="btn-close-player">
+  let timerId = setTimeout(() => {
+    trailerFrameRefs.insertAdjacentHTML(
+      "beforeend",
+      `<button class="btn-close-player">
       <svg class="btn-close-icon">
       <use href="./images/symbol-defs.svg#icon-cancel"></use>
       </svg>
       </button>`,
-  );
+    );
+    clearTimeout(timerId);
+  }, 400);
 }
 
 function escPlayerHandler(event) {

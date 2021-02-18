@@ -71,12 +71,18 @@
   border: 1px solid black;
 }
 
-.button-trailer:hover {
+.button-trailer:hover,
+.button-trailer:active {
   background: #ff6b01;
   border: 1px solid #ff6b01;
+  box-shadow: inset 5px 5px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
+  /* background: #ff6b01; */
+  /* border: 1px solid #ff6b01; */
   color: white;
+  cursor: pointer;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 250ms;
+  cursor: pointer;
 }
 
 .button-trailer:hover > .trailer-svg {
