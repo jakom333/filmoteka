@@ -19,6 +19,7 @@ queueBtnLibrary.addEventListener("click", queueBtnHandler);
 function libraryBtnHandler() {
   footer.style.position = "absolute";
   footer.style.bottom = "0";
+  isWatched = true;
   watchBtnLibrary.classList.add("button-active");
   queueBtnLibrary.classList.remove("button-active");
 
