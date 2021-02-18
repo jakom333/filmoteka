@@ -13,7 +13,7 @@
 .photo-gallery-list {
   list-style: none;
   display: block;
-  padding: 0; 
+  padding: 0;
   width: 100%;
   margin: 0 auto;
 }
@@ -84,15 +84,27 @@
   display: none;
 }
 
-/* .error-mobile {
+.error-mobile-no-movies {
   display: block;
-  width: 150px;
-  height: 150px;
-  background-image: url("../../images/empty-folder.svg");
+  width: 298px;
+  height: 501px;
+  background-image: url("../../images/travolta.gif");
   background-repeat: no-repeat;
-  background-position: contain;
+  background-position: center;
   margin: 0 auto;
-  /* object-fit: cover; */
+}
+
+.error-mobile-no-title {
+  display: block;
+  width: 298px;
+  height: 501px;
+  background-image: url("../../images/god.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+}
+
+/* https://img.icons8.com/pastel-glyph/2x/error.png */
 
 .img-library {
   display: block;
@@ -109,7 +121,8 @@
     height: auto;
   }
 
-  .error-mobile {
+  .error-mobile-no-movies,
+  .error-mobile-no-title {
     display: none;
   }
 
