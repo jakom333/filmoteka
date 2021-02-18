@@ -102,7 +102,7 @@ function modalMarkup(data) {
 
   
   watchBtnModal.addEventListener("click", modalWatchedHandler(data, watchBtnModal, queueBtnModal));
-  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
+  queueBtnModal.addEventListener("click", modalQueueHandler(data, watchBtnModal, queueBtnModal));
 }
 
 function modalWatchedHandler(data, watchBtn, queueBtn) {
@@ -115,18 +115,41 @@ function modalWatchedHandler(data, watchBtn, queueBtn) {
     if (!queueInLocalstorage) queueInLocalstorage = [];
 
     if (checkFilm(queueInLocalstorage, data)) {
-      queueInLocalstorage.push(data);
-
       if (lang === "en-US") {
         queueBtn.textContent = "remove from queue";
       } else if (lang === "ru-RU") {
-        queueBtn.textContent = "удалить из добавленных";
+        queueBtn.textContent = "удалить из очереди";
       }
     } else {
       if (lang === "en-US") {
         queueBtn.textContent = "add to queue";
       } else if (lang === "ru-RU") {
         queueBtn.textContent = "добавить в очередь";
+      }
+    }
+  };
+}
+
+function modalQueueHandler(data, watchBtn, queueBtn) {
+  return function () {
+    queueHandler(data, queueBtn)();
+
+    let lang = localStorage.getItem("lang");
+
+    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    if (!watchedInLocalstorage) watchedInLocalstorage = [];
+
+    if (checkFilm(watchedInLocalstorage, data)) {
+      if (lang === "en-US") {
+        watchBtn.textContent = "remove from watched";
+      } else if (lang === "ru-RU") {
+        watchBtn.textContent = "удалить из просмотренных";
+      }
+    } else {
+      if (lang === "en-US") {
+        watchBtn.textContent = "add to watched";
+      } else if (lang === "ru-RU") {
+        watchBtn.textContent = "добавить в просмотренные";
       }
     }
   };
