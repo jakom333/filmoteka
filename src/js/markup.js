@@ -37,7 +37,10 @@ export function markup(movie) {
     });    
   }
 
-  !movieGenres.length ? movieGenres.push("Other") : "";
+  const lang = localStorage.getItem("lang");
+
+  lang === "en-US" && !movieGenres.length ? movieGenres.push(" Other") : "";
+  lang === "ru-RU" || lang === "RU" && !movieGenres.length ? movieGenres.push(" Другое") : "";
   movie.genres = movieGenres.slice(0, 2);
 
   if (movie.release_date) {

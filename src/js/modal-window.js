@@ -48,7 +48,13 @@ function modalMarkup(data) {
   data.genres.forEach((el) => {    
     movieGenres.push(" " + el.name)
   });
-  !movieGenres.length ? movieGenres.push("Other") : "";
+
+  let lang = localStorage.getItem("lang");
+  lang === "en-US" && !movieGenres.length ? movieGenres.push(" Other") : "";
+  lang === "ru-RU" || lang === "RU" && !movieGenres.length ? movieGenres.push(" Другое") : "";
+
+  lang === "en-US" && !data.overview ? data.overview = "Content is not available." : '';
+  lang === "ru-RU" || lang === "RU" && !data.overview ? data.overview = "Контент недоступен." : '';
   data.genres = movieGenres.slice(0, 3);
     
 
@@ -73,8 +79,6 @@ function modalMarkup(data) {
 
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
-
-  let lang = localStorage.getItem("lang");
 
   if (checkFilm(watchedInLocalstorage, data) && lang === "en-US") {
     watchBtnModal.textContent = "remove from Watched";
