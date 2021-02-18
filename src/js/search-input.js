@@ -10,9 +10,6 @@ import markupPagination from "./pagination.js";
 export let input = "";
 
 export function fetchAPI(searchQuery) {
-  const footer = document.querySelector(".footer");
-  footer.style.position = "absolute";
-  footer.style.bottom = "0";
   let totalPages;
   const langSearch = localStorage.getItem("lang");
   const url = `${config.baseURL}search/movie?api_key=${config.KEY}&page=${currentPage}
