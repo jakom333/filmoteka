@@ -100,8 +100,36 @@ function modalMarkup(data) {
     queueBtnModal.textContent = "добавить в очередь";
   }
 
-  watchBtnModal.addEventListener("click", watchedHandler(data, watchBtnModal));
-  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal)); 
+  
+  watchBtnModal.addEventListener("click", modalWatchedHandler(data, watchBtnModal, queueBtnModal));
+  queueBtnModal.addEventListener("click", queueHandler(data, queueBtnModal));
+}
+
+function modalWatchedHandler(data, watchBtn, queueBtn) {
+  return function () {
+    watchedHandler(data, watchBtn)();
+
+    let lang = localStorage.getItem("lang");
+
+    let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+    if (!queueInLocalstorage) queueInLocalstorage = [];
+
+    if (checkFilm(queueInLocalstorage, data)) {
+      queueInLocalstorage.push(data);
+
+      if (lang === "en-US") {
+        queueBtn.textContent = "remove from queue";
+      } else if (lang === "ru-RU") {
+        queueBtn.textContent = "удалить из добавленных";
+      }
+    } else {
+      if (lang === "en-US") {
+        queueBtn.textContent = "add to queue";
+      } else if (lang === "ru-RU") {
+        queueBtn.textContent = "добавить в очередь";
+      }
+    }
+  };
 }
 
 function onCloseModal() {
