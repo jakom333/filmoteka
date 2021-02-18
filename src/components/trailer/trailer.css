@@ -79,6 +79,7 @@
   /* background: #ff6b01; */
   /* border: 1px solid #ff6b01; */
   color: white;
+  cursor: pointer;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 250ms;
   cursor: pointer;
