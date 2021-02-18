@@ -10,6 +10,9 @@ import markupPagination from "./pagination.js";
 export let input = "";
 
 export function fetchAPI(searchQuery) {
+  const footer = document.querySelector(".footer");
+  footer.style.position = "absolute";
+  footer.style.bottom = "0";
   let totalPages;
   const langSearch = localStorage.getItem("lang");
   const url = `${config.baseURL}search/movie?api_key=${config.KEY}&page=${currentPage}
@@ -34,9 +37,8 @@ export function fetchAPI(searchQuery) {
         }
         return;
       } else if (!data.results.length) {
-        if (langSearch === 'en-US') {
-          refs.gallery.innerHTML =        
-          `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
+        if (langSearch === "en-US") {
+          refs.gallery.innerHTML = `<div class="search-error"> <h2> Ooops! There are no movies with this title! Try again!</h2>
    <iframe src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="368" height="380" frameBorder="0" 
    allowFullScreen></iframe><div>`;
         } else {
@@ -51,8 +53,8 @@ export function fetchAPI(searchQuery) {
       offSpin();
       renderTopRated(data);
 
-      data.results.map((movie) => {        
-        markup(movie)
+      data.results.map((movie) => {
+        markup(movie);
       });
       refs.gallery.innerHTML = "";
       refs.gallery.innerHTML = cardTemplate(data.results);
