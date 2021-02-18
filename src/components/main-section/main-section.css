@@ -76,18 +76,60 @@
   object-fit: cover;
 }
 
+.container-error {
+  margin: 0 auto;
+}
+
 .search-error {
+  display: none;
+}
+
+.error-mobile-no-movies {
+  display: block;
+  width: 298px;
+  height: 501px;
+  background-image: url("../../images/travolta.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+}
+
+.error-mobile-no-title {
+  display: block;
+  width: 298px;
+  height: 501px;
+  background-image: url("../../images/god.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+}
+
+/* https://img.icons8.com/pastel-glyph/2x/error.png */
+
+.img-library {
+  display: block;
   margin: 0 auto;
   max-width: 320px;
   height: auto;
-  user-select: none;
-  pointer-events: none;
 }
 
 @media screen and (min-width: 768px) {
-  .search-error {
-    max-width: 768px;
+  .img-library {
+    display: block;
+    margin: 0 auto;
+    min-width: 450px;
     height: auto;
+  }
+
+  .error-mobile-no-movies,
+  .error-mobile-no-title {
+    display: none;
+  }
+
+  .search-error {
+    display: inline-block;
+    user-select: none;
+    pointer-events: none;
   }
 
   .container {
