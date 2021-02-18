@@ -6,7 +6,7 @@
 @media screen and (max-width: 640px) {
   .pagination {
     margin-bottom: 40px;
-    user-select: none;
+    /* user-select: none; дублирование стилей */
   }
 }
 
@@ -96,8 +96,11 @@
 .btn-first:hover,
 .btn-last:hover,
 .btn-page:hover {
-  transition: 1s;
-  background: #ff6b08;
+  outline: none;
+  transition: 0.3s;
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+  box-shadow: inset 5px 5px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
   transform: scale(1.07);
 }
 
@@ -115,6 +118,8 @@
 }
 
 .active {
-  background: #ff6b08;
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+  box-shadow: inset 5px 5px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
   color: #ffff;
 }
