@@ -49,6 +49,7 @@ homeBtn.addEventListener("click", homeBtnHandler);
 
 function homeBtnHandler() {
   footer.style.position = "initial";
+  footer.style.bottom = "0";
   gallery.innerHTML = "";
   fetchMovies();
   isHomeScreen = true;
