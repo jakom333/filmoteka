@@ -31,7 +31,7 @@ function fetchUrl(movieID) {
       backTrailerRef.classList.add("is-open");
       backTrailerRef.insertAdjacentHTML(
         "beforeend",
-        `<div class="trailer-iframe">
+        `<div class="trailer-iframe search-error ">
         <iframe class ="trailer"
         type="text/html"
           src="https://giphy.com/embed/WY6omKOR8oRLG" 
