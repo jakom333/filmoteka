@@ -44,5 +44,7 @@
   .up-to-svg:hover {
     fill: #ff6b01;
     transform: scale(1.2);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
   }
 }
