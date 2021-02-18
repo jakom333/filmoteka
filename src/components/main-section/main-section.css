@@ -75,18 +75,47 @@
   object-fit: cover;
 }
 
+.container-error {
+  margin: 0 auto;
+}
+
 .search-error {
+  display: none;
+}
+
+/* .error-mobile {
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-image: url("../../images/empty-folder.svg");
+  background-repeat: no-repeat;
+  background-position: contain;
+  margin: 0 auto;
+  /* object-fit: cover; */
+
+.img-library {
+  display: block;
   margin: 0 auto;
   max-width: 320px;
   height: auto;
-  user-select: none;
-  pointer-events: none;
 }
 
 @media screen and (min-width: 768px) {
-  .search-error {
-    max-width: 768px;
+  .img-library {
+    display: block;
+    margin: 0 auto;
+    min-width: 450px;
     height: auto;
+  }
+
+  .error-mobile {
+    display: none;
+  }
+
+  .search-error {
+    display: inline-block;
+    user-select: none;
+    pointer-events: none;
   }
 
   .container {
