@@ -11,27 +11,30 @@ export default function markupSearch(data) {
   movieButtons(li, data);
 }
 
-export function markup(movie) {
+export function markup(movie) { 
+
   if (movie.wasMarkedUp) return;
   movie.title = movie.title.toUpperCase();
 
-  if (movie.title.length > 33) {
-    movie.title = movie.title.substring(0, 31) + "...";
+  if (movie.title.length > 31) {
+    movie.title = movie.title.substring(0, 29) + "...";
   }
 
   let newGenres = JSON.parse(localStorage.getItem("genres"));
+  newGenres.map(genre=>genre.name.toUpperCase())
   let movieGenres = [];
 
   if (movie.genre_ids) {
     movie.genre_ids.forEach((el) => {
       const foundGenreName = newGenres.find((item) => item.id === el);
-      if (foundGenreName) movieGenres.push(" " + foundGenreName.name);
+      if (foundGenreName) {
+        movieGenres.push(" " + foundGenreName.name)};
     });
   } else if (movie.genres) {
     movie.genres.forEach((el) => {
       const foundGenreName = newGenres.find((item) => item.name === el.name);
-      if (foundGenreName) movieGenres.push(" " + foundGenreName.name);
-    });
+      if (foundGenreName) movieGenres.push(" " + foundGenreName.name);      
+    });    
   }
 
   !movieGenres.length ? movieGenres.push("Other") : "";
