@@ -7,10 +7,10 @@ const libraryBtn = document.querySelector(".library-button");
 const homeBtn = document.querySelector(".home-button");
 const queueBtnLibrary = document.querySelector(".queue-button");
 const watchBtnLibrary = document.querySelector(".watched-button");
+const paginator = document.querySelector(".paginator");
 
 export let isHomeScreen = true;
 export let isWatched = true;
-
 
 libraryBtn.addEventListener("click", libraryBtnHandler);
 watchBtnLibrary.addEventListener("click", libraryBtnHandler);
@@ -19,12 +19,12 @@ queueBtnLibrary.addEventListener("click", queueBtnHandler);
 function libraryBtnHandler() {
   watchBtnLibrary.classList.add("button-active");
   queueBtnLibrary.classList.remove("button-active");
-  
-  const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));  
-  
+
+  const watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+
   gallery.innerHTML = "";
   markupLibrary(watchedInLocalstorage);
-    isHomeScreen = false;
+  isHomeScreen = false;
 }
 
 function queueBtnHandler() {
@@ -32,23 +32,21 @@ function queueBtnHandler() {
   watchBtnLibrary.classList.remove("button-active");
   queueBtnLibrary.classList.add("button-active");
 
-  const queueInLocalStorage = JSON.parse(localStorage.getItem("queue"));    
+  const queueInLocalStorage = JSON.parse(localStorage.getItem("queue"));
   gallery.innerHTML = "";
   markupLibrary(queueInLocalStorage);
-  
 }
 
 export function markupLibrary(data) {
-  if (!data)
-    return;
-  data.map((movie) => markup(movie));  
+  if (!data) return;
+  data.map((movie) => markup(movie));
   gallery.innerHTML = cardTemplate(data);
 }
 
-homeBtn.addEventListener('click', homeBtnHandler)
+homeBtn.addEventListener("click", homeBtnHandler);
 
 function homeBtnHandler() {
   gallery.innerHTML = "";
-  fetchMovies(); 
+  fetchMovies();
   isHomeScreen = true;
 }
