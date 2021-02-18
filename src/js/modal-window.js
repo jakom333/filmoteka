@@ -80,6 +80,8 @@ function modalMarkup(data) {
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
 
+  // watchBtnModal.classList.add("active")
+
   if (checkFilm(watchedInLocalstorage, data) && lang === "en-US") {
     watchBtnModal.textContent = "remove from Watched";
   } else if (checkFilm(watchedInLocalstorage, data) && lang === "ru-RU") {
@@ -105,10 +107,10 @@ function modalMarkup(data) {
   queueBtnModal.addEventListener("click", modalQueueHandler(data, watchBtnModal, queueBtnModal));
 }
 
-function modalWatchedHandler(data, watchBtn, queueBtn) {
+export function modalWatchedHandler(data, watchBtn, queueBtn) {
   return function () {
     watchedHandler(data, watchBtn)();
-
+    
     let lang = localStorage.getItem("lang");
 
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
@@ -130,7 +132,7 @@ function modalWatchedHandler(data, watchBtn, queueBtn) {
   };
 }
 
-function modalQueueHandler(data, watchBtn, queueBtn) {
+export function modalQueueHandler(data, watchBtn, queueBtn) {
   return function () {
     queueHandler(data, queueBtn)();
 
