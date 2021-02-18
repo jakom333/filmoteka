@@ -8,12 +8,16 @@ body {
 }
 
 body.light-theme {
-  background-color: #fff;
+  background: #fff;
   color: #333333;
 }
 
 body.dark-theme {
-  background-color: #333333;
+  background: radial-gradient(
+    circle,
+    rgba(51, 51, 51, 1) 38%,
+    rgba(11, 5, 2, 1) 93%
+  );
   color: #fff;
 }
 
