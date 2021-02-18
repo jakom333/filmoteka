@@ -105,7 +105,7 @@ function modalMarkup(data) {
   queueBtnModal.addEventListener("click", modalQueueHandler(data, watchBtnModal, queueBtnModal));
 }
 
-function modalWatchedHandler(data, watchBtn, queueBtn) {
+export function modalWatchedHandler(data, watchBtn, queueBtn) {
   return function () {
     watchedHandler(data, watchBtn)();
 
@@ -130,7 +130,7 @@ function modalWatchedHandler(data, watchBtn, queueBtn) {
   };
 }
 
-function modalQueueHandler(data, watchBtn, queueBtn) {
+export function modalQueueHandler(data, watchBtn, queueBtn) {
   return function () {
     queueHandler(data, queueBtn)();
 

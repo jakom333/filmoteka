@@ -1,5 +1,6 @@
 import { checkFilm } from "../js/modal-window.js";
-import watchedHandler, { queueHandler } from "./localstorage/localstorage.js";
+import { modalWatchedHandler } from "../js/modal-window.js";
+import { modalQueueHandler } from "../js/modal-window.js";
 
 export default function movieButtons(li, data) {
   if (!li || !data) return;
@@ -64,56 +65,4 @@ export default function movieButtons(li, data) {
   }
 }
 
-function modalWatchedHandler(movie, watchBtn, queueBtn) {
-  return function () {
-    watchedHandler(movie, watchBtn)();
-    watchBtn.classList.toggle("button-anactive");
-    watchBtn.classList.toggle("button-active");    
 
-    let lang = localStorage.getItem("lang");
-    let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
-    
-    if (!queueInLocalstorage) queueInLocalstorage = [];
-
-    if (checkFilm(queueInLocalstorage, movie)) {
-      if (lang === "en-US") {
-        queueBtn.textContent = "remove from queue";
-      } else if (lang === "ru-RU") {
-        queueBtn.textContent = "удалить из очереди";
-      }
-    } else {
-      if (lang === "en-US") {
-        queueBtn.textContent = "add to queue";
-      } else if (lang === "ru-RU") {
-        queueBtn.textContent = "добавить в очередь";
-      }
-    }
-  };
-}
-
-function modalQueueHandler(movie, watchBtn, queueBtn) {
-  return function () {
-    queueHandler(movie, queueBtn)();
-    queueBtn.classList.toggle("button-anactive");
-    queueBtn.classList.toggle("button-active");    
-
-    let lang = localStorage.getItem("lang");
-    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
-    
-    if (!watchedInLocalstorage) watchedInLocalstorage = [];
-
-    if (checkFilm(watchedInLocalstorage, movie)) {
-      if (lang === "en-US") {
-        watchBtn.textContent = "remove from watched";
-      } else if (lang === "ru-RU") {
-        watchBtn.textContent = "удалить из просмотренных";
-      }
-    } else {
-      if (lang === "en-US") {
-        watchBtn.textContent = "add to watched";
-      } else if (lang === "ru-RU") {
-        watchBtn.textContent = "добавить в просмотренные";
-      }
-    }
-  };
-}
