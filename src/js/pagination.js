@@ -2,18 +2,18 @@ import fetchMovies from "./fetchMovies.js";
 import { input, fetchAPI } from "./search-input.js";
 import paginationTmp from "../templates/pagination.hbs";
 
-const paginationBox = document.querySelector(".pagination");
 let currentPage = 1;
 
 export default function markupPagination(data) {
   let totalPages = data.total_pages;
-  // console.log(totalPages);
+  const paginationBox = document.querySelector(".pagination");
+  const paginationBoxNew = paginationBox.cloneNode(true);
+  paginationBox.parentNode.replaceChild(paginationBoxNew, paginationBox);
+  paginationBoxNew.addEventListener("click", onBtnClick);
 
   if (currentPage === 1) {
-    paginationBox.innerHTML = paginationTmp(data);
+    paginationBoxNew.innerHTML = paginationTmp(data);
   }
-
-  // console.log(currentPage, "FUNCTION BEGINNING");
 
   const refs = {
     paginator: document.querySelector(".paginator"),
@@ -32,7 +32,6 @@ export default function markupPagination(data) {
 
   const buttons = document.querySelectorAll(".btn");
 
-  paginationBox.addEventListener("click", onBtnClick);
   buttons.forEach((btn) => btn.classList.remove("active"));
 
   const currentBtn = document.querySelector(`[data-index="${currentPage}"]`);
@@ -45,8 +44,16 @@ export default function markupPagination(data) {
   const btn5 = refs.btnPage5;
   const btnLast = refs.btnLast;
 
+  if (!data.total_pages) {
+    refs.btnPage1.hidden = true;
+  }
+
   if (currentPage === 1) {
     refs.prev.hidden = true;
+  }
+
+  if (totalPages <= 1) {
+    refs.btnPage1.hidden = true;
   }
 
   if (Number(btn1.textContent) < 5) {
@@ -78,7 +85,6 @@ export default function markupPagination(data) {
   }
 
   function onBtnClick(event) {
-    // console.log("CLICK");
     if (event.target.tagName === "BUTTON") {
       let activeBtn = event.target.dataset.index;
       if (event.target.classList.contains("dots1")) {
@@ -104,6 +110,7 @@ export default function markupPagination(data) {
           activeBtn = currentPage + 5;
         }
       }
+
       if (event.target.classList.contains("prev")) {
         activeBtn = currentPage - 1;
       }
@@ -118,7 +125,6 @@ export default function markupPagination(data) {
       }
 
       let previousPage = document.querySelector(".active").textContent;
-      // console.log(activeBtn, "activeBtn");
       currentPage = Number(activeBtn);
       // refs.prev.hidden = true;
       refs.dots1.hidden = true;
@@ -126,10 +132,9 @@ export default function markupPagination(data) {
 
       if (
         event.target.classList.contains("next") &&
-        currentPage < totalPages &&
-        refs.btnLast.textContent < totalPages
+        currentPage < totalPages
+        // refs.btnLast.textContent < totalPages
       ) {
-        // console.log("IF1");
         // next.dataset.index = Number(next.dataset.index) + 1;
         btn1.textContent = Number(btn1.textContent) + 1;
         btn2.textContent = Number(btn2.textContent) + 1;
@@ -165,6 +170,7 @@ export default function markupPagination(data) {
           document
             .querySelector(`[data-index="${currentBtn.dataset.index - 1}"]`)
             .classList.add("active");
+          currentPage = Number(previousPage) - 1;
         }
         // next.dataset.index = Number(next.dataset.index) - 1;
         // prev.dataset.index = next.dataset.index;
@@ -174,7 +180,6 @@ export default function markupPagination(data) {
         btn1.textContent >= totalPages - 6 &&
         currentBtn.textContent < totalPages - 1
       ) {
-        // console.log("IF2");
         refs.dots2.hidden = false;
       }
 
@@ -210,16 +215,12 @@ export default function markupPagination(data) {
         }
       }
 
-      // console.log("CURRENT BTN", currentBtn.textContent);
-      // console.log("CURRENT PAGE", currentPage);
-
       if (
         event.target.classList.contains("dots2") &&
         currentPage < totalPages
       ) {
         // next.dataset.index = Number(next.dataset.index) + 5
         if (currentBtn.textContent > totalPages - 5) {
-          // console.log("IF3");
           btn1.textContent =
             Number(btn1.textContent) +
             (totalPages - currentBtn.textContent - 1);
@@ -253,7 +254,6 @@ export default function markupPagination(data) {
           currentPage =
             Number(previousPage) + (totalPages - currentBtn.textContent);
         } else {
-          // console.log("ELSE3");
           btn1.textContent = Number(btn1.textContent) + 5;
           btn2.textContent = Number(btn2.textContent) + 5;
           btn3.textContent = Number(btn3.textContent) + 5;
@@ -273,15 +273,13 @@ export default function markupPagination(data) {
       }
 
       if (!input) {
-        paginationBox.removeEventListener("click", onBtnClick);
         fetchMovies();
       } else {
-        paginationBox.removeEventListener("click", onBtnClick);
         fetchAPI(input);
       }
     }
 
-    if (btn1.textContent > 1) {
+    if (currentPage > 1) {
       refs.prev.hidden = false;
     }
 
@@ -309,7 +307,6 @@ export default function markupPagination(data) {
       Number(currentPage) >= totalPages &&
       event.target.classList.contains("btn-last")
     ) {
-      // console.log("IF4");
       refs.next.hidden = true;
       refs.prev.hidden = false;
       refs.dots1.hidden = false;
@@ -324,13 +321,15 @@ export default function markupPagination(data) {
       btn4.dataset.index = Number(currentPage) - 2;
       btn5.dataset.index = Number(currentPage) - 1;
     } else {
-      // console.log("ELSE4");
       refs.next.hidden = false;
       refs.dots2.hidden = false;
     }
 
+    if (currentPage === Number(refs.btnLast.textContent)) {
+      refs.next.hidden = true;
+    }
+
     if (btn5.textContent >= totalPages - 1) {
-      // console.log("IF5");
       refs.dots2.hidden = true;
     }
   }
@@ -345,4 +344,5 @@ export default function markupPagination(data) {
     }
   }
 }
+
 export { currentPage };

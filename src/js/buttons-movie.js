@@ -48,11 +48,11 @@ export default function movieButtons(li, data) {
 
       mainSectionBtnWatched.addEventListener(
         "click",
-        mainWatchedHandler(movie, mainSectionBtnWatched),
+        modalWatchedHandler(movie, mainSectionBtnWatched, mainSectionBtnQueue),
       );
       mainSectionBtnQueue.addEventListener(
         "click",
-        mainQueueHandler(movie, mainSectionBtnQueue),
+        modalQueueHandler(movie, mainSectionBtnWatched, mainSectionBtnQueue),
       );
     });
     el.addEventListener("mouseleave", () => {
@@ -60,22 +60,60 @@ export default function movieButtons(li, data) {
       if (overlay) {
         overlay.remove();
       }
-    });
+    });   
   }
 }
 
-function mainWatchedHandler(movie, btn) {
+function modalWatchedHandler(movie, watchBtn, queueBtn) {
   return function () {
-    btn.classList.toggle("button-anactive");
-    btn.classList.toggle("button-active");
-    watchedHandler(movie, btn)();
+    watchedHandler(movie, watchBtn)();
+    watchBtn.classList.toggle("button-anactive");
+    watchBtn.classList.toggle("button-active");    
+
+    let lang = localStorage.getItem("lang");
+    let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+    
+    if (!queueInLocalstorage) queueInLocalstorage = [];
+
+    if (checkFilm(queueInLocalstorage, movie)) {
+      if (lang === "en-US") {
+        queueBtn.textContent = "remove from queue";
+      } else if (lang === "ru-RU") {
+        queueBtn.textContent = "удалить из очереди";
+      }
+    } else {
+      if (lang === "en-US") {
+        queueBtn.textContent = "add to queue";
+      } else if (lang === "ru-RU") {
+        queueBtn.textContent = "добавить в очередь";
+      }
+    }
   };
 }
 
-function mainQueueHandler(movie, btn) {
+function modalQueueHandler(movie, watchBtn, queueBtn) {
   return function () {
-    btn.classList.toggle("button-anactive");
-    btn.classList.toggle("button-active");
-    queueHandler(movie, btn)();
+    queueHandler(movie, queueBtn)();
+    queueBtn.classList.toggle("button-anactive");
+    queueBtn.classList.toggle("button-active");    
+
+    let lang = localStorage.getItem("lang");
+    let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+    
+    if (!watchedInLocalstorage) watchedInLocalstorage = [];
+
+    if (checkFilm(watchedInLocalstorage, movie)) {
+      if (lang === "en-US") {
+        watchBtn.textContent = "remove from watched";
+      } else if (lang === "ru-RU") {
+        watchBtn.textContent = "удалить из просмотренных";
+      }
+    } else {
+      if (lang === "en-US") {
+        watchBtn.textContent = "add to watched";
+      } else if (lang === "ru-RU") {
+        watchBtn.textContent = "добавить в просмотренные";
+      }
+    }
   };
 }
