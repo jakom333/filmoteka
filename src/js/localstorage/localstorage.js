@@ -19,6 +19,8 @@ export default function watchedHandler(data, btn) {
       localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
 
       let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
+      if (!queueInLocalstorage) queueInLocalstorage = [];
+
       if (checkFilm(queueInLocalstorage, data)) {
         queueInLocalstorage.forEach((movie) => {
           if (movie.id === data.id) {
@@ -65,6 +67,18 @@ export function queueHandler(data, btn) {
       }
 
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
+
+      let watchedInLocalstorage = JSON.parse(localStorage.getItem("watched"));
+      if (!watchedInLocalstorage) watchedInLocalstorage = [];
+
+      if (checkFilm(watchedInLocalstorage, data)) {
+        watchedInLocalstorage.forEach((movie) => {
+          if (movie.id === data.id) {
+            watchedInLocalstorage.splice(watchedInLocalstorage.indexOf(movie), 1);
+          }
+        });
+        localStorage.setItem("watched", JSON.stringify(watchedInLocalstorage));
+      }
     } else {
       queueInLocalstorage.forEach((movie) => {
         if (movie.id === data.id) {

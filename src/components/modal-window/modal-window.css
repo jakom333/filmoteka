@@ -90,8 +90,11 @@
 }
 
 .modal-button:hover {
-  background-color: #ff6b08;
-  border: 3px solid #ff6b08;
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+  box-shadow: inset 5px 5px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
+  /* background-color: #ff6b08;
+  border: 3px solid #ff6b08; */
   fill: #fff;
 }
 
@@ -325,6 +328,11 @@ table td {
   cursor: pointer;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 250ms;
+  outline: none;
+}
+.buttons:hover {
+  border: 1px solid #ff6b01;
+  box-shadow: inset 1px 1px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
 }
 
 .action-watch {
@@ -355,24 +363,19 @@ table td {
     padding-right: 20px;
     flex-wrap: nowrap;
     justify-content: center;
-
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     width: min-content;
     z-index: 2;
   }
-
   .modal-button {
     top: 7px;
     right: 7px;
-
     width: 20px;
     height: 20px;
   }
-
   .poster {
     width: 294px;
     height: 416px;
