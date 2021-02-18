@@ -62,7 +62,7 @@ export function queueHandler(data, btn) {
         btn.textContent = "remove from queue";
         btn.classList.add("active");
       } else if (lang === "ru-RU") {
-        btn.textContent = "удалить из добавленных";
+        btn.textContent = "удалить из очереди";
         btn.classList.add("active");
       }
 
@@ -90,7 +90,7 @@ export function queueHandler(data, btn) {
         btn.textContent = "add to queue";
         btn.classList.remove("active");
       } else if (lang === "ru-RU") {
-        btn.textContent = "добавить";
+        btn.textContent = "добавить в очередь";
         btn.classList.remove("active");
       }
       localStorage.setItem("queue", JSON.stringify(queueInLocalstorage));
