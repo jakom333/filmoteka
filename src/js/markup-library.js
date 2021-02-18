@@ -17,6 +17,7 @@ watchBtnLibrary.addEventListener("click", libraryBtnHandler);
 queueBtnLibrary.addEventListener("click", queueBtnHandler);
 
 function libraryBtnHandler() {
+  isWatched = true;
   watchBtnLibrary.classList.add("button-active");
   queueBtnLibrary.classList.remove("button-active");
   
