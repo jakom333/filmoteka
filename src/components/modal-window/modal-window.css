@@ -56,7 +56,6 @@
   width: min-content;
 
   height: min-content;
-  /* overflow-y: scroll; */
   border-radius: 7px;
 }
 
@@ -108,14 +107,13 @@
 
 .film-info-social {
   display: flex;
-  padding: 7px;
+  padding: 8px 3px 7px 8px;
 }
 
 a.fb-btn {
   box-sizing: border-box;
   display: block;
   background-color: #3b5b9b;
-  /* background-color: #fff; */
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   overflow: hidden;
@@ -125,11 +123,13 @@ a.fb-btn {
   width: 40px;
   text-decoration: none;
   text-align: center;
-  margin-right: 5px;
+  margin-right: 7px;
 }
-/* a.fb-btn:hover {
-  background-color: #3b5b9b;
-} */
+a.fb-btn:hover {
+  transform: scale(1.2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
 
 span.fb-icon {
   box-sizing: border-box;
@@ -141,15 +141,11 @@ span.fb-icon {
   fill: #afb1b8;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-span.fb-icon:hover {
-  fill: #fff;
-}
 
 a.tgme-btn {
   box-sizing: border-box;
   display: block;
   background-color: #54a9eb;
-  /* background-color: #fff; */
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   overflow: hidden;
@@ -159,11 +155,13 @@ a.tgme-btn {
   width: 40px;
   text-decoration: none;
   text-align: center;
-  margin-right: 5px;
+  margin-right: 7px;
 }
-/* a.tgme-btn:hover {
-  background-color: #54a9eb;
-} */
+a.tgme-btn:hover {
+  transform: scale(1.2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
 
 span.tgme-icon {
   box-sizing: border-box;
@@ -175,15 +173,11 @@ span.tgme-icon {
   vertical-align: middle;
   fill: #afb1b8;
 }
-span.tgme-icon:hover {
-  fill: #fff;
-}
 
 a.whatsapp-btn {
   box-sizing: border-box;
   display: block;
   background-color: #26d365;
-  /* background-color: #fff; */
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 5px;
   overflow: hidden;
@@ -195,9 +189,11 @@ a.whatsapp-btn {
   text-align: center;
   margin-right: 5px;
 }
-/* a.whatsapp-btn:hover {
-  background-color: #26d365;
-} */
+a.whatsapp-btn:hover {
+  transform: scale(1.2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
 
 span.whatsapp-icon {
   box-sizing: border-box;
@@ -209,9 +205,7 @@ span.whatsapp-icon {
   vertical-align: middle;
   fill: #afb1b8;
 }
-span.tgme-icon:hover {
-  fill: #fff;
-}
+
 /* ! --------- End of SOCIAL --------- */
 
 .poster {
@@ -321,7 +315,6 @@ table td {
   text-transform: uppercase;
   padding-left: 5px;
   padding-right: 5px;
-  cursor: pointer;
 }
 
 .buttons:hover {
@@ -329,6 +322,9 @@ table td {
   border: 1px solid #ff6b01;
   color: white;
   outline: none;
+  cursor: pointer;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
 }
 
 .action-watch {
