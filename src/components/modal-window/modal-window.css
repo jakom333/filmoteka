@@ -321,18 +321,10 @@ table td {
 }
 
 .buttons:hover {
-  background: #ff6b01;
-  border: 1px solid #ff6b01;
-  color: white;
-  outline: none;
-  cursor: pointer;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
-  outline: none;
-}
-.buttons:hover {
   border: 1px solid #ff6b01;
   box-shadow: inset 1px 1px 10px rgb(255, 166, 124), 1px 1px 5px rgb(221, 9, 9);
+  outline: none;
+  cursor: pointer;
 }
 
 .action-watch {
