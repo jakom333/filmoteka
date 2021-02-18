@@ -6,6 +6,7 @@ import refs from "./refs.js";
 import renderTopRated from "./top-filters.js";
 import cardTemplate from "../templates/movie-card.hbs";
 import markupPagination from "./pagination.js";
+import _ from 'lodash';
 
 export let input = "";
 
@@ -22,14 +23,14 @@ export function fetchAPI(searchQuery) {
         offSpin();
 
         if (langSearch === "en-US") {
-          refs.gallery.innerHTML = `<div class="container-error"> <h2 class="error-title"> Please, give us at least one word! </h2>
-            <div class="error-mobile"> </div>
+          refs.gallery.innerHTML = `<div class="container-error"> <h2 class="error-title"> Please, give us at least one word! </h2> <br>
+            <div class="error-mobile-no-title"> </div>
           <iframe class="search-error" src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="container-error" > <h2 class="error-title"> Пожалуйста, введите хоть что-нибуть! </h2>
-            <div class="error-mobile"> </div>
+          refs.gallery.innerHTML = `<div class="container-error" > <h2 class="error-title"> Пожалуйста, введите хоть что-нибуть! </h2> <br>
+            <div class="error-mobile-no-title"> </div>
           <iframe class="search-error" src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
@@ -38,13 +39,13 @@ export function fetchAPI(searchQuery) {
       } else if (!data.results.length) {
         if (langSearch === 'en-US') {
           refs.gallery.innerHTML =        
-          `<div class="container-error"> <h2 class="error-title"> Ooops! There are no movies with this title! Try again!</h2>
-          <div class="error-mobile"> </div>
+          `<div class="container-error"> <h2 class="error-title"> Ooops! There are no movies with this title! Try again!</h2><br>
+          <div class="error-mobile-no-movies"> </div>
    <iframe class="search-error" src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="368" height="380" frameBorder="0" 
    allowFullScreen></iframe><div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="container-error"> <h2 class="error-title"> Фильмов с таким названием нет. Не сдавайтесь! Попробуйте ещё раз!</h2>
-             <div class="error-mobile"> </div>
+          refs.gallery.innerHTML = `<div class="container-error"> <h2 class="error-title"> Фильмов с таким названием нет. Не сдавайтесь! Попробуйте ещё раз!</h2> <br>
+             <div class="error-mobile-no-movies "> </div>
    <iframe class="search-error" src="https://giphy.com/embed/VIQfHC9jAZbt6ojTdo" width="468" height="480" frameBorder="0"  
    allowFullScreen></iframe><div>`;
         }
