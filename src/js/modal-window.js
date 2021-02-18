@@ -80,6 +80,8 @@ function modalMarkup(data) {
   const watchBtnModal = document.querySelector(".action-watch");
   const queueBtnModal = document.querySelector(".action-queue");
 
+  // watchBtnModal.classList.add("active")
+
   if (checkFilm(watchedInLocalstorage, data) && lang === "en-US") {
     watchBtnModal.textContent = "remove from Watched";
   } else if (checkFilm(watchedInLocalstorage, data) && lang === "ru-RU") {
@@ -108,7 +110,7 @@ function modalMarkup(data) {
 export function modalWatchedHandler(data, watchBtn, queueBtn) {
   return function () {
     watchedHandler(data, watchBtn)();
-
+    
     let lang = localStorage.getItem("lang");
 
     let queueInLocalstorage = JSON.parse(localStorage.getItem("queue"));
