@@ -38,8 +38,11 @@ function queueBtnHandler() {
 }
 
 export function markupLibrary(data) {
-  if (!data) return;
-  data.map((movie) => markup(movie));
+  if (!data) {
+    gallery.innerHTML = `<img class= "img-library" src="https://image.flaticon.com/icons/png/512/2456/2456758.png" width="400" height="320" >`;
+    return;
+  }
+  data.map((movie) => markup(movie));  
   gallery.innerHTML = cardTemplate(data);
 }
 
