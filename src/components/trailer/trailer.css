@@ -75,6 +75,7 @@
   background: #ff6b01;
   border: 1px solid #ff6b01;
   color: white;
+  cursor: pointer;
 }
 
 .button-trailer:hover > .trailer-svg {

@@ -50,7 +50,7 @@
   transform: translate(-50%, -30%);
 
   background-color: white;
-  z-index: 10;
+  z-index: 2;
   transition: opacity var(--animation-duration) var(--timing-function);
 
   width: min-content;
@@ -87,7 +87,7 @@
   background-repeat: no-repeat;
   background-size: 60%;
 
-  z-index: 12;
+  z-index: 4;
 }
 
 .modal-button:hover {
@@ -109,7 +109,6 @@
 .film-info-social {
   display: flex;
   padding: 7px;
-  margin-left: -6px;
 }
 
 a.fb-btn {
@@ -318,10 +317,18 @@ table td {
   background: #ffff;
   border-radius: 5px;
   border: 1px solid black;
+  outline: none;
   text-transform: uppercase;
   padding-left: 5px;
   padding-right: 5px;
   cursor: pointer;
+}
+
+.buttons:hover {
+  background: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: white;
+  outline: none;
 }
 
 .action-watch {
@@ -359,7 +366,7 @@ table td {
     transform: translate(-50%, -50%);
 
     width: min-content;
-    z-index: 10;
+    z-index: 2;
   }
 
   .modal-button {
@@ -412,7 +419,7 @@ table td {
     transform: translate(-50%, -50%);
 
     width: min-content;
-    z-index: 10;
+    z-index: 2;
   }
 
   .modal-button {
