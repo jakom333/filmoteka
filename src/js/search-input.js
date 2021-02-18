@@ -29,7 +29,7 @@ export function fetchAPI(searchQuery) {
          allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
          </a></div>`;
         } else {
-          refs.gallery.innerHTML = `<div class="container-error" > <h2 class="error-title"> Пожалуйста, введите хоть что-нибуть! </h2> <br>
+          refs.gallery.innerHTML = `<div class="container-error" > <h2 class="error-title"> Пожалуйста, введите хоть что-нибудь! </h2> <br>
             <div class="error-mobile-no-title"> </div>
           <iframe class="search-error" src="https://giphy.com/embed/WY6omKOR8oRLG" width="480" height="232" frameBorder="0" 
          allowFullScreen></iframe><a href="https://giphy.com/gifs/snl-amy-poehler-tina-fey-emmys-WY6omKOR8oRLG">
