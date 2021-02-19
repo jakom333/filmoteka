@@ -31,6 +31,15 @@ body.dark-theme {
   color: #fff;
 }
 
+.theme.light-theme {
+  color: black;
+}
+
+.theme.dark-theme {
+  background-color: transparent;
+  color: #fff;
+}
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
