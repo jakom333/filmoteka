@@ -54,7 +54,7 @@ function modalMarkup(data) {
   lang === "ru-RU" || lang === "RU" && !movieGenres.length ? movieGenres.push(" Другое") : "";
 
   lang === "en-US" && !data.overview ? data.overview = "Content is not available." : '';
-  lang === "ru-RU" || lang === "RU" && !data.overview ? data.overview = "Контент недоступен." : '';
+  lang === "RU" && !data.overview ? data.overview = "Контент недоступен." : '';
   data.genres = movieGenres.slice(0, 3);
     
 
