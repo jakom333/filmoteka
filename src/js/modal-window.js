@@ -51,7 +51,7 @@ function modalMarkup(data) {
 
   let lang = localStorage.getItem("lang");
   lang === "en-US" && !movieGenres.length ? movieGenres.push(" Other") : "";
-  lang === "ru-RU" || lang === "RU" && !movieGenres.length ? movieGenres.push(" Другое") : "";
+  lang === "ru-RU" && !movieGenres.length ? movieGenres.push(" Другое") : "";
 
   lang === "en-US" && !data.overview ? data.overview = "Content is not available." : '';
   lang === "RU" && !data.overview ? data.overview = "Контент недоступен." : '';
