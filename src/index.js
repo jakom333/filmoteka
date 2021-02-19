@@ -14,6 +14,7 @@ import "./js/markup.js";
 import "./js/buttons-movie";
 import "./js/theme-switch.js";
 import "./js/up-to.js";
+import "./js/team-modal.js";
 
 export let genres = [];
 

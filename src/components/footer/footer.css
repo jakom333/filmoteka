@@ -25,7 +25,9 @@
   margin-right: 10px;
 }
 .footer-developed-students {
+  cursor: pointer;
   text-decoration: underline;
+  user-select: none;
 }
 
 @media screen and (max-width: 319px) {

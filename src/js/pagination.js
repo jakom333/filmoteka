@@ -4,7 +4,15 @@ import paginationTmp from "../templates/pagination.hbs";
 
 let currentPage = 1;
 
+const Theme = {
+  LIGHT: "light-theme",
+  DARK: "dark-theme",
+};
+
 export default function markupPagination(data) {
+  const inputTheme = document.querySelector("#theme-switch-toggle");
+
+  inputTheme.addEventListener("change", changeTheme);
   let totalPages = data.total_pages;
   const paginationBox = document.querySelector(".pagination");
   const paginationBoxNew = paginationBox.cloneNode(true);
@@ -31,6 +39,9 @@ export default function markupPagination(data) {
   };
 
   const buttons = document.querySelectorAll(".btn");
+  const themeBtns = document.querySelectorAll(".theme");
+  const savedTheme = localStorage.getItem("theme");
+  const parsedTheme = JSON.parse(savedTheme);
 
   buttons.forEach((btn) => btn.classList.remove("active"));
 
@@ -43,6 +54,26 @@ export default function markupPagination(data) {
   const btn4 = refs.btnPage4;
   const btn5 = refs.btnPage5;
   const btnLast = refs.btnLast;
+
+  if (parsedTheme === "light-theme") {
+    themeBtns.forEach((btn) => btn.classList.add("light-theme"));
+  } else {
+    themeBtns.forEach((btn) => btn.classList.add("dark-theme"));
+  }
+
+  function changeTheme(event) {
+    if (event.target.checked) {
+      themeBtns.forEach((btn) =>
+        btn.classList.replace(Theme.LIGHT, Theme.DARK),
+      );
+      localStorage.setItem("theme", JSON.stringify(Theme.DARK));
+    } else {
+      themeBtns.forEach((btn) =>
+        btn.classList.replace(Theme.DARK, Theme.LIGHT),
+      );
+      localStorage.setItem("theme", JSON.stringify(Theme.LIGHT));
+    }
+  }
 
   if (!data.total_pages) {
     refs.btnPage1.hidden = true;
