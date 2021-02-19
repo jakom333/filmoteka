@@ -55,10 +55,16 @@ export default function markupPagination(data) {
   const btn5 = refs.btnPage5;
   const btnLast = refs.btnLast;
 
-  if (parsedTheme === "light-theme") {
+  setDefaultTheme();
+  darkThemeCheck();
+
+  function setDefaultTheme() {
     themeBtns.forEach((btn) => btn.classList.add("light-theme"));
-  } else {
-    themeBtns.forEach((btn) => btn.classList.add("dark-theme"));
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      const parsedTheme = JSON.parse(savedTheme);
+      themeBtns.forEach((btn) => btn.classList.add(parsedTheme));
+    }
   }
 
   function changeTheme(event) {
@@ -72,6 +78,13 @@ export default function markupPagination(data) {
         btn.classList.replace(Theme.DARK, Theme.LIGHT),
       );
       localStorage.setItem("theme", JSON.stringify(Theme.LIGHT));
+    }
+  }
+
+  function darkThemeCheck() {
+    if (document.body.classList.contains(Theme.DARK)) {
+      input.checked = true;
+      themeBtns.forEach((btn) => btn.classList.remove(Theme.LIGHT));
     }
   }
 
