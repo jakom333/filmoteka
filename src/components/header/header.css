@@ -322,11 +322,7 @@
   display: none;
 }
 /* ============== media for hide overlay on screen >1200px */
-@media screen and (min-width: 320px) and (max-width: 1199px) {
-  .film-overlay {
-    display: none;
-  }
-}
+
 @media screen and (min-width: 1200px) {
   .film-overlay {
     display: flex;
